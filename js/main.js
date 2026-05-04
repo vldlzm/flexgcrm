@@ -149,17 +149,15 @@ function saveCampaign() {
 }
 
 function cancelCampaign() {
-  if (confirm('입력한 내용이 초기화됩니다. 취소하시겠습니까?')) {
-    document.getElementById('campaignName').value = '';
-    setCampaignNameDefault();
-    document.querySelector('input[name="classification"][value="message"]').checked = true;
-    document.querySelector('input[name="contentType"][value="discount"]').checked = true;
-    document.querySelector('input[name="target"][value="all"]').checked = true;
-    document.getElementById('discountArea').style.display = 'block';
-    document.getElementById('productArea').style.display = 'none';
-    document.getElementById('memberCount').textContent = '0명';
-    document.getElementById('memberQueryBtn').textContent = '전체 회원 조회 ›';
-    resetPeriod();
-    resetAction();
-  }
+  document.getElementById('campaignName').value = '';
+  setCampaignNameDefault();
+  document.querySelector('input[name="classification"][value="message"]').checked = true;
+  document.querySelector('input[name="contentType"][value="discount"]').checked = true;
+  document.querySelector('input[name="target"][value="all"]').checked = true;
+  document.getElementById('discountArea').style.display = 'block';
+  document.getElementById('productArea').style.display = 'none';
+  document.getElementById('memberCount').textContent = '0명';
+  document.getElementById('memberQueryBtn').textContent = '전체 회원 조회 ›';
+  resetPeriod();
+  resetAction();
 }
