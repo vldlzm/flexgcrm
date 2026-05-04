@@ -83,6 +83,17 @@
                 </td>
               </tr>
 
+              <!-- 대상자 -->
+              <tr>
+                <th class="form-th"><span class="req">✓</span> 대상자</th>
+                <td class="form-td">
+                  <label class="radio-item"><input type="radio" name="target" value="all" checked onchange="onTargetChange(this)"> 전체</label>
+                  <label class="radio-item"><input type="radio" name="target" value="specific" onchange="onTargetChange(this)"> 특정 고객</label>
+                  <button type="button" class="btn-dark" id="memberQueryBtn" onclick="queryMembers()">전체 회원 조회 &rsaquo;</button>
+                  <span class="member-count" id="memberCount">0명</span>
+                </td>
+              </tr>
+
               <!-- 캠페인 내용 -->
               <tr>
                 <th class="form-th"><span class="req">✓</span> 캠페인 내용</th>
@@ -108,17 +119,6 @@
                   <div id="productArea" style="display:none;">
                     <p class="sub-note">상품 추천 콘텐츠를 설정합니다.</p>
                   </div>
-                </td>
-              </tr>
-
-              <!-- 대상자 -->
-              <tr>
-                <th class="form-th"><span class="req">✓</span> 대상자</th>
-                <td class="form-td">
-                  <label class="radio-item"><input type="radio" name="target" value="all" checked onchange="onTargetChange(this)"> 전체</label>
-                  <label class="radio-item"><input type="radio" name="target" value="specific" onchange="onTargetChange(this)"> 특정 고객</label>
-                  <button type="button" class="btn-dark" id="memberQueryBtn" onclick="queryMembers()">전체 회원 조회 &rsaquo;</button>
-                  <span class="member-count" id="memberCount">0명</span>
                 </td>
               </tr>
 
