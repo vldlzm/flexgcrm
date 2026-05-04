@@ -53,9 +53,8 @@ function onContentTypeChange(radio) {
   document.getElementById('productArea').style.display = radio.value === 'product' ? 'block' : 'none';
 }
 
-function generateCoupon() {
-  var code = 'CPN' + Math.random().toString(36).toUpperCase().slice(2, 8);
-  console.log('[쿠폰 생성]', code);
+function findCoupon() {
+  console.log('[쿠폰 찾기]');
 }
 
 function generateDiscountCode() {
