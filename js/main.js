@@ -48,8 +48,14 @@ function setCampaignNameDefault() {
    캠페인 내용 타입 토글
 =========================== */
 function onContentTypeChange(radio) {
+  document.getElementById('couponArea').style.display = radio.value === 'coupon' ? 'block' : 'none';
   document.getElementById('discountArea').style.display = radio.value === 'discount' ? 'block' : 'none';
   document.getElementById('productArea').style.display = radio.value === 'product' ? 'block' : 'none';
+}
+
+function generateCoupon() {
+  var code = 'CPN' + Math.random().toString(36).toUpperCase().slice(2, 8);
+  console.log('[쿠폰 생성]', code);
 }
 
 function generateDiscountCode() {
@@ -158,6 +164,7 @@ function cancelCampaign() {
   document.querySelector('input[name="classification"][value="message"]').checked = true;
   document.querySelector('input[name="contentType"][value="discount"]').checked = true;
   document.querySelector('input[name="target"][value="all"]').checked = true;
+  document.getElementById('couponArea').style.display = 'none';
   document.getElementById('discountArea').style.display = 'block';
   document.getElementById('productArea').style.display = 'none';
   document.getElementById('memberCount').textContent = '0명';

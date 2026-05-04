@@ -88,8 +88,15 @@
                 <th class="form-th"><span class="req">✓</span> 캠페인 내용</th>
                 <td class="form-td">
                   <div class="radio-row">
+                    <label class="radio-item"><input type="radio" name="contentType" value="coupon" onchange="onContentTypeChange(this)"> 쿠폰</label>
                     <label class="radio-item"><input type="radio" name="contentType" value="discount" checked onchange="onContentTypeChange(this)"> 할인코드</label>
                     <label class="radio-item"><input type="radio" name="contentType" value="product" onchange="onContentTypeChange(this)"> 상품 추천</label>
+                  </div>
+                  <div id="couponArea" style="display:none;">
+                    <button type="button" class="btn-dark" onclick="generateCoupon()">쿠폰 생성 +</button>
+                    <div class="sub-notes">
+                      <p class="sub-note">① 쿠폰은 설정된 조건에 따라 자동 발급됩니다.</p>
+                    </div>
                   </div>
                   <div id="discountArea">
                     <button type="button" class="btn-dark" onclick="generateDiscountCode()">할인코드 생성 +</button>
