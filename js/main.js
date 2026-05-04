@@ -148,6 +148,10 @@ function saveCampaign() {
   alert('캠페인이 저장되었습니다.\n\n캠페인명: ' + name);
 }
 
+function editLmsMessage() {
+  console.log('[LMS] 메시지 수정 모드');
+}
+
 function cancelCampaign() {
   document.getElementById('campaignName').value = '';
   setCampaignNameDefault();

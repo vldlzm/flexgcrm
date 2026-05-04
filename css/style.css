@@ -524,3 +524,503 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+/* ===========================
+   예시 섹션 (APP푸시 / 알림톡 / LMS)
+=========================== */
+.example-sections {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ex-card {
+  background: #f8f9fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 22px 24px;
+}
+
+/* 좌측 정보 */
+.ex-left {
+  margin-bottom: 16px;
+}
+
+.ex-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 6px;
+}
+
+.ex-desc {
+  font-size: 13px;
+  color: #4a5568;
+  margin-bottom: 12px;
+}
+
+.ex-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ex-meta-gap {
+  margin-top: 8px;
+}
+
+/* 태그 필 */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tag-black {
+  background: #1a202c;
+  color: #fff;
+}
+
+.tag-dark {
+  background: #4a5568;
+  color: #fff;
+}
+
+.tag-green {
+  background: #16a34a;
+  color: #fff;
+}
+
+.meta-free {
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.meta-cost {
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.cost-num {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.meta-link {
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.meta-link:hover {
+  text-decoration: underline;
+}
+
+.meta-cond {
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.cond-em {
+  color: #e8931c;
+  font-weight: 600;
+}
+
+/* 미리보기 영역 */
+.ex-previews {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* 화살표 */
+.ex-arrow {
+  flex: 0 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  font-size: 22px;
+  color: #94a3b8;
+  padding-bottom: 24px;
+}
+
+/* ── 공통 phone-wrap ── */
+.phone-wrap {
+  flex: 0 0 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── APP푸시 ── */
+.push-wrap {
+  width: 200px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 8px 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.push-noti {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+
+.push-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.push-icon {
+  width: 26px;
+  height: 26px;
+  background: #cbd5e0;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.push-txt {
+  flex: 1;
+  min-width: 0;
+}
+
+.push-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.3;
+}
+
+.push-body {
+  font-size: 9px;
+  color: #64748b;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.push-x {
+  font-size: 9px;
+  color: #94a3b8;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.push-expanded .push-code-btn {
+  margin-top: 7px;
+  background: #1a202c;
+  color: #fff;
+  text-align: center;
+  padding: 6px 0;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.push-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 0 2px;
+}
+
+.pdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e0;
+}
+
+.pdot.active {
+  background: #4a5568;
+}
+
+.preview-tab-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #cbd5e0;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.ptab.active {
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.ptab-sep {
+  color: #cbd5e0;
+}
+
+/* ── 알림톡 ── */
+.at-card {
+  width: 200px;
+  border: 2px solid #3b82f6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.at-header {
+  background: #FEE500;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.at-talk-icon {
+  background: #3c1e1e;
+  color: #FEE500;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 3px 4px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.at-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.at-body {
+  background: #fff;
+  padding: 10px 12px;
+}
+
+.at-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.at-img-placeholder {
+  background: #e2e8f0;
+  height: 56px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.at-text {
+  font-size: 9px;
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.at-notes {
+  font-size: 8px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.at-golink-btn {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px 0;
+  text-align: center;
+  font-size: 11px;
+  color: #4a5568;
+  background: #f8f9fb;
+  cursor: default;
+}
+
+/* ── LMS ── */
+.lms-phone-wrap {
+  flex: 0 0 240px;
+}
+
+.lms-screen {
+  width: 220px;
+  background: #6b7280;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.lms-bubble {
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.lms-bubble p {
+  font-size: 9px;
+  color: #1a202c;
+  line-height: 1.6;
+}
+
+.lms-link {
+  color: #2563eb !important;
+}
+
+.lms-small {
+  color: #6b7280 !important;
+  font-size: 8px !important;
+}
+
+.lms-time-row {
+  text-align: right;
+  font-size: 9px;
+  color: #e2e8f0;
+  margin-top: 6px;
+}
+
+/* LMS 메시지 수정하기 */
+.lms-edit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.btn-edit-msg {
+  height: 36px;
+  padding: 0 20px;
+  background: #1a202c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-edit-msg:hover {
+  background: #2d3748;
+}
+
+/* ── 앱 화면 와이어프레임 ── */
+.app-wire {
+  flex: 1;
+  min-width: 0;
+  background: #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  min-height: 200px;
+}
+
+.aw-topbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px 8px;
+  margin-bottom: 8px;
+}
+
+.aw-ham {
+  font-size: 13px;
+  color: #4a5568;
+  flex-shrink: 0;
+}
+
+.aw-center-line {
+  flex: 1;
+  height: 2px;
+  background: #cbd5e0;
+  border-radius: 1px;
+}
+
+.aw-topbar-right {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.aw-ico {
+  font-size: 11px;
+  color: #4a5568;
+}
+
+.aw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.aw-box {
+  height: 55px;
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.aw-product-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.aw-product-img {
+  width: 55px;
+  height: 55px;
+  background: #cbd5e0;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.aw-product-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.aw-line {
+  height: 8px;
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.aw-line.short {
+  width: 55%;
+}
+
+.aw-coupon-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #9333ea;
+  color: #fff;
+  border-radius: 14px;
+  padding: 4px 10px 4px 6px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.aw-coupon-icon {
+  font-size: 12px;
+}
