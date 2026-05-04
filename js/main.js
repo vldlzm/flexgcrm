@@ -54,7 +54,61 @@ function onContentTypeChange(radio) {
 }
 
 function findCoupon() {
-  console.log('[쿠폰 찾기]');
+  document.getElementById('couponBackdrop').classList.add('open');
+  document.getElementById('couponSearchInput').value = '';
+  renderCouponTable(couponData);
+}
+
+function closeCouponPopup() {
+  document.getElementById('couponBackdrop').classList.remove('open');
+}
+
+var couponData = [
+  { name: '할인쿠폰비율',                    period: '무제한', type: '비율 할인', rate: '10% 할인', dl: '한번만 다운로드 가능' },
+  { name: '여행시작',                         period: '무제한', type: '비율 할인', rate: '10% 할인', dl: '한번만 다운로드 가능' },
+  { name: '린 테스트 +',                      period: '무제한', type: '비율 할인', rate: '80% 할인', dl: '사용 후 다시 다운로드' },
+  { name: '굳쿠폰',                           period: '무제한', type: '비율 할인', rate: '10% 할인', dl: '한번만 다운로드 가능' },
+  { name: '짱쿠폰',                           period: '무제한', type: '비율 할인', rate: '20% 할인', dl: '한번만 다운로드 가능' },
+  { name: '(복사)윤쿠폰',                     period: '무제한', type: '비율 할인', rate: '20% 할인', dl: '사용 후 다시 다운로드' },
+  { name: '(복사)윤쿠폰',                     period: '무제한', type: '비율 할인', rate: '20% 할인', dl: '한번만 다운로드 가능' },
+  { name: '윤쿠폰',                           period: '무제한', type: '비율 할인', rate: '20% 할인', dl: '한번만 다운로드 가능' },
+  { name: '최대할인금액 테스트(최대금액 없음)', period: '무제한', type: '비율 할인', rate: '90% 할인', dl: '한번만 다운로드 가능' },
+  { name: '최대할인금액 테스트',               period: '무제한', type: '비율 할인', rate: '90% 할인', dl: '한번만 다운로드 가능' }
+];
+
+function renderCouponTable(data) {
+  var tbody = document.getElementById('couponTableBody');
+  tbody.innerHTML = data.map(function(c) {
+    return '<tr>' +
+      '<td class="ct-td ct-name"><span class="cpn-name">' + c.name + '</span><br><span class="cpn-period">' + c.period + '</span></td>' +
+      '<td class="ct-td ct-center"><span class="cpn-type">' + c.type + '</span><br><span class="cpn-rate">' + c.rate + '</span></td>' +
+      '<td class="ct-td ct-center">' + c.dl + '</td>' +
+      '<td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, \'' + c.name + '\')">' + '선택</button></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function searchCoupon() {
+  var keyword = document.getElementById('couponSearchInput').value.trim();
+  if (!keyword) {
+    renderCouponTable(couponData);
+    return;
+  }
+  var filtered = couponData.filter(function(c) {
+    return c.name.indexOf(keyword) !== -1;
+  });
+  renderCouponTable(filtered);
+}
+
+function resetCouponSearch() {
+  document.getElementById('couponSearchInput').value = '';
+  renderCouponTable(couponData);
+}
+
+function selectCoupon(btn, name) {
+  document.getElementById('couponSearchInput').value = '';
+  closeCouponPopup();
+  console.log('[쿠폰 선택]', name);
 }
 
 function generateDiscountCode() {

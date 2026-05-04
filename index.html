@@ -482,6 +482,119 @@
   </div>
   <!-- /layout -->
 
+  <!-- =====================
+       쿠폰 찾기 팝업
+  ===================== -->
+  <div class="coupon-backdrop" id="couponBackdrop">
+    <div class="coupon-modal">
+
+      <!-- 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">쿠폰 찾기</span>
+        </div>
+      </div>
+
+      <!-- 본문 -->
+      <div class="coupon-body">
+
+        <!-- 검색 영역 -->
+        <div class="coupon-search-row">
+          <span class="coupon-search-label">쿠폰 검색</span>
+          <input type="text" class="coupon-search-input" id="couponSearchInput" placeholder="쿠폰명 입력">
+          <button type="button" class="btn-dark" onclick="searchCoupon()">검색</button>
+          <button type="button" class="btn-dark" onclick="resetCouponSearch()">초기화</button>
+        </div>
+
+        <!-- 쿠폰 목록 테이블 -->
+        <table class="coupon-table" id="couponTable">
+          <thead>
+            <tr>
+              <th class="ct-th">쿠폰명<br>유효기간</th>
+              <th class="ct-th">해택 종류</th>
+              <th class="ct-th">쿠폰 종류</th>
+              <th class="ct-th"></th>
+            </tr>
+          </thead>
+          <tbody id="couponTableBody">
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">할인쿠폰비율</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">10% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '할인쿠폰비율')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">여행시작</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">10% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '여행시작')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">린 테스트 +</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">80% 할인</span></td>
+              <td class="ct-td ct-center">사용 후 다시 다운로드</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '린 테스트 +')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">굳쿠폰</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">10% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '굳쿠폰')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">짱쿠폰</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">20% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '짱쿠폰')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">(복사)윤쿠폰</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">20% 할인</span></td>
+              <td class="ct-td ct-center">사용 후 다시 다운로드</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '(복사)윤쿠폰')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">(복사)윤쿠폰</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">20% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '(복사)윤쿠폰')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">윤쿠폰</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">20% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '윤쿠폰')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">최대할인금액 테스트(최대금액 없음)</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">90% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '최대할인금액 테스트(최대금액 없음)')">선택</button></td>
+            </tr>
+            <tr>
+              <td class="ct-td ct-name"><span class="cpn-name">최대할인금액 테스트</span><br><span class="cpn-period">무제한</span></td>
+              <td class="ct-td ct-center"><span class="cpn-type">비율 할인</span><br><span class="cpn-rate">90% 할인</span></td>
+              <td class="ct-td ct-center">한번만 다운로드 가능</td>
+              <td class="ct-td ct-center"><button type="button" class="btn-select" onclick="selectCoupon(this, '최대할인금액 테스트')">선택</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- 푸터 -->
+      <div class="coupon-footer">
+        <button type="button" class="btn-footer btn-footer-cancel" onclick="closeCouponPopup()">취소</button>
+      </div>
+
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>

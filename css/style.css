@@ -992,6 +992,159 @@ body {
   flex-shrink: 0;
 }
 
+/* ===========================
+   쿠폰 찾기 팝업
+=========================== */
+.coupon-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon-backdrop.open {
+  display: flex;
+}
+
+.coupon-modal {
+  background: #fff;
+  width: 680px;
+  max-width: 96vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* 검색 영역 */
+.coupon-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-search-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.coupon-search-label {
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.coupon-search-input {
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 220px;
+  outline: none;
+}
+
+.coupon-search-input:focus {
+  border-color: #667eea;
+}
+
+/* 쿠폰 테이블 */
+.coupon-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ct-th {
+  background: #f5f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.ct-th:first-child {
+  text-align: center;
+  width: 200px;
+}
+
+.ct-td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.ct-name {
+  text-align: center;
+}
+
+.ct-center {
+  text-align: center;
+}
+
+.cpn-name {
+  font-size: 13px;
+  color: #222;
+  font-weight: 500;
+}
+
+.cpn-period {
+  font-size: 12px;
+  color: #e8931c;
+}
+
+.cpn-type {
+  font-size: 13px;
+  color: #333;
+}
+
+.cpn-rate {
+  font-size: 12px;
+  color: #e8931c;
+}
+
+.btn-select {
+  height: 30px;
+  padding: 0 14px;
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn-select:hover {
+  background: #2d3748;
+}
+
+/* 쿠폰 팝업 푸터 */
+.coupon-footer {
+  flex-shrink: 0;
+  border-top: 1px solid #e2e8f0;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
 .aw-ico {
   font-size: 11px;
   color: #4a5568;
