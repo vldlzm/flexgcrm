@@ -232,10 +232,10 @@ function cancelCampaign() {
   document.getElementById('campaignName').value = '';
   setCampaignNameDefault();
   document.querySelector('input[name="classification"][value="message"]').checked = true;
-  document.querySelector('input[name="contentType"][value="discount"]').checked = true;
+  document.querySelector('input[name="contentType"][value="coupon"]').checked = true;
   document.querySelector('input[name="target"][value="all"]').checked = true;
-  document.getElementById('couponArea').style.display = 'none';
-  document.getElementById('discountArea').style.display = 'block';
+  document.getElementById('couponArea').style.display = 'block';
+  document.getElementById('discountArea').style.display = 'none';
   document.getElementById('productArea').style.display = 'none';
   document.getElementById('memberCount').textContent = '0명';
   document.getElementById('memberQueryBtn').textContent = '전체 회원 조회 ›';
