@@ -1,59 +1,55 @@
 document.addEventListener('DOMContentLoaded', function () {
   setCampaignNameDefault();
+  selectScreen(document.querySelector('.screen-item.active'));
 });
 
 /* ===========================
-   캠페인명 기본값 (오늘 날짜 기반)
+   화면 선택 (좌측 인덱스)
+=========================== */
+function selectScreen(el) {
+  // 인덱스 활성화
+  document.querySelectorAll('.screen-item').forEach(function (item) {
+    item.classList.remove('active');
+  });
+  el.classList.add('active');
+
+  var screenId = el.getAttribute('data-screen');
+
+  // 중앙 화면 전환
+  document.querySelectorAll('.screen-view').forEach(function (view) {
+    view.classList.remove('active');
+  });
+  var target = document.getElementById('screen-' + screenId);
+  if (target) target.classList.add('active');
+
+  // 우측 설명 전환
+  document.querySelectorAll('.desc-section').forEach(function (sec) {
+    sec.classList.remove('active');
+  });
+  var desc = document.getElementById('desc-' + screenId);
+  if (desc) desc.classList.add('active');
+}
+
+/* ===========================
+   캠페인명 기본값
 =========================== */
 function setCampaignNameDefault() {
   var today = new Date();
   var y = today.getFullYear();
   var m = String(today.getMonth() + 1).padStart(2, '0');
   var d = String(today.getDate()).padStart(2, '0');
-  var dateStr = '' + y + m + d;
   var el = document.getElementById('campaignName');
   if (el && !el.value) {
-    el.value = '맞춤 시나리오로 보내기_' + dateStr + '_1';
+    el.value = '맞춤 시나리오로 보내기_' + y + m + d + '_1';
   }
 }
-
-/* ===========================
-   팝업 열기 / 닫기
-=========================== */
-function openPopup() {
-  document.getElementById('popupBackdrop').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closePopup() {
-  document.getElementById('popupBackdrop').classList.remove('open');
-  document.body.style.overflow = '';
-  closePeriodPicker();
-}
-
-// 백드롭 클릭 시 닫기
-document.addEventListener('DOMContentLoaded', function () {
-  var backdrop = document.getElementById('popupBackdrop');
-  if (backdrop) {
-    backdrop.addEventListener('click', function (e) {
-      if (e.target === backdrop) {
-        closePopup();
-      }
-    });
-  }
-});
 
 /* ===========================
    캠페인 내용 타입 토글
 =========================== */
 function onContentTypeChange(radio) {
-  if (radio.value === 'discount') {
-    document.getElementById('discountArea').style.display = 'block';
-    document.getElementById('productArea').style.display = 'none';
-  } else {
-    document.getElementById('discountArea').style.display = 'none';
-    document.getElementById('productArea').style.display = 'block';
-  }
+  document.getElementById('discountArea').style.display = radio.value === 'discount' ? 'block' : 'none';
+  document.getElementById('productArea').style.display = radio.value === 'product' ? 'block' : 'none';
 }
 
 function generateDiscountCode() {
@@ -62,37 +58,29 @@ function generateDiscountCode() {
 }
 
 /* ===========================
-   대상자 토글
+   대상자
 =========================== */
 function onTargetChange(radio) {
   var btn = document.getElementById('memberQueryBtn');
-  if (radio.value === 'all') {
-    btn.textContent = '전체 회원 조회 ›';
-  } else {
-    btn.textContent = '특정 고객 조회 ›';
-  }
+  btn.textContent = radio.value === 'all' ? '전체 회원 조회 ›' : '특정 고객 조회 ›';
   document.getElementById('memberCount').textContent = '0명';
 }
 
 function queryMembers() {
   var target = document.querySelector('input[name="target"]:checked');
   if (target && target.value === 'all') {
-    document.getElementById('memberCount').textContent = '전체 회원';
+    document.getElementById('memberCount').textContent = '전체';
   } else {
     alert('특정 고객 필터를 설정합니다.');
   }
 }
 
 /* ===========================
-   캠페인 유형 배지 토글
+   캠페인 유형 뱃지
 =========================== */
 function onBadgeChange(checkbox, badgeId) {
   var badge = document.getElementById(badgeId);
-  if (checkbox.checked) {
-    badge.classList.add('active');
-  } else {
-    badge.classList.remove('active');
-  }
+  checkbox.checked ? badge.classList.add('active') : badge.classList.remove('active');
 }
 
 /* ===========================
@@ -130,9 +118,7 @@ function resetPeriod() {
 =========================== */
 function loadAction() {
   var action = prompt('클릭 액션 경로를 입력하세요:', document.getElementById('clickAction').value);
-  if (action !== null) {
-    document.getElementById('clickAction').value = action;
-  }
+  if (action !== null) document.getElementById('clickAction').value = action;
 }
 
 function resetAction() {
@@ -140,7 +126,7 @@ function resetAction() {
 }
 
 /* ===========================
-   저장
+   저장 / 취소
 =========================== */
 function saveCampaign() {
   var name = document.getElementById('campaignName').value.trim();
@@ -149,35 +135,31 @@ function saveCampaign() {
     document.getElementById('campaignName').focus();
     return;
   }
-
   var period = document.getElementById('campaignPeriod').value.trim();
   if (!period) {
     alert('캠페인 기간을 설정해주세요.');
     return;
   }
-
   var types = document.querySelectorAll('input[name="campaignType"]:checked');
   if (types.length === 0) {
     alert('캠페인 유형을 하나 이상 선택해주세요.');
     return;
   }
-
-  var classification = document.querySelector('input[name="classification"]:checked').value;
-  var contentType = document.querySelector('input[name="contentType"]:checked').value;
-  var target = document.querySelector('input[name="target"]:checked').value;
-  var clickAction = document.getElementById('clickAction').value;
-
-  var data = {
-    classification: classification,
-    name: name,
-    contentType: contentType,
-    target: target,
-    period: period,
-    clickAction: clickAction,
-    campaignTypes: Array.from(types).map(function (el) { return el.value; })
-  };
-
-  console.log('[캠페인 저장]', data);
   alert('캠페인이 저장되었습니다.\n\n캠페인명: ' + name);
-  closePopup();
+}
+
+function cancelCampaign() {
+  if (confirm('입력한 내용이 초기화됩니다. 취소하시겠습니까?')) {
+    document.getElementById('campaignName').value = '';
+    setCampaignNameDefault();
+    document.querySelector('input[name="classification"][value="message"]').checked = true;
+    document.querySelector('input[name="contentType"][value="discount"]').checked = true;
+    document.querySelector('input[name="target"][value="all"]').checked = true;
+    document.getElementById('discountArea').style.display = 'block';
+    document.getElementById('productArea').style.display = 'none';
+    document.getElementById('memberCount').textContent = '0명';
+    document.getElementById('memberQueryBtn').textContent = '전체 회원 조회 ›';
+    resetPeriod();
+    resetAction();
+  }
 }

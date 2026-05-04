@@ -11,103 +11,134 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', '맑은 고딕', 'Segoe UI', sans-serif;
   font-size: 14px;
   color: #333;
-  background: #eef0f3;
-  line-height: 1.5;
-}
-
-/* ===========================
-   메인 페이지
-=========================== */
-.site-wrap {
-  min-height: 100vh;
-}
-
-.site-header {
-  background: #2d3748;
-  padding: 14px 0;
-}
-
-.site-header h1 {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.site-main {
-  padding: 40px 0;
-}
-
-.site-main h2 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 8px;
-}
-
-.site-main p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.btn-primary {
-  display: inline-block;
-  height: 38px;
-  padding: 0 20px;
-  background: #4a5568;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: inherit;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.btn-primary:hover {
-  background: #2d3748;
-}
-
-/* ===========================
-   팝업 백드롭
-=========================== */
-.popup-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.popup-backdrop.open {
-  display: flex;
-}
-
-/* ===========================
-   팝업 모달
-=========================== */
-.popup-modal {
-  background: #fff;
-  width: 960px;
-  max-width: 100%;
-  max-height: calc(100vh - 40px);
+  background: #f0f2f5;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  margin: auto;
 }
 
 /* ===========================
-   팝업 헤더
+   사이트 헤더 (고정)
+=========================== */
+.site-header {
+  flex-shrink: 0;
+  height: 48px;
+  background: #1e2532;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  border-bottom: 1px solid #0d111a;
+}
+
+.site-logo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.site-subtitle {
+  font-size: 12px;
+  color: #8b95a9;
+  padding-left: 12px;
+  border-left: 1px solid #3a4255;
+}
+
+/* ===========================
+   3패널 레이아웃 (구조 고정)
+   좌: 인덱스 | 중: 화면 | 우: 화면설명
+=========================== */
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 210px 1fr 260px;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ===========================
+   좌측 패널: 인덱스 (화면목록)
+=========================== */
+.panel-left {
+  background: #fff;
+  border-right: 1px solid #e2e8f0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-left-header {
+  padding: 14px 16px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b95a9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f0f2f5;
+  flex-shrink: 0;
+}
+
+.screen-list {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.screen-category {
+  padding: 8px 16px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #aab0bc;
+  letter-spacing: 0.05em;
+}
+
+.screen-item {
+  padding: 9px 16px 9px 20px;
+  font-size: 13px;
+  color: #4a5568;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.screen-item:hover {
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.screen-item.active {
+  background: #ebf4ff;
+  color: #2b6cb0;
+  border-left-color: #3182ce;
+  font-weight: 600;
+}
+
+/* ===========================
+   중앙 패널: 화면
+=========================== */
+.panel-center {
+  overflow-y: auto;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 화면 뷰 컨테이너 */
+.screen-view {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  min-height: 100%;
+}
+
+.screen-view.active {
+  display: flex;
+}
+
+/* ===========================
+   팝업 헤더 (화면 내부)
 =========================== */
 .popup-header {
   background: #2d3748;
@@ -126,30 +157,15 @@ body {
 }
 
 .header-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   color: #fff;
   flex-shrink: 0;
 }
 
 .popup-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
-  color: #fff;
-}
-
-.popup-close {
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0 2px;
-  transition: color 0.15s;
-}
-
-.popup-close:hover {
   color: #fff;
 }
 
@@ -158,8 +174,8 @@ body {
 =========================== */
 .popup-body {
   flex: 1;
-  overflow-y: auto;
   padding: 24px 28px;
+  overflow-y: auto;
 }
 
 .section-title {
@@ -176,17 +192,15 @@ body {
   margin-bottom: 20px;
 }
 
-.notice-blue,
-.notice-red {
+.notice-blue {
   font-size: 13px;
   line-height: 1.9;
-}
-
-.notice-blue {
   color: #1a56db;
 }
 
 .notice-red {
+  font-size: 13px;
+  line-height: 1.9;
   color: #e53e3e;
 }
 
@@ -227,7 +241,7 @@ body {
 }
 
 /* ===========================
-   라디오 버튼
+   라디오
 =========================== */
 .radio-item {
   display: inline-flex;
@@ -251,7 +265,7 @@ body {
 }
 
 /* ===========================
-   텍스트 입력
+   입력 필드
 =========================== */
 .form-input {
   height: 34px;
@@ -270,24 +284,12 @@ body {
   box-shadow: 0 0 0 2px rgba(102,126,234,0.15);
 }
 
-.wide-input {
-  width: 520px;
-  max-width: 100%;
-}
-
-.period-input {
-  width: 200px;
-  cursor: pointer;
-  background: #fff;
-}
-
-.action-input {
-  width: 310px;
-  max-width: 100%;
-}
+.wide-input  { width: 480px; max-width: 100%; }
+.period-input { width: 200px; cursor: pointer; background: #fff; }
+.action-input { width: 280px; max-width: 100%; }
 
 /* ===========================
-   어두운 버튼 (dark)
+   버튼 (어두운)
 =========================== */
 .btn-dark {
   display: inline-block;
@@ -306,26 +308,13 @@ body {
   transition: background 0.15s;
 }
 
-.btn-dark:first-of-type {
-  margin-left: 0;
-}
-
-.btn-dark:hover {
-  background: #2d3748;
-}
-
-.btn-sm {
-  height: 30px;
-  padding: 0 12px;
-  font-size: 12px;
-}
+.btn-dark:hover { background: #2d3748; }
+.btn-sm { height: 30px; padding: 0 12px; font-size: 12px; }
 
 /* ===========================
-   안내 텍스트 (sub-note)
+   안내 텍스트
 =========================== */
-.sub-notes {
-  margin-top: 10px;
-}
+.sub-notes { margin-top: 10px; }
 
 .sub-note {
   font-size: 12px;
@@ -333,13 +322,8 @@ body {
   line-height: 1.8;
 }
 
-.note-orange {
-  color: #d97706;
-}
+.note-orange { color: #d97706; }
 
-/* ===========================
-   회원 수 표시
-=========================== */
 .member-count {
   font-size: 14px;
   color: #333;
@@ -348,7 +332,7 @@ body {
 }
 
 /* ===========================
-   캠페인 유형 배지 체크박스
+   캠페인 유형 뱃지
 =========================== */
 .type-label {
   font-size: 14px;
@@ -378,9 +362,7 @@ body {
   user-select: none;
 }
 
-.type-badge input[type="checkbox"] {
-  display: none;
-}
+.type-badge input[type="checkbox"] { display: none; }
 
 .badge-check-icon {
   font-size: 13px;
@@ -389,14 +371,8 @@ body {
   transition: color 0.15s;
 }
 
-.type-badge.active {
-  border-color: #38a169;
-  color: #2d3748;
-}
-
-.type-badge.active .badge-check-icon {
-  color: #38a169;
-}
+.type-badge.active { border-color: #38a169; color: #2d3748; }
+.type-badge.active .badge-check-icon { color: #38a169; }
 
 .badge-cnt {
   margin-left: 4px;
@@ -405,11 +381,9 @@ body {
 }
 
 /* ===========================
-   기간 선택 (Date Picker)
+   기간 선택
 =========================== */
-.date-picker-wrap {
-  margin-top: 10px;
-}
+.date-picker-wrap { margin-top: 10px; }
 
 .date-picker-inner {
   display: inline-flex;
@@ -471,9 +445,7 @@ body {
   transition: background 0.15s;
 }
 
-.btn-save:hover {
-  background: #2d3748;
-}
+.btn-save:hover { background: #2d3748; }
 
 .btn-cancel {
   height: 36px;
@@ -485,42 +457,70 @@ body {
   font-size: 14px;
   font-family: inherit;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s;
 }
 
-.btn-cancel:hover {
-  background: #f7fafc;
-  border-color: #a0aec0;
-}
+.btn-cancel:hover { background: #f7fafc; }
 
 /* ===========================
-   반응형
+   우측 패널: 화면설명
 =========================== */
-@media (max-width: 680px) {
-  .popup-modal {
-    max-height: 100vh;
-    margin: 0;
-  }
+.panel-right {
+  background: #fff;
+  border-left: 1px solid #e2e8f0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
 
-  .popup-backdrop {
-    padding: 0;
-    align-items: flex-start;
-  }
+.panel-right-header {
+  padding: 14px 16px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b95a9;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f0f2f5;
+  flex-shrink: 0;
+}
 
-  .wide-input,
-  .action-input {
-    width: 100%;
-  }
+.desc-content {
+  padding: 16px;
+  flex: 1;
+}
 
-  .form-th {
-    width: 110px;
-    min-width: 110px;
-  }
+.desc-section { display: none; }
+.desc-section.active { display: block; }
 
-  .btn-dark {
-    margin-top: 6px;
-    margin-left: 0;
-    display: block;
-    width: fit-content;
-  }
+.desc-screen-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.desc-text {
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.desc-block {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.desc-block:last-child {
+  border-bottom: none;
+}
+
+.desc-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #718096;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
