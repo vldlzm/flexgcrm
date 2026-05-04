@@ -638,11 +638,12 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0;
+  width: fit-content;
 }
 
 /* 화살표 */
 .ex-arrow {
-  flex: 0 0 36px;
+  flex: 0 0 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -655,6 +656,7 @@ body {
 /* ── 공통 phone-wrap ── */
 .phone-wrap {
   flex: 0 0 210px;
+  width: 210px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -855,6 +857,7 @@ body {
 /* ── LMS ── */
 .lms-phone-wrap {
   flex: 0 0 240px;
+  width: 240px;
 }
 
 .lms-screen {
@@ -918,8 +921,8 @@ body {
 
 /* ── 앱 화면 와이어프레임 ── */
 .app-wire {
-  flex: 1;
-  min-width: 0;
+  flex: 0 0 240px;
+  width: 240px;
   background: #e2e8f0;
   border-radius: 8px;
   padding: 10px;
