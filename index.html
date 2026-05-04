@@ -429,8 +429,23 @@
 
         <!-- 팝업 푸터 -->
         <div class="popup-footer">
-          <button type="button" class="btn-save" onclick="saveCampaign()">저장</button>
-          <button type="button" class="btn-cancel" onclick="cancelCampaign()">취소</button>
+          <div class="footer-summary">
+            <svg class="footer-summary-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="13" rx="2"/>
+              <polyline points="8 21 12 17 16 21"/>
+              <line x1="12" y1="17" x2="12" y2="16"/>
+            </svg>
+            <span class="footer-summary-text">
+              오프사이트 : 예약 발송 수 <span class="summary-highlight">약 0건</span>
+              &nbsp;|&nbsp;
+              예상 지출 캐시 <span class="summary-highlight">약 0c</span>
+            </span>
+          </div>
+          <div class="footer-btns">
+            <button type="button" class="btn-footer btn-footer-cancel" onclick="cancelCampaign()">취소</button>
+            <button type="button" class="btn-footer btn-footer-test" onclick="testCampaign()">테스트 발행</button>
+            <button type="button" class="btn-footer btn-footer-publish" onclick="publishCampaign()">캠페인 발행</button>
+          </div>
         </div>
 
       </div>

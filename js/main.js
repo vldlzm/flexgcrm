@@ -134,6 +134,23 @@ function resetAction() {
 /* ===========================
    저장 / 취소
 =========================== */
+function testCampaign() {
+  console.log('[테스트 발행]', document.getElementById('campaignName').value);
+}
+
+function publishCampaign() {
+  var name = document.getElementById('campaignName').value.trim();
+  if (!name) {
+    document.getElementById('campaignName').focus();
+    return;
+  }
+  var period = document.getElementById('campaignPeriod').value.trim();
+  if (!period) return;
+  var types = document.querySelectorAll('input[name="campaignType"]:checked');
+  if (types.length === 0) return;
+  console.log('[캠페인 발행]', name);
+}
+
 function saveCampaign() {
   var name = document.getElementById('campaignName').value.trim();
   if (!name) {

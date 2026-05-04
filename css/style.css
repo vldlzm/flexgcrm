@@ -425,42 +425,74 @@ body {
 .popup-footer {
   flex-shrink: 0;
   border-top: 1px solid #e2e8f0;
-  padding: 14px 28px;
+  background: #fff;
+}
+
+/* 요약 정보 바 */
+.footer-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  background: #f8f9fb;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.footer-summary-icon {
+  width: 18px;
+  height: 18px;
+  color: #4a5568;
+  flex-shrink: 0;
+}
+
+.footer-summary-text {
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.summary-highlight {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* 버튼 영역 */
+.footer-btns {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  background: #fff;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px;
 }
 
-.btn-save {
-  height: 36px;
-  padding: 0 32px;
+.btn-footer {
+  height: 38px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-footer-cancel {
+  background: #6b7280;
+  color: #fff;
+}
+.btn-footer-cancel:hover { background: #4b5563; }
+
+.btn-footer-test {
   background: #4a5568;
   color: #fff;
-  border: none;
-  border-radius: 3px;
-  font-size: 14px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.15s;
 }
+.btn-footer-test:hover { background: #2d3748; }
 
-.btn-save:hover { background: #2d3748; }
-
-.btn-cancel {
-  height: 36px;
-  padding: 0 32px;
-  background: #fff;
-  color: #4a5568;
-  border: 1px solid #cbd5e0;
-  border-radius: 3px;
-  font-size: 14px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.15s;
+.btn-footer-publish {
+  background: #16a34a;
+  color: #fff;
 }
-
-.btn-cancel:hover { background: #f7fafc; }
+.btn-footer-publish:hover { background: #15803d; }
 
 /* ===========================
    우측 패널: 화면설명
