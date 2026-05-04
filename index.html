@@ -3,34 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="쿠폰기능도입 기획서">
-  <title>쿠폰기능도입 기획서</title>
+  <title>FlexG CRM - 캠페인 관리</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>🎟️ 쿠폰기능도입 기획서</h1>
-    </div>
-  </header>
 
-  <main>
-    <div class="container">
-      <h2>프로젝트 개요</h2>
-      <p>쿠폰 기능을 시스템에 도입하기 위한 기획서입니다.</p>
-      
-      <h2>주요 기능</h2>
-      <ul>
-        <li>쿠폰 발급</li>
-        <li>쿠폰 조회</li>
-        <li>쿠폰 사용</li>
-        <li>쿠폰 만료 관리</li>
-      </ul>
+  <!-- 메인 페이지 -->
+  <div class="site-wrap">
+    <header class="site-header">
+      <div class="inner">
+        <h1>FlexG CRM</h1>
+      </div>
+    </header>
+    <main class="site-main">
+      <div class="inner">
+        <h2>캠페인 관리</h2>
+        <p>CRM 캠페인을 생성하고 관리합니다.</p>
+        <button class="btn-primary" onclick="openPopup()">+ 캠페인 생성</button>
+      </div>
+    </main>
+  </div>
 
-      <h2>일정</h2>
-      <p>준비 중입니다.</p>
-    </div>
-  </main>
+  <!-- 팝업 백드롭 -->
+  <div class="popup-backdrop" id="popupBackdrop">
+    <div class="popup-modal" id="popupModal">
+
+      <!-- 팝업 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">캠페인 생성</span>
+        </div>
+        <button class="popup-close" onclick="closePopup()" aria-label="닫기">&times;</button>
+      </div>
+
+      <!-- 팝업 본문 -->
+      <div class="popup-body">
+        <h3 class="section-title">캠페인 설정</h3>
+
+        <!-- 안내 문구 -->
+        <div class="notice-wrap">
+          <p class="notice-blue">· 콘텐츠 팝업은 반복 노출을 줄이기 위해, 동일한 계정에는 캠페인별로 하루 한 번만 노출됩니다.</p>
+          <p class="notice-blue">· 자동 &gt; 오프사이트 캠페인은 고객의 피로도를 줄이기 위하여 동일한 계정에 대해 2일에 한 번만 발송됩니다.</p>
+          <p class="notice-blue">· 상품명, 상품 이미지, 부연 설명을 변경하는 경우 다음 날 CRM 시스템에 반영됩니다.</p>
+          <p class="notice-blue">· LMS는 관련 법령 및 개인정보 보호 정책에 따라 마케팅 정보 수신에 동의한 회원에게만 발송됩니다.</p>
+          <p class="notice-red">· 고객별 메시지 수 제한 및 발송 정책에 따라 실제 수신되는 메시지 수는 차이가 있을 수 있습니다.</p>
+        </div>
+
+        <!-- 폼 테이블 -->
+        <table class="form-table">
+          <tbody>
+
+            <!-- 분류 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 분류</th>
+              <td class="form-td">
+                <label class="radio-item">
+                  <input type="radio" name="classification" value="message" checked> 메시지 발송
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="classification" value="extract"> 대상자 추출 + 할인코드만 발행
+                </label>
+              </td>
+            </tr>
+
+            <!-- 캠페인명 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인명</th>
+              <td class="form-td">
+                <input type="text" class="form-input wide-input" id="campaignName" value="">
+              </td>
+            </tr>
+
+            <!-- 캠페인 내용 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 내용</th>
+              <td class="form-td">
+                <div class="radio-row">
+                  <label class="radio-item">
+                    <input type="radio" name="contentType" value="discount" checked onchange="onContentTypeChange(this)"> 할인코드
+                  </label>
+                  <label class="radio-item">
+                    <input type="radio" name="contentType" value="product" onchange="onContentTypeChange(this)"> 상품 추천
+                  </label>
+                </div>
+
+                <div id="discountArea">
+                  <button type="button" class="btn-dark" onclick="generateDiscountCode()">할인코드 생성 +</button>
+                  <div class="sub-notes">
+                    <p class="sub-note">① CRM 할인코드는 발송일 포함 3일 동안만 유효합니다.</p>
+                    <p class="sub-note">① 설정된 할인코드를 사용하지 않는 계정만 캠페인이 노출되거나 발송됩니다.</p>
+                  </div>
+                </div>
+
+                <div id="productArea" style="display:none;">
+                  <p class="sub-note">상품 추천 콘텐츠를 설정합니다.</p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 대상자 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 대상자</th>
+              <td class="form-td">
+                <label class="radio-item">
+                  <input type="radio" name="target" value="all" checked onchange="onTargetChange(this)"> 전체
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="target" value="specific" onchange="onTargetChange(this)"> 특정 고객
+                </label>
+                <button type="button" class="btn-dark" id="memberQueryBtn" onclick="queryMembers()">전체 회원 조회 &rsaquo;</button>
+                <span class="member-count" id="memberCount">0명</span>
+              </td>
+            </tr>
+
+            <!-- 캠페인 유형 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 유형</th>
+              <td class="form-td">
+                <p class="type-label">오프사이트 캠페인</p>
+                <div class="type-badge-list">
+                  <label class="type-badge active" id="badge-app">
+                    <input type="checkbox" value="app" checked onchange="onBadgeChange(this, 'badge-app')">
+                    <span class="badge-check-icon">✓</span>
+                    <span>APP푸시</span>
+                    <span class="badge-cnt" id="cnt-app">0명</span>
+                  </label>
+                  <label class="type-badge active" id="badge-alrimtok">
+                    <input type="checkbox" value="alrimtok" checked onchange="onBadgeChange(this, 'badge-alrimtok')">
+                    <span class="badge-check-icon">✓</span>
+                    <span>알림톡</span>
+                    <span class="badge-cnt" id="cnt-alrimtok">0명</span>
+                  </label>
+                  <label class="type-badge active" id="badge-lms">
+                    <input type="checkbox" value="lms" checked onchange="onBadgeChange(this, 'badge-lms')">
+                    <span class="badge-check-icon">✓</span>
+                    <span>LMS</span>
+                    <span class="badge-cnt" id="cnt-lms">0명</span>
+                  </label>
+                </div>
+                <p class="sub-note note-orange">① 고객 반응들과 도달 데이터를 분석하여 최적의 캠페인 유형으로 자동 적용됩니다.</p>
+              </td>
+            </tr>
+
+            <!-- 캠페인 기간 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 기간</th>
+              <td class="form-td">
+                <input type="text" class="form-input period-input" id="campaignPeriod" placeholder="기간 설정" readonly onclick="openPeriodPicker()">
+                <button type="button" class="btn-dark" onclick="resetPeriod()">기간 초기화</button>
+
+                <!-- 기간 선택 달력 -->
+                <div class="date-picker-wrap" id="datePicker" style="display:none;">
+                  <div class="date-picker-inner">
+                    <div class="date-field-row">
+                      <label>시작일</label>
+                      <input type="date" id="startDate" onchange="updatePeriod()">
+                    </div>
+                    <div class="date-field-row">
+                      <label>종료일</label>
+                      <input type="date" id="endDate" onchange="updatePeriod()">
+                    </div>
+                    <button type="button" class="btn-dark btn-sm" onclick="closePeriodPicker()">확인</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 클릭 액션 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 클릭 액션</th>
+              <td class="form-td">
+                <input type="text" class="form-input action-input" id="clickAction" value="/Home/Index">
+                <button type="button" class="btn-dark" onclick="loadAction()">불러오기</button>
+                <button type="button" class="btn-dark" onclick="resetAction()">초기화</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div><!-- /popup-body -->
+
+      <!-- 팝업 푸터 -->
+      <div class="popup-footer">
+        <button type="button" class="btn-save" onclick="saveCampaign()">저장</button>
+        <button type="button" class="btn-cancel" onclick="closePopup()">취소</button>
+      </div>
+
+    </div><!-- /popup-modal -->
+  </div><!-- /popup-backdrop -->
 
   <script src="js/main.js"></script>
 </body>
