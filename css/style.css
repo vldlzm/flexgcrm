@@ -1213,3 +1213,336 @@ body {
 .aw-coupon-icon {
   font-size: 12px;
 }
+
+/* ===========================
+   쿠폰 목록 화면
+=========================== */
+.cl-wrap {
+  padding: 28px 28px 40px;
+  overflow-y: auto;
+  flex: 1;
+  background: #fff;
+}
+
+.cl-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 14px;
+}
+
+/* 검색 박스 */
+.cl-search-box {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 18px 20px 10px;
+  margin-bottom: 28px;
+  background: #fafafa;
+}
+
+.cl-search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.cl-search-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  min-width: 72px;
+}
+
+.cl-search-input {
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 200px;
+  outline: none;
+}
+
+.cl-search-input:focus {
+  border-color: #667eea;
+}
+
+.cl-search-gap {
+  width: 24px;
+}
+
+.cl-search-btns {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0 4px;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 4px;
+}
+
+.btn-search-main {
+  background: #2d3748;
+}
+
+/* 리스트 헤더 */
+.cl-list-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.cl-list-count {
+  font-size: 13px;
+  color: #718096;
+}
+
+/* 안내 문구 */
+.cl-notices {
+  margin-bottom: 12px;
+}
+
+.cl-notice {
+  font-size: 12px;
+  color: #e8931c;
+  line-height: 1.8;
+}
+
+/* 액션 행 */
+.cl-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cl-action-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cl-action-label {
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.cl-action-right {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-danger {
+  height: 30px;
+  padding: 0 14px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-danger:hover { background: #b91c1c; }
+
+.btn-dropdown {
+  font-size: 12px;
+  height: 30px;
+  padding: 0 12px;
+}
+
+/* 테이블 */
+.cl-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.cl-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1100px;
+  font-size: 13px;
+}
+
+.cl-th {
+  background: #f5f6f8;
+  border: 1px solid #d1d5db;
+  padding: 9px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.cl-th-toggle {
+  min-width: 90px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.cl-td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 8px;
+  text-align: center;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1.5;
+}
+
+.cl-td-name {
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 혜택 색상 */
+.cl-rate {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* 관리 버튼 */
+.cl-mgmt-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.btn-copy {
+  height: 26px;
+  padding: 0 12px;
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 68px;
+}
+
+.btn-edit {
+  height: 26px;
+  padding: 0 12px;
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 68px;
+}
+
+.btn-del {
+  height: 26px;
+  padding: 0 12px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 68px;
+}
+
+/* 변경 기록 확인 */
+.btn-history {
+  height: 22px;
+  padding: 0 8px;
+  background: #fff;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+  border-radius: 3px;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 68px;
+  margin-top: 2px;
+}
+
+/* 토글 스위치 */
+.cl-toggle-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #718096;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toggle-track {
+  width: 34px;
+  height: 16px;
+  background: #cbd5e0;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle-track.on {
+  background: #3b82f6;
+}
+
+.toggle-thumb {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.toggle-track.on .toggle-thumb {
+  left: 20px;
+}
+
+.toggle-label {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+/* 페이지네이션 */
+.cl-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.cl-page-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #4a5568;
+}
+
+.cl-page-btn.active {
+  background: #4a5568;
+  color: #fff;
+  border-color: #4a5568;
+}

@@ -27,9 +27,9 @@
       <div class="panel-left-header">화면 목록</div>
       <ul class="screen-list">
         <li class="screen-category">캠페인 관리</li>
-        <li class="screen-item active" data-screen="campaign-create" onclick="selectScreen(this)">
-          캠페인 생성
-        </li>
+        <li class="screen-item active" data-screen="campaign-create" onclick="selectScreen(this)">캠페인 생성</li>
+        <li class="screen-category">쿠폰 관리</li>
+        <li class="screen-item" data-screen="coupon-list" onclick="selectScreen(this)">쿠폰 목록</li>
       </ul>
     </nav>
 
@@ -451,6 +451,94 @@
       </div>
       <!-- /screen-campaign-create -->
 
+      <!-- [화면] 쿠폰 목록 -->
+      <div class="screen-view" id="screen-coupon-list">
+        <div class="cl-wrap">
+
+          <!-- 쿠폰 검색 -->
+          <h3 class="cl-section-title">쿠폰 검색</h3>
+          <div class="cl-search-box">
+            <div class="cl-search-row">
+              <span class="cl-search-label">구분</span>
+              <label class="radio-item"><input type="radio" name="couponGuBun" value="normal" checked onchange="onGuBunChange(this)"> 일반</label>
+              <label class="radio-item"><input type="radio" name="couponGuBun" value="crm" onchange="onGuBunChange(this)"> CRM</label>
+            </div>
+            <div class="cl-search-row">
+              <span class="cl-search-label">쿠폰명</span>
+              <input type="text" class="cl-search-input" id="clCouponName" placeholder="쿠폰명 입력">
+            </div>
+            <div class="cl-search-row">
+              <span class="cl-search-label">사용 여부</span>
+              <label class="radio-item"><input type="radio" name="clUseYn" value="all" checked> 전체</label>
+              <label class="radio-item"><input type="radio" name="clUseYn" value="use"> 사용</label>
+              <label class="radio-item"><input type="radio" name="clUseYn" value="unused"> 사용안함</label>
+              <span class="cl-search-gap"></span>
+              <span class="cl-search-label">해택 종류</span>
+              <label class="radio-item"><input type="radio" name="clBenefitType" value="all" checked> 전체</label>
+              <label class="radio-item"><input type="radio" name="clBenefitType" value="rate"> 비율 할인</label>
+              <label class="radio-item"><input type="radio" name="clBenefitType" value="amount"> 금액 할인</label>
+            </div>
+            <div class="cl-search-btns">
+              <button type="button" class="btn-dark" onclick="resetCouponList()">초기화</button>
+              <button type="button" class="btn-dark btn-search-main" onclick="searchCouponList()">검색</button>
+            </div>
+          </div>
+
+          <!-- 쿠폰 리스트 -->
+          <div class="cl-list-header">
+            <h3 class="cl-section-title">쿠폰 리스트</h3>
+            <span class="cl-list-count" id="clListCount">전체 3건 (페이지 1/1)</span>
+          </div>
+          <div class="cl-notices">
+            <p class="cl-notice">· 자동 지급 쿠폰(웰컴 쿠폰, 생일 축하 쿠폰)으로 설정된 경우, 사용 가능한 최원 등급 설정이 적용되지 않습니다.</p>
+            <p class="cl-notice">· 자동 지급 쿠폰은 발급 방식을 반드시 '다운로드 불가'로 설정해야만 합니다.</p>
+          </div>
+          <div class="cl-action-row">
+            <div class="cl-action-left">
+              <span class="cl-action-label">선택한 쿠폰</span>
+              <button type="button" class="btn-danger">삭제</button>
+            </div>
+            <div class="cl-action-right">
+              <button type="button" class="btn-dark btn-dropdown">쿠폰 등록 ▾</button>
+              <button type="button" class="btn-dark btn-dropdown">100개씩 보기 ▾</button>
+            </div>
+          </div>
+
+          <!-- 테이블 -->
+          <div class="cl-table-wrap">
+            <table class="cl-table" id="clTable">
+              <thead>
+                <tr>
+                  <th class="cl-th"><input type="checkbox" id="checkAll" onchange="toggleAllCheck(this)"></th>
+                  <th class="cl-th">No</th>
+                  <th class="cl-th">사용여부</th>
+                  <th class="cl-th">쿠폰명</th>
+                  <th class="cl-th">해택 종류</th>
+                  <th class="cl-th">유효기간</th>
+                  <th class="cl-th">발급 수량</th>
+                  <th class="cl-th">주문 금액 제한</th>
+                  <th class="cl-th">사용 가능 환경</th>
+                  <th class="cl-th">상품 적용 범위</th>
+                  <th class="cl-th">발급방식</th>
+                  <th class="cl-th cl-th-toggle">ⓘ 생일축하 쿠폰<br>① 오전 9시 지급</th>
+                  <th class="cl-th cl-th-toggle">웰컴 쿠폰<br>① 가입 즉시 지급</th>
+                  <th class="cl-th">쿠폰 등록일</th>
+                  <th class="cl-th">관리</th>
+                </tr>
+              </thead>
+              <tbody id="clTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- 페이지네이션 -->
+          <div class="cl-pagination">
+            <button class="cl-page-btn active">1</button>
+          </div>
+
+        </div>
+      </div>
+      <!-- /screen-coupon-list -->
+
     </main>
 
     <!-- ── 우측: 화면설명 ── -->
@@ -484,6 +572,25 @@
           <div class="desc-block">
             <p class="desc-label">이슈3</p>
             <p class="desc-text">당일 만료되는 문구 적용에 따른 이미 승인 받은 업체에 대한 영향도 체크</p>
+          </div>
+        </div>
+
+        <div class="desc-section" id="desc-coupon-list">
+          <div class="desc-block">
+            <p class="desc-label">화면명</p>
+            <p class="desc-text">쿠폰 목록</p>
+          </div>
+          <div class="desc-block">
+            <p class="desc-label">구분</p>
+            <p class="desc-text">일반 / CRM 두 가지로 구분하여 각각의 쿠폰 목록을 조회합니다.</p>
+          </div>
+          <div class="desc-block">
+            <p class="desc-label">검색 조건</p>
+            <p class="desc-text">구분 · 쿠폰명 · 사용 여부 · 해택 종류로 필터링합니다.</p>
+          </div>
+          <div class="desc-block">
+            <p class="desc-label">목록 항목</p>
+            <p class="desc-text">사용여부 · 쿠폰명 · 해택 종류 · 유효기간 · 발급 수량 · 주문 금액 제한 · 사용 가능 환경 · 상품 적용 범위 · 발급방식 · 생일축하/웰컴 쿠폰 토글 · 등록일 · 관리</p>
           </div>
         </div>
 

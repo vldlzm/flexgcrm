@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   setCampaignNameDefault();
   selectScreen(document.querySelector('.screen-item.active'));
+  renderCouponListTable(couponListData.normal);
 });
 
 /* ===========================
@@ -242,3 +243,109 @@ function cancelCampaign() {
   resetPeriod();
   resetAction();
 }
+
+/* ===========================
+   쿠폰 목록 화면
+=========================== */
+var couponListData = {
+  normal: [
+    { no: 3, status: '사용', name: '오늘',           benefit: '비율 할인', rate: '5 %',     period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '사용 후 다시 다운로드',   birthday: false, welcome: false, regDate: '2025-12-24 20:38:08' },
+    { no: 2, status: '사용', name: '휴',             benefit: '비율 할인', rate: '3 %',     period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '다운로드 불가',           birthday: false, welcome: false, regDate: '2025-12-24 20:37:20' },
+    { no: 1, status: '사용', name: 'oooooooooooo',   benefit: '금액 할인', rate: '100 원',  period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '한번만 다운로드 가능',     birthday: false, welcome: false, regDate: '2025-02-04 14:42:55' }
+  ],
+  crm: [
+    { no: 2, status: '사용', name: 'CRM 할인쿠폰',   benefit: '비율 할인', rate: '10 %',    period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '한번만 다운로드 가능',   birthday: false, welcome: false, regDate: '2026-01-15 10:20:00' },
+    { no: 1, status: '사용', name: 'CRM 맞춤 쿠폰',  benefit: '금액 할인', rate: '5,000 원',period: '무제한', issued: '0 / 제한없음', orderLimit: '10,000원 이상', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '한번만 다운로드 가능', birthday: false, welcome: false, regDate: '2026-01-10 09:00:00' }
+  ]
+};
+
+var currentGuBun = 'normal';
+
+function onGuBunChange(radio) {
+  currentGuBun = radio.value;
+  renderCouponListTable(couponListData[currentGuBun]);
+  updateListCount(couponListData[currentGuBun].length);
+}
+
+function renderCouponListTable(data) {
+  var tbody = document.getElementById('clTableBody');
+  if (!tbody) return;
+  if (data.length === 0) {
+    tbody.innerHTML = '<tr><td class="cl-td" colspan="15" style="padding:30px;color:#94a3b8;">조회된 쿠폰이 없습니다.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.map(function(c) {
+    return '<tr>' +
+      '<td class="cl-td"><input type="checkbox" class="row-check"></td>' +
+      '<td class="cl-td">' + c.no + '</td>' +
+      '<td class="cl-td">' + c.status + '</td>' +
+      '<td class="cl-td cl-td-name">' + c.name + '</td>' +
+      '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
+      '<td class="cl-td">' + c.period + '</td>' +
+      '<td class="cl-td">' + c.issued + '</td>' +
+      '<td class="cl-td">' + c.orderLimit + '</td>' +
+      '<td class="cl-td">' + c.env.replace('\n', '<br>') + '</td>' +
+      '<td class="cl-td">' + c.range + '</td>' +
+      '<td class="cl-td">' + c.method + '</td>' +
+      '<td class="cl-td">' + makeToggle(c.birthday) + '</td>' +
+      '<td class="cl-td">' + makeToggle(c.welcome) + '</td>' +
+      '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
+      '<td class="cl-td"><div class="cl-mgmt-btns">' +
+        '<button class="btn-copy" onclick="copyCouponRow(this)">복사</button>' +
+        '<button class="btn-edit" onclick="editCouponRow(this)">수정</button>' +
+        '<button class="btn-del" onclick="deleteCouponRow(this)">삭제</button>' +
+        '<button class="btn-history">변경 기록 확인</button>' +
+      '</div></td>' +
+      '</tr>';
+  }).join('');
+}
+
+function makeToggle(isOn) {
+  var on = isOn ? ' on' : '';
+  return '<div class="cl-toggle-wrap">' +
+    '<div class="toggle-row">' +
+      '<span class="toggle-label">OFF</span>' +
+      '<div class="toggle-track' + on + '" onclick="this.classList.toggle(\'on\')">' +
+        '<div class="toggle-thumb"></div>' +
+      '</div>' +
+      '<span class="toggle-label">ON</span>' +
+    '</div>' +
+  '</div>';
+}
+
+function updateListCount(count) {
+  var el = document.getElementById('clListCount');
+  if (el) el.textContent = '전체 ' + count + '건 (페이지 1/1)';
+}
+
+function searchCouponList() {
+  var keyword = document.getElementById('clCouponName').value.trim();
+  var useYn = document.querySelector('input[name="clUseYn"]:checked').value;
+  var benefitType = document.querySelector('input[name="clBenefitType"]:checked').value;
+  var data = couponListData[currentGuBun];
+
+  var filtered = data.filter(function(c) {
+    var nameMatch = !keyword || c.name.indexOf(keyword) !== -1;
+    var useMatch = useYn === 'all' || (useYn === 'use' && c.status === '사용') || (useYn === 'unused' && c.status !== '사용');
+    var typeMatch = benefitType === 'all' || (benefitType === 'rate' && c.benefit === '비율 할인') || (benefitType === 'amount' && c.benefit === '금액 할인');
+    return nameMatch && useMatch && typeMatch;
+  });
+  renderCouponListTable(filtered);
+  updateListCount(filtered.length);
+}
+
+function resetCouponList() {
+  document.getElementById('clCouponName').value = '';
+  document.querySelector('input[name="clUseYn"][value="all"]').checked = true;
+  document.querySelector('input[name="clBenefitType"][value="all"]').checked = true;
+  renderCouponListTable(couponListData[currentGuBun]);
+  updateListCount(couponListData[currentGuBun].length);
+}
+
+function toggleAllCheck(master) {
+  document.querySelectorAll('.row-check').forEach(function(c) { c.checked = master.checked; });
+}
+
+function copyCouponRow(btn) { console.log('[쿠폰 복사]'); }
+function editCouponRow(btn) { console.log('[쿠폰 수정]'); }
+function deleteCouponRow(btn) { btn.closest('tr').remove(); }
