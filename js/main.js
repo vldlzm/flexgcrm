@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   setCampaignNameDefault();
   selectScreen(document.querySelector('.screen-item.active'));
-  renderCouponListTable(couponListData.normal);
+  renderCouponListTable(couponListData.crm);
+  updateListCount(couponListData.crm.length);
 });
 
 /* ===========================
@@ -259,7 +260,7 @@ var couponListData = {
   ]
 };
 
-var currentGuBun = 'normal';
+var currentGuBun = 'crm';
 
 function onGuBunChange(radio) {
   currentGuBun = radio.value;
@@ -279,6 +280,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td"><input type="checkbox" class="row-check"></td>' +
       '<td class="cl-td">' + c.no + '</td>' +
       '<td class="cl-td">' + c.status + '</td>' +
+      '<td class="cl-td"><span class="cl-gubun-badge">CRM</span></td>' +
       '<td class="cl-td cl-td-name">' + c.name + '</td>' +
       '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
       '<td class="cl-td">' + c.period + '</td>' +
@@ -291,10 +293,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + makeToggle(c.welcome) + '</td>' +
       '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
       '<td class="cl-td"><div class="cl-mgmt-btns">' +
-        '<button class="btn-copy" onclick="copyCouponRow(this)">복사</button>' +
-        '<button class="btn-edit" onclick="editCouponRow(this)">수정</button>' +
         '<button class="btn-del" onclick="deleteCouponRow(this)">삭제</button>' +
-        '<button class="btn-history">변경 기록 확인</button>' +
       '</div></td>' +
       '</tr>';
   }).join('');

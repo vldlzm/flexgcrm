@@ -460,8 +460,8 @@
           <div class="cl-search-box">
             <div class="cl-search-row">
               <span class="cl-search-label">구분</span>
-              <label class="radio-item"><input type="radio" name="couponGuBun" value="normal" checked onchange="onGuBunChange(this)"> 일반</label>
-              <label class="radio-item"><input type="radio" name="couponGuBun" value="crm" onchange="onGuBunChange(this)"> CRM</label>
+              <label class="radio-item radio-disabled"><input type="radio" name="couponGuBun" value="normal" disabled> 일반</label>
+              <label class="radio-item"><input type="radio" name="couponGuBun" value="crm" checked onchange="onGuBunChange(this)"> CRM</label>
             </div>
             <div class="cl-search-row">
               <span class="cl-search-label">쿠폰명</span>
@@ -499,7 +499,6 @@
               <button type="button" class="btn-danger">삭제</button>
             </div>
             <div class="cl-action-right">
-              <button type="button" class="btn-dark btn-dropdown">쿠폰 등록 ▾</button>
               <button type="button" class="btn-dark btn-dropdown">100개씩 보기 ▾</button>
             </div>
           </div>
@@ -512,6 +511,7 @@
                   <th class="cl-th"><input type="checkbox" id="checkAll" onchange="toggleAllCheck(this)"></th>
                   <th class="cl-th">No</th>
                   <th class="cl-th">사용여부</th>
+                  <th class="cl-th">구분</th>
                   <th class="cl-th">쿠폰명</th>
                   <th class="cl-th">해택 종류</th>
                   <th class="cl-th">유효기간</th>
