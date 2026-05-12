@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   setCampaignNameDefault();
-  selectScreen(document.querySelector('.screen-item.active'));
+  var activeItem = document.querySelector('.screen-item.active');
+  if (activeItem && activeItem.getAttribute('data-screen') !== 'coupon-create') {
+    activeItem.classList.add('active');
+  }
   renderCouponListTable(couponListData.crm);
   updateListCount(couponListData.crm.length);
 });

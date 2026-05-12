@@ -27,7 +27,8 @@
       <div class="panel-left-header">화면 목록</div>
       <ul class="screen-list">
         <li class="screen-category">캠페인 관리</li>
-        <li class="screen-item active" data-screen="campaign-create" onclick="selectScreen(this)">캠페인 생성</li>
+        <li class="screen-item active" data-screen="campaign-list" onclick="selectScreen(this)">캠페인 목록</li>
+        <li class="screen-item" data-screen="campaign-create" onclick="selectScreen(this)">캠페인 생성</li>
         <li class="screen-category">쿠폰 관리</li>
         <li class="screen-item" data-screen="coupon-list" onclick="selectScreen(this)">쿠폰 목록</li>
         <li class="screen-item" data-screen="coupon-create" onclick="selectScreen(this)">쿠폰 생성</li>
@@ -36,6 +37,161 @@
 
     <!-- ── 중앙: 화면 ── -->
     <main class="panel-center" id="panelCenter">
+
+      <!-- [화면] 캠페인 목록 -->
+      <div class="screen-view active" id="screen-campaign-list">
+        <div class="cml-wrap">
+          <div class="cml-header">
+            <div class="cml-title-row">
+              <h3 class="cml-title">원클릭 수동 캠페인</h3>
+              <span class="cml-count">전체 3개</span>
+            </div>
+            <p class="cml-desc">· 수동 캠페인은 직접 선택한 고객에게 특정 시점에 개별적으로 메시지를 노출하거나 발송합니다. 메시지 발송이 필요하지 않은 경우 고객 목록과 할인 코드만 따로 생성할 수 있습니다.</p>
+          </div>
+
+          <div class="cml-cards">
+
+            <!-- 카드 1: 맞춤 시나리오로 보내기 -->
+            <div class="cml-card">
+              <div class="cml-card-top">
+                <span class="cml-purpose"><span class="cml-purpose-label">목적</span> 구매</span>
+                <div class="cml-badges">
+                  <span class="cml-badge cml-badge-new">NEW</span>
+                  <span class="cml-badge cml-badge-end">종료</span>
+                </div>
+              </div>
+              <h4 class="cml-card-title">맞춤 시나리오로 보내기</h4>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                  </span>
+                  <span class="cml-stat-label">ROAS</span>
+                  <span class="cml-stat-val cml-green">0%</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </span>
+                  <span class="cml-stat-label">구매 금액</span>
+                  <span class="cml-stat-val">0원</span>
+                </div>
+              </div>
+              <div class="cml-divider"></div>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="cml-stat-label">온사이트</span>
+                  <span class="cml-stat-val cml-gray">미지원</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  </span>
+                  <span class="cml-stat-label">오프사이트</span>
+                  <span class="cml-stat-val">12c</span>
+                </div>
+              </div>
+              <button class="cml-detail-btn">캠페인 상세</button>
+            </div>
+
+            <!-- 카드 2: 재구매 유도하기 -->
+            <div class="cml-card">
+              <div class="cml-card-top">
+                <span class="cml-purpose"><span class="cml-purpose-label">목적</span> 재구매</span>
+                <div class="cml-badges">
+                  <span class="cml-badge cml-badge-end">종료</span>
+                </div>
+              </div>
+              <h4 class="cml-card-title">재구매 유도하기</h4>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                  </span>
+                  <span class="cml-stat-label">ROAS</span>
+                  <span class="cml-stat-val cml-green">0%</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </span>
+                  <span class="cml-stat-label">구매 금액</span>
+                  <span class="cml-stat-val">0원</span>
+                </div>
+              </div>
+              <div class="cml-divider"></div>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="cml-stat-label">온사이트</span>
+                  <span class="cml-stat-val cml-gray">미지원</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  </span>
+                  <span class="cml-stat-label">오프사이트</span>
+                  <span class="cml-stat-val">1,584c</span>
+                </div>
+              </div>
+              <button class="cml-detail-btn">캠페인 상세</button>
+            </div>
+
+            <!-- 카드 3: 관심 상품군 메시지 보내기 -->
+            <div class="cml-card">
+              <div class="cml-card-top">
+                <span class="cml-purpose"><span class="cml-purpose-label">목적</span> 구매</span>
+                <div class="cml-badges">
+                  <span class="cml-badge cml-badge-rec">추천</span>
+                  <span class="cml-badge cml-badge-end">종료</span>
+                </div>
+              </div>
+              <h4 class="cml-card-title">관심 상품군 메시지 보내기</h4>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                  </span>
+                  <span class="cml-stat-label">ROAS</span>
+                  <span class="cml-stat-val cml-green">0%</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </span>
+                  <span class="cml-stat-label">구매 금액</span>
+                  <span class="cml-stat-val">0원</span>
+                </div>
+              </div>
+              <div class="cml-divider"></div>
+              <div class="cml-stats">
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="cml-stat-label">온사이트</span>
+                  <span class="cml-stat-val cml-gray">미지원</span>
+                </div>
+                <div class="cml-stat">
+                  <span class="cml-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  </span>
+                  <span class="cml-stat-label">오프사이트</span>
+                  <span class="cml-stat-val">358c</span>
+                </div>
+              </div>
+              <button class="cml-detail-btn">캠페인 상세</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /screen-campaign-list -->
 
       <!-- [화면] 캠페인 생성 팝업 -->
       <div class="screen-view" id="screen-campaign-create">
@@ -552,6 +708,17 @@
     <aside class="panel-right" id="panelRight">
       <div class="panel-right-header">화면 설명</div>
       <div class="desc-content" id="descContent">
+
+        <div class="desc-section active" id="desc-campaign-list">
+          <div class="desc-block">
+            <p class="desc-label">화면명</p>
+            <p class="desc-text">캠페인 목록</p>
+          </div>
+          <div class="desc-block">
+            <p class="desc-label">구성</p>
+            <p class="desc-text">원클릭 수동 캠페인 목록을 카드 형태로 표시합니다. 각 카드는 목적, 배지(NEW/추천/종료), ROAS, 구매 금액, 온사이트/오프사이트 비용을 표시합니다.</p>
+          </div>
+        </div>
 
         <div class="desc-section" id="desc-campaign-create">
           <div class="desc-block">
