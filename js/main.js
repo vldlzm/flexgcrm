@@ -115,7 +115,7 @@ function selectCoupon(btn, name) {
 
 function generateDiscountCode() {
   var code = 'CRM' + Math.random().toString(36).toUpperCase().slice(2, 8);
-  alert('할인코드가 생성되었습니다: ' + code);
+  console.log('[할인코드 생성]', code);
 }
 
 /* ===========================
@@ -132,7 +132,7 @@ function queryMembers() {
   if (target && target.value === 'all') {
     document.getElementById('memberCount').textContent = '전체';
   } else {
-    alert('특정 고객 필터를 설정합니다.');
+    console.log('[특정 고객 필터 설정]');
   }
 }
 
@@ -178,8 +178,7 @@ function resetPeriod() {
    클릭 액션
 =========================== */
 function loadAction() {
-  var action = prompt('클릭 액션 경로를 입력하세요:', document.getElementById('clickAction').value);
-  if (action !== null) document.getElementById('clickAction').value = action;
+  console.log('[클릭 액션 불러오기]');
 }
 
 function resetAction() {
@@ -208,22 +207,7 @@ function publishCampaign() {
 
 function saveCampaign() {
   var name = document.getElementById('campaignName').value.trim();
-  if (!name) {
-    alert('캠페인명을 입력해주세요.');
-    document.getElementById('campaignName').focus();
-    return;
-  }
-  var period = document.getElementById('campaignPeriod').value.trim();
-  if (!period) {
-    alert('캠페인 기간을 설정해주세요.');
-    return;
-  }
-  var types = document.querySelectorAll('input[name="campaignType"]:checked');
-  if (types.length === 0) {
-    alert('캠페인 유형을 하나 이상 선택해주세요.');
-    return;
-  }
-  alert('캠페인이 저장되었습니다.\n\n캠페인명: ' + name);
+  console.log('[캠페인 저장]', name);
 }
 
 function editLmsMessage() {
