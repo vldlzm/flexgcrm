@@ -1162,13 +1162,13 @@
                   <label class="radio-item">
                     <input type="radio" name="ccBenefitType" value="rate" checked onchange="onCcBenefitChange(this)"> 비율 할인
                   </label>
-                  <input type="number" class="form-input cc-mini-input" id="ccRateVal" value="0"> %
+                  <input type="number" class="form-input cc-mini-input cc-mini-sm" id="ccRateVal" value="0"> %
                   <span class="cc-field-label">최대 할인금액</span>
-                  <input type="number" class="form-input cc-mini-input" id="ccMaxDiscount" value="0"> 원
-                  <label class="radio-item" style="margin-left:16px;">
+                  <input type="number" class="form-input cc-mini-input cc-mini-sm" id="ccMaxDiscount" value="0"> 원
+                  <label class="radio-item" style="margin-left:10px;">
                     <input type="radio" name="ccBenefitType" value="amount" onchange="onCcBenefitChange(this)"> 금액 할인
                   </label>
-                  <input type="number" class="form-input cc-mini-input" id="ccAmountVal" value="0" disabled> 원
+                  <input type="number" class="form-input cc-mini-input cc-mini-sm" id="ccAmountVal" value="0" disabled> 원
                 </div>
                 <div class="sub-notes" style="margin-top:0;">
                   <p class="sub-note">① 비율 할인은 배송비를 제외한 총 상품 금액 기준입니다.</p>
@@ -1202,19 +1202,6 @@
               </td>
             </tr>
 
-            <!-- 발급 수량 -->
-            <tr>
-              <th class="form-th">발급 수량</th>
-              <td class="form-td">
-                <label class="radio-item">
-                  <input type="radio" name="ccIssueQty" value="unlimited" checked onchange="onCcIssueQtyChange(this)"> 제한없음
-                </label>
-                <label class="radio-item">
-                  <input type="radio" name="ccIssueQty" value="limit" onchange="onCcIssueQtyChange(this)"> 수량제한
-                </label>
-                <input type="number" class="form-input cc-mini-input" id="ccQtyVal" value="0" disabled> 장
-              </td>
-            </tr>
 
 
           </tbody>

@@ -1711,6 +1711,10 @@ body {
   text-align: right;
 }
 
+.cc-mini-sm {
+  width: 62px !important;
+}
+
 .cc-mini-input:disabled {
   background: #f1f5f9;
   color: #94a3b8;
