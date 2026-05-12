@@ -540,166 +540,10 @@
       </div>
       <!-- /screen-coupon-list -->
 
-      <!-- [화면] 쿠폰 생성 -->
+      <!-- [화면] 쿠폰 생성 (팝업으로 전환) -->
       <div class="screen-view" id="screen-coupon-create">
-        <div class="cc-wrap">
-
-          <!-- 섹션 타이틀 -->
-          <div class="cc-title-row">
-            <h3 class="cc-title">쿠폰 설정</h3>
-            <span class="cc-title-sub">✓ 표시 필수항목</span>
-          </div>
-
-          <table class="form-table">
-            <tbody>
-
-              <!-- 사용 여부 -->
-              <tr>
-                <th class="form-th">사용 여부</th>
-                <td class="form-td">
-                  <div class="cc-toggle-row">
-                    <span class="cc-toggle-label">OFF</span>
-                    <div class="cc-toggle-track on" id="useYnToggle" onclick="this.classList.toggle('on')">
-                      <div class="cc-toggle-thumb"></div>
-                    </div>
-                    <span class="cc-toggle-label">ON</span>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 쿠폰명 -->
-              <tr>
-                <th class="form-th"><span class="req">✓</span> 쿠폰명</th>
-                <td class="form-td">
-                  <input type="text" class="form-input" style="width:360px;" placeholder="쿠폰명 입력" id="ccCouponName">
-                </td>
-              </tr>
-
-              <!-- 해택 종류 -->
-              <tr>
-                <th class="form-th">해택 종류</th>
-                <td class="form-td">
-                  <div class="cc-benefit-row">
-                    <label class="radio-item">
-                      <input type="radio" name="ccBenefitType" value="rate" checked onchange="onCcBenefitChange(this)"> 비율 할인
-                    </label>
-                    <input type="number" class="form-input cc-mini-input" id="ccRateVal" value="0"> %
-                    <span class="cc-field-label">최대 할인금액</span>
-                    <input type="number" class="form-input cc-mini-input" id="ccMaxDiscount" value="0"> 원
-                    <label class="radio-item" style="margin-left:16px;">
-                      <input type="radio" name="ccBenefitType" value="amount" onchange="onCcBenefitChange(this)"> 금액 할인
-                    </label>
-                    <input type="number" class="form-input cc-mini-input" id="ccAmountVal" value="0" disabled> 원
-                  </div>
-                  <div class="sub-notes" style="margin-top:0;">
-                    <p class="sub-note">① 비율 할인은 배송비를 제외한 총 상품 금액 기준입니다.</p>
-                    <p class="sub-note">① 최대 할인금액을 0원으로 설정하시면 제한없이 사용 가능합니다.</p>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 유효기간 -->
-              <tr>
-                <th class="form-th">유효기간</th>
-                <td class="form-td">
-                  <div class="cc-period-row">
-                    <label class="radio-item">
-                      <input type="radio" name="ccPeriod" value="unlimited" checked onchange="onCcPeriodChange(this)"> 무제한
-                    </label>
-                    <label class="radio-item">
-                      <input type="radio" name="ccPeriod" value="range" onchange="onCcPeriodChange(this)"> 기간설정
-                    </label>
-                    <input type="date" class="form-input cc-date-input" id="ccStartDate" disabled placeholder="날짜 입력">
-                    <span class="cc-tilde">~</span>
-                    <input type="date" class="form-input cc-date-input" id="ccEndDate" disabled placeholder="날짜 입력">
-                    <label class="radio-item" style="margin-left:16px;">
-                      <input type="radio" name="ccPeriod" value="fromissue" onchange="onCcPeriodChange(this)"> 발급일로부터
-                    </label>
-                    <input type="number" class="form-input cc-mini-input" id="ccFromIssueDays" value="0" disabled> 일
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 주문 금액 제한 -->
-              <tr>
-                <th class="form-th">주문 금액 제한</th>
-                <td class="form-td">
-                  <div class="cc-inline-row">
-                    <span class="cc-field-label">총 주문금액이</span>
-                    <input type="number" class="form-input cc-mid-input" id="ccMinOrder" value="0">
-                    <span class="cc-field-label">원 이상일 때 사용가능</span>
-                    <span class="sub-note" style="margin-left:12px;">① 총 주문 금액에 따라 쿠폰 사용을 제한할 수 있으며 해당 금액은 결제금액 기준입니다.</span>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 발급 수량 -->
-              <tr>
-                <th class="form-th">발급 수량</th>
-                <td class="form-td">
-                  <label class="radio-item">
-                    <input type="radio" name="ccIssueQty" value="unlimited" checked onchange="onCcIssueQtyChange(this)"> 제한없음
-                  </label>
-                  <label class="radio-item">
-                    <input type="radio" name="ccIssueQty" value="limit" onchange="onCcIssueQtyChange(this)"> 수량제한
-                  </label>
-                  <input type="number" class="form-input cc-mini-input" id="ccQtyVal" value="0" disabled> 장
-                </td>
-              </tr>
-
-              <!-- 발급 방식 -->
-              <tr>
-                <th class="form-th">발급 방식</th>
-                <td class="form-td">
-                  <label class="radio-item"><input type="radio" name="ccIssueMethod" value="once" checked> 한번만 다운로드 가능</label>
-                  <label class="radio-item"><input type="radio" name="ccIssueMethod" value="redown"> 사용 후 다시 다운로드 가능</label>
-                  <label class="radio-item"><input type="radio" name="ccIssueMethod" value="nodown"> 다운로드 불가</label>
-                  <span class="sub-note" style="margin-left:8px;">① 다운로드 불가의 경우 관리자 지급 또는 쿠폰번호로만 사용하실 수 있습니다.</span>
-                </td>
-              </tr>
-
-              <!-- 사용 회원등급 -->
-              <tr>
-                <th class="form-th">사용 회원등급</th>
-                <td class="form-td">
-                  <div class="cc-grade-row">
-                    <label class="checkbox-item">
-                      <input type="checkbox" id="ccGradeAll" checked onchange="onCcGradeAll(this)"> 전체
-                    </label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인1%</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인2%</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인10%</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급테스트</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 에이블등급</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 뮤음상품미포함등급</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 장바구니혜택사용안함</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 무인도</label>
-                    <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 2222</label>
-                  </div>
-                </td>
-              </tr>
-
-              <!-- 사용 가능 환경 -->
-              <tr>
-                <th class="form-th">사용 가능 환경</th>
-                <td class="form-td">
-                  <label class="radio-item"><input type="radio" name="ccEnv" value="all" checked> 전체</label>
-                  <label class="radio-item"><input type="radio" name="ccEnv" value="app"> APP</label>
-                  <label class="radio-item"><input type="radio" name="ccEnv" value="web"> Web(PC/Mobile)</label>
-                </td>
-              </tr>
-
-              <!-- 상품 적용 범위 -->
-              <tr>
-                <th class="form-th">상품 적용 범위</th>
-                <td class="form-td">
-                  <label class="radio-item"><input type="radio" name="ccProductRange" value="all" checked> 전체 사용</label>
-                  <label class="radio-item"><input type="radio" name="ccProductRange" value="specific"> 상품별 사용</label>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
+        <div class="cc-placeholder">
+          <p class="cc-placeholder-text">쿠폰 생성 팝업이 열립니다.</p>
         </div>
       </div>
       <!-- /screen-coupon-create -->
@@ -775,6 +619,192 @@
 
   </div>
   <!-- /layout -->
+
+  <!-- =====================
+       쿠폰 생성 팝업
+  ===================== -->
+  <div class="cc-popup-backdrop" id="ccPopupBackdrop">
+    <div class="cc-popup-modal">
+
+      <!-- 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">쿠폰 생성</span>
+        </div>
+        <button class="popup-close" onclick="closeCcPopup()">&times;</button>
+      </div>
+
+      <!-- 본문 -->
+      <div class="cc-popup-body">
+
+        <div class="cc-title-row">
+          <h3 class="cc-title">쿠폰 설정</h3>
+          <span class="cc-title-sub">✓ 표시 필수항목</span>
+        </div>
+
+        <table class="form-table">
+          <tbody>
+
+            <!-- 사용 여부 -->
+            <tr>
+              <th class="form-th">사용 여부</th>
+              <td class="form-td">
+                <div class="cc-toggle-row">
+                  <span class="cc-toggle-label">OFF</span>
+                  <div class="cc-toggle-track on" id="useYnToggle" onclick="this.classList.toggle('on')">
+                    <div class="cc-toggle-thumb"></div>
+                  </div>
+                  <span class="cc-toggle-label">ON</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 쿠폰명 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 쿠폰명</th>
+              <td class="form-td">
+                <input type="text" class="form-input" style="width:360px;" placeholder="쿠폰명 입력" id="ccCouponName">
+              </td>
+            </tr>
+
+            <!-- 해택 종류 -->
+            <tr>
+              <th class="form-th">해택 종류</th>
+              <td class="form-td">
+                <div class="cc-benefit-row">
+                  <label class="radio-item">
+                    <input type="radio" name="ccBenefitType" value="rate" checked onchange="onCcBenefitChange(this)"> 비율 할인
+                  </label>
+                  <input type="number" class="form-input cc-mini-input" id="ccRateVal" value="0"> %
+                  <span class="cc-field-label">최대 할인금액</span>
+                  <input type="number" class="form-input cc-mini-input" id="ccMaxDiscount" value="0"> 원
+                  <label class="radio-item" style="margin-left:16px;">
+                    <input type="radio" name="ccBenefitType" value="amount" onchange="onCcBenefitChange(this)"> 금액 할인
+                  </label>
+                  <input type="number" class="form-input cc-mini-input" id="ccAmountVal" value="0" disabled> 원
+                </div>
+                <div class="sub-notes" style="margin-top:0;">
+                  <p class="sub-note">① 비율 할인은 배송비를 제외한 총 상품 금액 기준입니다.</p>
+                  <p class="sub-note">① 최대 할인금액을 0원으로 설정하시면 제한없이 사용 가능합니다.</p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 유효기간 -->
+            <tr>
+              <th class="form-th">유효기간</th>
+              <td class="form-td">
+                <div class="cc-period-row">
+                  <label class="radio-item">
+                    <input type="radio" name="ccPeriod" value="unlimited" checked onchange="onCcPeriodChange(this)"> 무제한
+                  </label>
+                  <label class="radio-item">
+                    <input type="radio" name="ccPeriod" value="range" onchange="onCcPeriodChange(this)"> 기간설정
+                  </label>
+                  <input type="date" class="form-input cc-date-input" id="ccStartDate" disabled>
+                  <span class="cc-tilde">~</span>
+                  <input type="date" class="form-input cc-date-input" id="ccEndDate" disabled>
+                  <label class="radio-item" style="margin-left:16px;">
+                    <input type="radio" name="ccPeriod" value="fromissue" onchange="onCcPeriodChange(this)"> 발급일로부터
+                  </label>
+                  <input type="number" class="form-input cc-mini-input" id="ccFromIssueDays" value="0" disabled> 일
+                </div>
+              </td>
+            </tr>
+
+            <!-- 주문 금액 제한 -->
+            <tr>
+              <th class="form-th">주문 금액 제한</th>
+              <td class="form-td">
+                <div class="cc-inline-row">
+                  <span class="cc-field-label">총 주문금액이</span>
+                  <input type="number" class="form-input cc-mid-input" id="ccMinOrder" value="0">
+                  <span class="cc-field-label">원 이상일 때 사용가능</span>
+                  <span class="sub-note" style="margin-left:12px;">① 총 주문 금액에 따라 쿠폰 사용을 제한할 수 있으며 해당 금액은 결제금액 기준입니다.</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 발급 수량 -->
+            <tr>
+              <th class="form-th">발급 수량</th>
+              <td class="form-td">
+                <label class="radio-item">
+                  <input type="radio" name="ccIssueQty" value="unlimited" checked onchange="onCcIssueQtyChange(this)"> 제한없음
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="ccIssueQty" value="limit" onchange="onCcIssueQtyChange(this)"> 수량제한
+                </label>
+                <input type="number" class="form-input cc-mini-input" id="ccQtyVal" value="0" disabled> 장
+              </td>
+            </tr>
+
+            <!-- 발급 방식 -->
+            <tr>
+              <th class="form-th">발급 방식</th>
+              <td class="form-td">
+                <label class="radio-item"><input type="radio" name="ccIssueMethod" value="once" checked> 한번만 다운로드 가능</label>
+                <label class="radio-item"><input type="radio" name="ccIssueMethod" value="redown"> 사용 후 다시 다운로드 가능</label>
+                <label class="radio-item"><input type="radio" name="ccIssueMethod" value="nodown"> 다운로드 불가</label>
+                <span class="sub-note" style="margin-left:8px;">① 다운로드 불가의 경우 관리자 지급 또는 쿠폰번호로만 사용하실 수 있습니다.</span>
+              </td>
+            </tr>
+
+            <!-- 사용 회원등급 -->
+            <tr>
+              <th class="form-th">사용 회원등급</th>
+              <td class="form-td">
+                <div class="cc-grade-row">
+                  <label class="checkbox-item"><input type="checkbox" id="ccGradeAll" checked onchange="onCcGradeAll(this)"> 전체</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인1%</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인2%</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급별할인10%</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 등급테스트</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 에이블등급</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 뮤음상품미포함등급</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 장바구니혜택사용안함</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 무인도</label>
+                  <label class="checkbox-item"><input type="checkbox" class="cc-grade-item"> 2222</label>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 사용 가능 환경 -->
+            <tr>
+              <th class="form-th">사용 가능 환경</th>
+              <td class="form-td">
+                <label class="radio-item"><input type="radio" name="ccEnv" value="all" checked> 전체</label>
+                <label class="radio-item"><input type="radio" name="ccEnv" value="app"> APP</label>
+                <label class="radio-item"><input type="radio" name="ccEnv" value="web"> Web(PC/Mobile)</label>
+              </td>
+            </tr>
+
+            <!-- 상품 적용 범위 -->
+            <tr>
+              <th class="form-th">상품 적용 범위</th>
+              <td class="form-td">
+                <label class="radio-item"><input type="radio" name="ccProductRange" value="all" checked> 전체 사용</label>
+                <label class="radio-item"><input type="radio" name="ccProductRange" value="specific"> 상품별 사용</label>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 푸터 -->
+      <div class="cc-popup-footer">
+        <button type="button" class="btn-footer btn-footer-publish" onclick="saveCcPopup()">저장</button>
+        <button type="button" class="btn-footer btn-footer-cancel" onclick="closeCcPopup()">취소</button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- =====================
        쿠폰 찾기 팝업

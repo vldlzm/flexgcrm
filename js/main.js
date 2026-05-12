@@ -9,13 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
    화면 선택 (좌측 인덱스)
 =========================== */
 function selectScreen(el) {
+  var screenId = el.getAttribute('data-screen');
+
+  // 쿠폰 생성은 팝업으로 처리
+  if (screenId === 'coupon-create') {
+    openCcPopup();
+    return;
+  }
+
   // 인덱스 활성화
   document.querySelectorAll('.screen-item').forEach(function (item) {
     item.classList.remove('active');
   });
   el.classList.add('active');
-
-  var screenId = el.getAttribute('data-screen');
 
   // 중앙 화면 전환
   document.querySelectorAll('.screen-view').forEach(function (view) {
@@ -30,6 +36,19 @@ function selectScreen(el) {
   });
   var desc = document.getElementById('desc-' + screenId);
   if (desc) desc.classList.add('active');
+}
+
+function openCcPopup() {
+  document.getElementById('ccPopupBackdrop').classList.add('open');
+}
+
+function closeCcPopup() {
+  document.getElementById('ccPopupBackdrop').classList.remove('open');
+}
+
+function saveCcPopup() {
+  console.log('[쿠폰 생성 저장]', document.getElementById('ccCouponName').value);
+  closeCcPopup();
 }
 
 /* ===========================
