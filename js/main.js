@@ -292,7 +292,6 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + c.env.replace('\n', '<br>') + '</td>' +
       '<td class="cl-td">' + c.range + '</td>' +
       '<td class="cl-td">' + c.method + '</td>' +
-      '<td class="cl-td">' + makeToggle(c.birthday) + '</td>' +
       '<td class="cl-td">' + makeToggle(c.welcome) + '</td>' +
       '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
       '<td class="cl-td"><div class="cl-mgmt-btns">' +
