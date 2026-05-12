@@ -341,6 +341,32 @@ function resetCouponList() {
   updateListCount(couponListData[currentGuBun].length);
 }
 
+/* ===========================
+   쿠폰 생성 화면 인터랙션
+=========================== */
+function onCcBenefitChange(radio) {
+  var isRate = radio.value === 'rate';
+  document.getElementById('ccRateVal').disabled = !isRate;
+  document.getElementById('ccMaxDiscount').disabled = !isRate;
+  document.getElementById('ccAmountVal').disabled = isRate;
+}
+
+function onCcPeriodChange(radio) {
+  document.getElementById('ccStartDate').disabled = radio.value !== 'range';
+  document.getElementById('ccEndDate').disabled = radio.value !== 'range';
+  document.getElementById('ccFromIssueDays').disabled = radio.value !== 'fromissue';
+}
+
+function onCcIssueQtyChange(radio) {
+  document.getElementById('ccQtyVal').disabled = radio.value !== 'limit';
+}
+
+function onCcGradeAll(checkbox) {
+  document.querySelectorAll('.cc-grade-item').forEach(function(c) {
+    c.checked = checkbox.checked;
+  });
+}
+
 function toggleAllCheck(master) {
   document.querySelectorAll('.row-check').forEach(function(c) { c.checked = master.checked; });
 }
