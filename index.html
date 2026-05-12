@@ -30,6 +30,7 @@
         <li class="screen-item active" data-screen="campaign-list" onclick="selectScreen(this)">캠페인 목록</li>
         <li class="screen-item" data-screen="campaign-detail" onclick="selectScreen(this)">캠페인 상세</li>
         <li class="screen-item" data-screen="campaign-create" onclick="selectScreen(this)">캠페인 생성</li>
+        <li class="screen-item" data-screen="stats-popup" onclick="openStatsPopup()">통계팝업</li>
         <li class="screen-category">쿠폰 관리</li>
         <li class="screen-item" data-screen="coupon-list" onclick="selectScreen(this)">쿠폰 목록</li>
         <li class="screen-item" data-screen="coupon-create" onclick="selectScreen(this)">쿠폰 생성</li>
@@ -352,7 +353,7 @@
                   <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20251221_1</a></td>
                   <td class="cd-td">시작 : 2025-12-20 00:00</td>
                   <td class="cd-td">2025-12-11 10:28:39</td>
-                  <td class="cd-td"><button class="cd-action-btn">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
@@ -363,7 +364,7 @@
                   <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20251208_1</a></td>
                   <td class="cd-td">시작 : 2025-12-08 19:30</td>
                   <td class="cd-td">2025-12-08 18:24:32</td>
-                  <td class="cd-td"><button class="cd-action-btn">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
@@ -980,6 +981,139 @@
 
   </div>
   <!-- /layout -->
+
+  <!-- =====================
+       통계 팝업
+  ===================== -->
+  <div class="stats-backdrop" id="statsBackdrop">
+    <div class="stats-modal">
+
+      <!-- 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">캠페인 통계</span>
+        </div>
+      </div>
+
+      <!-- 본문 -->
+      <div class="stats-body">
+
+        <!-- 기간 검색 -->
+        <div class="stats-search-box">
+          <div class="stats-search-row">
+            <span class="stats-label">기간</span>
+            <input type="date" class="form-input stats-date-input" id="statsStartDate" value="2025-12-20">
+            <span class="stats-tilde">~</span>
+            <input type="date" class="form-input stats-date-input" id="statsEndDate" value="2025-12-20">
+            <div class="stats-quick-btns">
+              <button type="button" class="stats-quick-btn" onclick="setStatsPeriod('yesterday')">어제</button>
+              <button type="button" class="stats-quick-btn" onclick="setStatsPeriod('7')">이전 7일</button>
+              <button type="button" class="stats-quick-btn" onclick="setStatsPeriod('15')">이전 15일</button>
+              <button type="button" class="stats-quick-btn" onclick="setStatsPeriod('30')">이전 30일</button>
+              <button type="button" class="stats-quick-btn" onclick="setStatsPeriod('all')">전체</button>
+            </div>
+          </div>
+          <div class="stats-search-btns">
+            <button type="button" class="btn-dark" onclick="resetStatsSearch()">초기화</button>
+            <button type="button" class="btn-dark btn-search-main" onclick="searchStats()">검색</button>
+          </div>
+        </div>
+
+        <!-- 채널 탭 -->
+        <div class="stats-tabs">
+          <button class="stats-tab" onclick="switchStatsTab(this)">APP푸시</button>
+          <button class="stats-tab active" onclick="switchStatsTab(this)">알림톡</button>
+          <button class="stats-tab" onclick="switchStatsTab(this)">브랜드메시지(친구톡)</button>
+          <button class="stats-tab" onclick="switchStatsTab(this)">LMS</button>
+        </div>
+
+        <!-- 캠페인 정보 칩 -->
+        <div class="stats-info-row">
+          <span class="stats-chip stats-chip-black">캠페인명</span>
+          <span class="stats-chip-val">맞춤 시나리오로 보내기_20251211_1</span>
+          <span class="stats-chip stats-chip-dark" style="margin-left:10px;">지출 캐시</span>
+          <span class="stats-chip-val">0c</span>
+        </div>
+
+        <!-- 통계 수치 그리드 -->
+        <div class="stats-metrics-grid">
+          <div class="stats-metric">
+            <span class="stats-metric-label">구매 금액 <span class="stats-q">❓</span></span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">클릭 수 <span class="stats-q">❓</span></span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">구매건수</span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">ROAS <span class="stats-q">❓</span></span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">발송 수</span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">클릭률 <span class="stats-q">❓</span></span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric">
+            <span class="stats-metric-label">구매전환율 <span class="stats-q">❓</span></span>
+            <span class="stats-metric-val">–</span>
+          </div>
+          <div class="stats-metric stats-metric-empty"></div>
+        </div>
+
+        <!-- 일자별 내역 -->
+        <div class="stats-daily-header">
+          <div class="stats-daily-title-row">
+            <h4 class="stats-daily-title">캠페인 일자별 내역</h4>
+            <span class="stats-daily-count">전체 0일 (페이지 1/0)</span>
+          </div>
+          <button type="button" class="stats-download-btn">일자별 내역 ↓</button>
+        </div>
+
+        <div class="stats-daily-table-wrap">
+          <table class="stats-daily-table">
+            <thead>
+              <tr>
+                <th>발송일</th>
+                <th>구매 금액</th>
+                <th>발송 수</th>
+                <th>클릭 수</th>
+                <th>클릭률</th>
+                <th>구매건수</th>
+                <th>구매전환율</th>
+                <th>ROAS</th>
+                <th>지출 캐시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="9" class="stats-empty-row">데이터가 없습니다.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /stats-body -->
+
+      <!-- 푸터 -->
+      <div class="stats-footer">
+        <button type="button" class="btn-footer btn-footer-cancel" onclick="closeStatsPopup()">닫기</button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- =====================
        쿠폰 생성 팝업

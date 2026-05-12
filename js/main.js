@@ -45,6 +45,41 @@ function selectScreen(el) {
   if (desc) desc.classList.add('active');
 }
 
+/* ===========================
+   통계 팝업
+=========================== */
+function openStatsPopup() {
+  document.getElementById('statsBackdrop').classList.add('open');
+}
+
+function closeStatsPopup() {
+  document.getElementById('statsBackdrop').classList.remove('open');
+}
+
+function switchStatsTab(btn) {
+  document.querySelectorAll('.stats-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+function setStatsPeriod(type) {
+  var end = new Date();
+  var start = new Date();
+  if (type === 'yesterday') { start.setDate(start.getDate()-1); end.setDate(end.getDate()-1); }
+  else if (type === 'all') { start = new Date('2020-01-01'); }
+  else { start.setDate(start.getDate() - parseInt(type)); }
+  document.getElementById('statsStartDate').value = start.toISOString().slice(0,10);
+  document.getElementById('statsEndDate').value = end.toISOString().slice(0,10);
+}
+
+function resetStatsSearch() {
+  document.getElementById('statsStartDate').value = '2025-12-20';
+  document.getElementById('statsEndDate').value = '2025-12-20';
+}
+
+function searchStats() {
+  console.log('[통계 검색]', document.getElementById('statsStartDate').value, '~', document.getElementById('statsEndDate').value);
+}
+
 function openCcPopup() {
   document.getElementById('ccPopupBackdrop').classList.add('open');
 }
