@@ -1182,19 +1182,9 @@
               <th class="form-th">유효기간</th>
               <td class="form-td">
                 <div class="cc-period-row">
-                  <label class="radio-item">
-                    <input type="radio" name="ccPeriod" value="unlimited" checked onchange="onCcPeriodChange(this)"> 무제한
-                  </label>
-                  <label class="radio-item">
-                    <input type="radio" name="ccPeriod" value="range" onchange="onCcPeriodChange(this)"> 기간설정
-                  </label>
-                  <input type="date" class="form-input cc-date-input" id="ccStartDate" disabled>
+                  <input type="date" class="form-input cc-date-input" id="ccStartDate">
                   <span class="cc-tilde">~</span>
-                  <input type="date" class="form-input cc-date-input" id="ccEndDate" disabled>
-                  <label class="radio-item" style="margin-left:16px;">
-                    <input type="radio" name="ccPeriod" value="fromissue" onchange="onCcPeriodChange(this)"> 발급일로부터
-                  </label>
-                  <input type="number" class="form-input cc-mini-input" id="ccFromIssueDays" value="0" disabled> 일
+                  <input type="date" class="form-input cc-date-input" id="ccEndDate">
                 </div>
               </td>
             </tr>
