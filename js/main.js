@@ -300,8 +300,8 @@ var couponListData = {
     { no: 1, status: '사용', name: 'oooooooooooo',   benefit: '금액 할인', rate: '100 원',  period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '한번만 다운로드 가능',     birthday: false, welcome: false, regDate: '2025-02-04 14:42:55' }
   ],
   crm: [
-    { no: 2, status: '사용', name: 'CRM 할인쿠폰',   benefit: '비율 할인', rate: '10 %',    period: '무제한', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '다운로드 불가',   birthday: false, welcome: false, regDate: '2026-01-15 10:20:00' },
-    { no: 1, status: '사용', name: 'CRM 맞춤 쿠폰',  benefit: '금액 할인', rate: '5,000 원',period: '무제한', issued: '0 / 제한없음', orderLimit: '10,000원 이상', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '다운로드 불가', birthday: false, welcome: false, regDate: '2026-01-10 09:00:00' }
+    { no: 2, status: '사용', name: 'CRM 할인쿠폰',   benefit: '비율 할인', rate: '10 %',    period: '2026-05-12 ~ 2026-05-12', issued: '0 / 제한없음', orderLimit: '제한없음', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '다운로드 불가',   birthday: false, welcome: false, regDate: '2026-01-15 10:20:00' },
+    { no: 1, status: '사용', name: 'CRM 맞춤 쿠폰',  benefit: '금액 할인', rate: '5,000 원',period: '2026-05-12 ~ 2026-05-12', issued: '0 / 제한없음', orderLimit: '10,000원 이상', env: 'APP\nWeb(PC/Mobile)', range: '전체 적용', method: '다운로드 불가', birthday: false, welcome: false, regDate: '2026-01-10 09:00:00' }
   ]
 };
 
@@ -329,11 +329,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td cl-td-name">' + c.name + '</td>' +
       '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
       '<td class="cl-td">' + c.period + '</td>' +
-      '<td class="cl-td">' + c.issued + '</td>' +
       '<td class="cl-td">' + c.orderLimit + '</td>' +
-      '<td class="cl-td">' + c.env.replace('\n', '<br>') + '</td>' +
-      '<td class="cl-td">' + c.range + '</td>' +
-      '<td class="cl-td">' + c.method + '</td>' +
       '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
       '<td class="cl-td"><div class="cl-mgmt-btns">' +
         '<button class="btn-del" onclick="deleteCouponRow(this)">삭제</button>' +
