@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function selectScreen(el) {
   var screenId = el.getAttribute('data-screen');
 
+  // 쿠폰 생성 팝업이 열려 있으면 닫기
+  var ccBackdrop = document.getElementById('ccPopupBackdrop');
+  if (ccBackdrop) ccBackdrop.classList.remove('open');
+
   // 쿠폰 생성은 팝업으로 처리
   if (screenId === 'coupon-create') {
     openCcPopup();
