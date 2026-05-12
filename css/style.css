@@ -1968,3 +1968,296 @@ body {
 }
 
 .cml-detail-btn:hover { background: #2d3748; }
+
+/* ===========================
+   캠페인 상세 화면
+=========================== */
+.cd-wrap {
+  padding: 20px 28px 40px;
+  background: #fff;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cd-back-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cd-back-btn:hover { color: #1a202c; }
+
+.cd-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.cd-desc-list { margin-bottom: 16px; }
+
+.cd-desc {
+  font-size: 12px;
+  color: #718096;
+  line-height: 1.8;
+}
+
+.cd-desc-em {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.cd-subdesc {
+  font-size: 12px;
+  color: #718096;
+  margin-bottom: 14px;
+}
+
+/* 정보 칩 행 */
+.cd-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  background: #f8f9fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.cd-info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cd-chip-label {
+  font-size: 12px;
+  color: #718096;
+  white-space: nowrap;
+}
+
+.cd-chip-val {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border-radius: 13px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.cd-chip-dark {
+  background: #4a5568;
+  color: #fff;
+}
+
+.cd-chip-green {
+  background: #16a34a;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 통계 영역 */
+.cd-stats-wrap {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* 좌측 녹색 요약 */
+.cd-stats-summary {
+  flex: 0 0 140px;
+  background: #16a34a;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.cd-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cd-summary-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cd-summary-icon svg {
+  width: 18px;
+  height: 18px;
+  color: rgba(255,255,255,0.8);
+}
+
+.cd-summary-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+}
+
+.cd-summary-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* 통계 테이블 */
+.cd-stats-table-wrap {
+  flex: 1;
+  overflow-x: auto;
+}
+
+.cd-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cd-stats-table th {
+  background: #f5f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 9px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.cd-stats-table td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 10px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+}
+
+/* 캠페인 목록 헤더 */
+.cd-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cd-list-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.cd-list-count {
+  font-size: 13px;
+  color: #718096;
+}
+
+.cd-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cd-page-select {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid #cbd5e0;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #4a5568;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* 캠페인 목록 테이블 */
+.cd-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.cd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+
+.cd-th {
+  background: #f5f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.cd-td {
+  border: 1px solid #e2e8f0;
+  padding: 11px 10px;
+  text-align: center;
+  color: #333;
+  vertical-align: middle;
+}
+
+.cd-campaign-link {
+  color: #2563eb;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.cd-extract {
+  color: #16a34a;
+  font-size: 12px;
+}
+
+.cd-action-btn {
+  height: 28px;
+  padding: 0 10px;
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 진행/종료 상태 pill */
+.cd-status-pill {
+  display: inline-flex;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 11px;
+}
+
+.cd-status-l {
+  padding: 3px 8px;
+  background: #fff;
+  color: #718096;
+}
+
+.cd-status-r {
+  padding: 3px 8px;
+  background: #4a5568;
+  color: #fff;
+  font-weight: 600;
+}

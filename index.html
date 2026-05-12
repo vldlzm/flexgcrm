@@ -28,6 +28,7 @@
       <ul class="screen-list">
         <li class="screen-category">캠페인 관리</li>
         <li class="screen-item active" data-screen="campaign-list" onclick="selectScreen(this)">캠페인 목록</li>
+        <li class="screen-item" data-screen="campaign-detail" onclick="selectScreen(this)">캠페인 상세</li>
         <li class="screen-item" data-screen="campaign-create" onclick="selectScreen(this)">캠페인 생성</li>
         <li class="screen-category">쿠폰 관리</li>
         <li class="screen-item" data-screen="coupon-list" onclick="selectScreen(this)">쿠폰 목록</li>
@@ -94,7 +95,7 @@
                   <span class="cml-stat-val">12c</span>
                 </div>
               </div>
-              <button class="cml-detail-btn">캠페인 상세</button>
+              <button class="cml-detail-btn" onclick="selectScreen(document.querySelector('[data-screen=campaign-detail]'))">캠페인 상세</button>
             </div>
 
             <!-- 카드 2: 재구매 유도하기 -->
@@ -139,7 +140,7 @@
                   <span class="cml-stat-val">1,584c</span>
                 </div>
               </div>
-              <button class="cml-detail-btn">캠페인 상세</button>
+              <button class="cml-detail-btn" onclick="selectScreen(document.querySelector('[data-screen=campaign-detail]'))">캠페인 상세</button>
             </div>
 
             <!-- 카드 3: 관심 상품군 메시지 보내기 -->
@@ -185,13 +186,196 @@
                   <span class="cml-stat-val">358c</span>
                 </div>
               </div>
-              <button class="cml-detail-btn">캠페인 상세</button>
+              <button class="cml-detail-btn" onclick="selectScreen(document.querySelector('[data-screen=campaign-detail]'))">캠페인 상세</button>
             </div>
 
           </div>
         </div>
       </div>
       <!-- /screen-campaign-list -->
+
+      <!-- [화면] 캠페인 상세 -->
+      <div class="screen-view" id="screen-campaign-detail">
+        <div class="cd-wrap">
+
+          <!-- 뒤로가기 -->
+          <button class="cd-back-btn" onclick="selectScreen(document.querySelector('[data-screen=campaign-list]'))">← 목록</button>
+
+          <!-- 섹션: 캠페인 -->
+          <h3 class="cd-section-title">캠페인</h3>
+          <div class="cd-desc-list">
+            <p class="cd-desc">· <span class="cd-desc-em">원클릭 수동 캠페인이란?</span> 직접 선택한 고객에게 특정 시점에 개별적으로 메시지를 노출하거나 발송합니다.</p>
+            <p class="cd-desc">· <span class="cd-desc-em">맞춤 시나리오란?</span> 구매 가능성이 높은 고객을 직접 선택해 맞춤형으로 할인코드와 상품 추천을 전달할 수 있는 캠페인입니다.</p>
+          </div>
+
+          <!-- 캠페인 정보 칩 -->
+          <div class="cd-info-row">
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">진행여부</span>
+              <span class="cd-chip-val">-</span>
+            </div>
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">캠페인 구분</span>
+              <span class="cd-chip-val cd-chip-dark">원클릭 수동 캠페인</span>
+            </div>
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">캠페인명</span>
+              <span class="cd-chip-val cd-chip-dark">맞춤 시나리오로 보내기</span>
+            </div>
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">캠페인 목적</span>
+              <span class="cd-chip-val">구매</span>
+            </div>
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">캠페인 유형</span>
+              <span class="cd-chip-val">APP푸시, 알림톡, 브랜드메시지, LMS</span>
+            </div>
+            <div class="cd-info-chip">
+              <span class="cd-chip-label">대상자</span>
+              <span class="cd-chip-val cd-chip-green">직접 설정</span>
+            </div>
+          </div>
+
+          <!-- 섹션: 캠페인 전체 통계 -->
+          <h3 class="cd-section-title">캠페인 전체 통계</h3>
+          <p class="cd-subdesc">· 진행된 모든 캠페인의 성과를 종합적으로 측정하고 분석합니다.</p>
+
+          <div class="cd-stats-wrap">
+            <!-- 좌측 녹색 블록 -->
+            <div class="cd-stats-summary">
+              <div class="cd-summary-item">
+                <div class="cd-summary-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <span class="cd-summary-label">ROAS</span>
+                <span class="cd-summary-val">0%</span>
+              </div>
+              <div class="cd-summary-item">
+                <div class="cd-summary-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </div>
+                <span class="cd-summary-label">구매 금액</span>
+                <span class="cd-summary-val">0원</span>
+              </div>
+            </div>
+
+            <!-- 우측 통계 테이블 -->
+            <div class="cd-stats-table-wrap">
+              <table class="cd-stats-table">
+                <thead>
+                  <tr>
+                    <th>캠페인 유형</th>
+                    <th>구매 금액 ⓘ</th>
+                    <th>발송 수</th>
+                    <th>클릭 수 ⓘ</th>
+                    <th>클릭율 ⓘ</th>
+                    <th>구매건수</th>
+                    <th>구매전환율 ⓘ</th>
+                    <th>ROAS ⓘ</th>
+                    <th>지출 캐시</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>APP푸시</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>0</td><td>0%</td><td>0%</td><td>무료</td>
+                  </tr>
+                  <tr>
+                    <td>알림톡</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>0</td><td>0%</td><td>0%</td><td>0c</td>
+                  </tr>
+                  <tr>
+                    <td>브랜드메시지</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>0</td><td>0%</td><td>0%</td><td>0c</td>
+                  </tr>
+                  <tr>
+                    <td>LMS</td><td>0</td><td>0</td><td>1</td><td>0%</td><td>0</td><td>0%</td><td>0%</td><td>12c</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 섹션: 캠페인 목록 -->
+          <div class="cd-list-header">
+            <div class="cd-list-title-row">
+              <h3 class="cd-section-title" style="margin-bottom:0;">캠페인 목록</h3>
+              <span class="cd-list-count">전체 16건 (페이지 1/2)</span>
+            </div>
+            <div class="cd-list-actions">
+              <button class="btn-dark btn-dropdown">캠페인 생성 ▾</button>
+              <select class="cd-page-select">
+                <option>10개씩 보기</option>
+                <option>20개씩 보기</option>
+                <option>50개씩 보기</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cd-table-wrap">
+            <table class="cd-table">
+              <thead>
+                <tr>
+                  <th class="cd-th">No</th>
+                  <th class="cd-th">캠페인명</th>
+                  <th class="cd-th">캠페인 기간</th>
+                  <th class="cd-th">생성일</th>
+                  <th class="cd-th">통계</th>
+                  <th class="cd-th">테스트 발행</th>
+                  <th class="cd-th">발송 내역</th>
+                  <th class="cd-th">다운로드</th>
+                  <th class="cd-th">진행 여부</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cd-td">16</td>
+                  <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20260511_1</a></td>
+                  <td class="cd-td">시작 : 2026-05-11 23:00</td>
+                  <td class="cd-td">2026-05-11 22:01:12</td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td cd-extract">대상자 추출 중</td>
+                  <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
+                </tr>
+                <tr>
+                  <td class="cd-td">15</td>
+                  <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20260310_1</a></td>
+                  <td class="cd-td">시작 : 2026-03-10 16:00</td>
+                  <td class="cd-td">2026-03-10 14:50:32</td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
+                </tr>
+                <tr>
+                  <td class="cd-td">14</td>
+                  <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20251221_1</a></td>
+                  <td class="cd-td">시작 : 2025-12-20 00:00</td>
+                  <td class="cd-td">2025-12-11 10:28:39</td>
+                  <td class="cd-td"><button class="cd-action-btn">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
+                </tr>
+                <tr>
+                  <td class="cd-td">13</td>
+                  <td class="cd-td"><a class="cd-campaign-link">맞춤 시나리오로 보내기_20251208_1</a></td>
+                  <td class="cd-td">시작 : 2025-12-08 19:30</td>
+                  <td class="cd-td">2025-12-08 18:24:32</td>
+                  <td class="cd-td"><button class="cd-action-btn">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"></td>
+                  <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <!-- /screen-campaign-detail -->
 
       <!-- [화면] 캠페인 생성 팝업 -->
       <div class="screen-view" id="screen-campaign-create">
@@ -710,6 +894,7 @@
       <div class="desc-content" id="descContent">
 
         <div class="desc-section active" id="desc-campaign-list">
+
           <div class="desc-block">
             <p class="desc-label">화면명</p>
             <p class="desc-text">캠페인 목록</p>
@@ -717,6 +902,17 @@
           <div class="desc-block">
             <p class="desc-label">구성</p>
             <p class="desc-text">원클릭 수동 캠페인 목록을 카드 형태로 표시합니다. 각 카드는 목적, 배지(NEW/추천/종료), ROAS, 구매 금액, 온사이트/오프사이트 비용을 표시합니다.</p>
+          </div>
+        </div>
+
+        <div class="desc-section" id="desc-campaign-detail">
+          <div class="desc-block">
+            <p class="desc-label">화면명</p>
+            <p class="desc-text">캠페인 상세</p>
+          </div>
+          <div class="desc-block">
+            <p class="desc-label">구성</p>
+            <p class="desc-text">캠페인 정보 칩 · 전체 통계(유형별) · 캠페인 목록 테이블로 구성됩니다.</p>
           </div>
         </div>
 
