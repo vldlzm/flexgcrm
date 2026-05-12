@@ -1411,6 +1411,14 @@ body {
   font-weight: 600;
 }
 
+/* 쿠폰명 링크 */
+.cl-coupon-link {
+  color: #2563eb;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+}
+
 /* 구분 뱃지 */
 .cl-gubun-badge {
   display: inline-block;
@@ -1461,6 +1469,19 @@ body {
   flex: 1;
   overflow-y: auto;
   padding: 24px 28px;
+}
+
+.coupon-view-notice {
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #92400e;
+  flex-shrink: 0;
+}
+
+.coupon-view-notice-icon {
+  margin-right: 4px;
 }
 
 .cc-popup-footer {

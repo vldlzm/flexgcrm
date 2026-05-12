@@ -326,7 +326,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + c.no + '</td>' +
       '<td class="cl-td">' + c.status + '</td>' +
       '<td class="cl-td"><span class="cl-gubun-badge">CRM</span></td>' +
-      '<td class="cl-td cl-td-name">' + c.name + '</td>' +
+      '<td class="cl-td cl-td-name"><a class="cl-coupon-link" onclick=\'openCouponViewPopup(' + JSON.stringify(c) + ')\'>' + c.name + '</a></td>' +
       '<td class="cl-td">캠페인명</td>' +
       '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
       '<td class="cl-td">' + c.period + '</td>' +
@@ -405,6 +405,46 @@ function onCcGradeAll(checkbox) {
   document.querySelectorAll('.cc-grade-item').forEach(function(c) {
     c.checked = checkbox.checked;
   });
+}
+
+/* ===========================
+   쿠폰 수정(조회) 팝업
+=========================== */
+function openCouponViewPopup(c) {
+  // 사용 여부 토글
+  var toggle = document.getElementById('viewUseYnToggle');
+  if (c.status === '사용') toggle.classList.add('on');
+  else toggle.classList.remove('on');
+
+  // 쿠폰명
+  document.getElementById('viewCouponName').value = c.name;
+
+  // 해택 종류
+  if (c.benefit === '비율 할인') {
+    document.getElementById('viewBenefitRate').checked = true;
+    document.getElementById('viewRateVal').value = c.rate.replace(' %', '');
+    document.getElementById('viewMaxDiscount').value = '0';
+    document.getElementById('viewAmountVal').value = '';
+  } else {
+    document.getElementById('viewBenefitAmount').checked = true;
+    document.getElementById('viewAmountVal').value = c.rate.replace(' 원', '').replace(',', '');
+    document.getElementById('viewRateVal').value = '';
+    document.getElementById('viewMaxDiscount').value = '';
+  }
+
+  // 유효기간
+  var parts = c.period.split(' ~ ');
+  document.getElementById('viewStartDate').value = parts[0] || '';
+  document.getElementById('viewEndDate').value = parts[1] || '';
+
+  // 주문 금액 제한
+  document.getElementById('viewMinOrder').value = c.orderLimit === '제한없음' ? '0' : c.orderLimit.replace(/[^0-9]/g, '');
+
+  document.getElementById('couponViewBackdrop').classList.add('open');
+}
+
+function closeCouponViewPopup() {
+  document.getElementById('couponViewBackdrop').classList.remove('open');
 }
 
 function toggleAllCheck(master) {

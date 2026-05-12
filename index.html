@@ -1214,6 +1214,121 @@
   </div>
 
   <!-- =====================
+       쿠폰 수정(조회) 팝업
+  ===================== -->
+  <div class="cc-popup-backdrop" id="couponViewBackdrop">
+    <div class="cc-popup-modal">
+
+      <!-- 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">쿠폰 수정</span>
+        </div>
+        <button class="popup-close" onclick="closeCouponViewPopup()">&times;</button>
+      </div>
+
+      <!-- 수정 불가 안내 -->
+      <div class="coupon-view-notice">
+        <span class="coupon-view-notice-icon">ⓘ</span> 조회만 가능하며 수정할 수 없습니다.
+      </div>
+
+      <!-- 본문 -->
+      <div class="cc-popup-body">
+        <div class="cc-title-row">
+          <h3 class="cc-title">쿠폰 설정</h3>
+          <span class="cc-title-sub">✓ 표시 필수항목</span>
+        </div>
+
+        <table class="form-table">
+          <tbody>
+
+            <!-- 사용 여부 -->
+            <tr>
+              <th class="form-th">사용 여부</th>
+              <td class="form-td">
+                <div class="cc-toggle-row">
+                  <span class="cc-toggle-label">OFF</span>
+                  <div class="cc-toggle-track on" id="viewUseYnToggle">
+                    <div class="cc-toggle-thumb"></div>
+                  </div>
+                  <span class="cc-toggle-label">ON</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 쿠폰명 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 쿠폰명</th>
+              <td class="form-td">
+                <input type="text" class="form-input" style="width:360px;" id="viewCouponName" disabled>
+              </td>
+            </tr>
+
+            <!-- 해택 종류 -->
+            <tr>
+              <th class="form-th">해택 종류</th>
+              <td class="form-td">
+                <div class="cc-benefit-row">
+                  <label class="radio-item">
+                    <input type="radio" name="viewBenefitType" value="rate" id="viewBenefitRate" disabled> 비율 할인
+                  </label>
+                  <input type="text" class="form-input cc-mini-input cc-mini-sm" id="viewRateVal" disabled> %
+                  <span class="cc-field-label">최대 할인금액</span>
+                  <input type="text" class="form-input cc-mini-input cc-mini-sm" id="viewMaxDiscount" disabled> 원
+                  <label class="radio-item" style="margin-left:10px;">
+                    <input type="radio" name="viewBenefitType" value="amount" id="viewBenefitAmount" disabled> 금액 할인
+                  </label>
+                  <input type="text" class="form-input cc-mini-input cc-mini-sm" id="viewAmountVal" disabled> 원
+                </div>
+                <div class="sub-notes" style="margin-top:0;">
+                  <p class="sub-note">① 비율 할인은 배송비를 제외한 총 상품 금액 기준입니다.</p>
+                  <p class="sub-note">① 최대 할인금액을 0원으로 설정하시면 제한없이 사용 가능합니다.</p>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 유효기간 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 유효기간</th>
+              <td class="form-td">
+                <div class="cc-period-row">
+                  <input type="date" class="form-input cc-date-input" id="viewStartDate" disabled>
+                  <span class="cc-tilde">~</span>
+                  <input type="date" class="form-input cc-date-input" id="viewEndDate" disabled>
+                </div>
+              </td>
+            </tr>
+
+            <!-- 주문 금액 제한 -->
+            <tr>
+              <th class="form-th">주문 금액 제한</th>
+              <td class="form-td">
+                <div class="cc-inline-row">
+                  <span class="cc-field-label">총 주문금액이</span>
+                  <input type="text" class="form-input cc-mid-input" id="viewMinOrder" disabled>
+                  <span class="cc-field-label">원 이상일 때 사용가능</span>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 푸터 -->
+      <div class="cc-popup-footer">
+        <button type="button" class="btn-footer btn-footer-cancel" onclick="closeCouponViewPopup()">닫기</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================
        쿠폰 찾기 팝업
   ===================== -->
   <div class="coupon-backdrop" id="couponBackdrop">
