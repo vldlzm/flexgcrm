@@ -327,6 +327,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + c.status + '</td>' +
       '<td class="cl-td"><span class="cl-gubun-badge">CRM</span></td>' +
       '<td class="cl-td cl-td-name">' + c.name + '</td>' +
+      '<td class="cl-td">캠페인명</td>' +
       '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
       '<td class="cl-td">' + c.period + '</td>' +
       '<td class="cl-td">' + c.orderLimit + '</td>' +
