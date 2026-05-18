@@ -444,15 +444,6 @@
           <table class="form-table">
             <tbody>
 
-              <!-- 분류 -->
-              <tr>
-                <th class="form-th"><span class="req">✓</span> 분류</th>
-                <td class="form-td">
-                  <label class="radio-item"><input type="radio" name="classification" value="message" checked> 메시지 발송</label>
-                  <label class="radio-item"><input type="radio" name="classification" value="extract"> 대상자 추출 + 할인코드만 발행</label>
-                </td>
-              </tr>
-
               <!-- 캠페인명 -->
               <tr>
                 <th class="form-th"><span class="req">✓</span> 캠페인명</th>
@@ -465,26 +456,11 @@
               <tr>
                 <th class="form-th"><span class="req">✓</span> 캠페인 내용</th>
                 <td class="form-td">
-                  <div class="radio-row">
-                    <label class="radio-item"><input type="radio" name="contentType" value="coupon" checked onchange="onContentTypeChange(this)"> 쿠폰</label>
-                    <label class="radio-item"><input type="radio" name="contentType" value="discount" onchange="onContentTypeChange(this)"> 할인코드</label>
-                    <label class="radio-item"><input type="radio" name="contentType" value="product" onchange="onContentTypeChange(this)"> 상품 추천</label>
-                  </div>
                   <div id="couponArea">
-                    <button type="button" class="btn-dark" onclick="findCoupon()">쿠폰 생성</button>
+                    <button type="button" class="btn-dark" onclick="openCcPopup()">쿠폰 생성</button>
                     <div class="sub-notes">
                       <p class="sub-note">① 설정된 쿠폰을 사용하지 않는 계정만 캠페인이 노출되거나 발송됩니다.</p>
                     </div>
-                  </div>
-                  <div id="discountArea" style="display:none;">
-                    <button type="button" class="btn-dark" onclick="generateDiscountCode()">할인코드 생성 +</button>
-                    <div class="sub-notes">
-                      <p class="sub-note">① CRM 할인코드는 발송일 포함 3일 동안만 유효합니다.</p>
-                      <p class="sub-note">① 설정된 할인코드를 사용하지 않는 계정만 캠페인이 노출되거나 발송됩니다.</p>
-                    </div>
-                  </div>
-                  <div id="productArea" style="display:none;">
-                    <p class="sub-note">상품 추천 콘텐츠를 설정합니다.</p>
                   </div>
                 </td>
               </tr>
@@ -506,23 +482,11 @@
                 <td class="form-td">
                   <p class="type-label">오프사이트 캠페인</p>
                   <div class="type-badge-list">
-                    <label class="type-badge active" id="badge-app">
-                      <input type="checkbox" value="app" checked onchange="onBadgeChange(this, 'badge-app')">
-                      <span class="badge-check-icon">✓</span>
-                      <span>APP푸시</span>
-                      <span class="badge-cnt" id="cnt-app">0명</span>
-                    </label>
                     <label class="type-badge active" id="badge-alrimtok">
                       <input type="checkbox" value="alrimtok" checked onchange="onBadgeChange(this, 'badge-alrimtok')">
                       <span class="badge-check-icon">✓</span>
                       <span>알림톡</span>
                       <span class="badge-cnt" id="cnt-alrimtok">0명</span>
-                    </label>
-                    <label class="type-badge active" id="badge-lms">
-                      <input type="checkbox" value="lms" checked onchange="onBadgeChange(this, 'badge-lms')">
-                      <span class="badge-check-icon">✓</span>
-                      <span>LMS</span>
-                      <span class="badge-cnt" id="cnt-lms">0명</span>
                     </label>
                   </div>
                   <p class="sub-note note-orange">① 고객 반응들과 도달 데이터를 분석하여 최적의 캠페인 유형으로 자동 적용됩니다.</p>
