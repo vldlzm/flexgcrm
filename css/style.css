@@ -3480,3 +3480,44 @@ body {
 }
 
 #screen-home.active .home-help-btn { display: flex; align-items: center; justify-content: center; }
+
+/* CRM 현황 — 두 박스 구분 */
+.home-crm-status-inner {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.home-crm-box {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+.home-crm-charge-link {
+  font-size: 12px;
+  color: #38a169;
+  cursor: pointer;
+  font-weight: 600;
+}
+.home-crm-charge-link:hover { text-decoration: underline; }
+
+/* 충전하기 버튼 숨김 (링크로 대체) */
+.home-crm-charge-btn { display: none; }
+
+/* 잔여캐시 C 아이콘 */
+.home-crm-cash-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #4a6cf7;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
