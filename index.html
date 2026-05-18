@@ -26,6 +26,7 @@
     <nav class="panel-left" id="panelLeft">
       <div class="panel-left-header">화면 목록</div>
       <ul class="screen-list">
+        <li class="screen-item" data-screen="home" onclick="selectScreen(this)">홈</li>
         <li class="screen-category">캠페인 관리</li>
         <li class="screen-item active" data-screen="campaign-list" onclick="selectScreen(this)">캠페인 목록</li>
         <li class="screen-item" data-screen="campaign-detail" onclick="selectScreen(this)">캠페인 상세</li>
@@ -904,6 +905,274 @@
       </div>
       <!-- /screen-service-alarm -->
 
+      <!-- [화면] 홈 -->
+      <div class="screen-view" id="screen-home">
+        <div class="home-wrap">
+
+          <!-- 오늘의 할 일 -->
+          <section class="home-section">
+            <div class="home-sec-hd">
+              <div class="home-sec-hd-left">
+                <h2 class="home-sec-title">오늘의 할 일</h2>
+                <span class="home-sec-note">① 최근 30일 기준으로 집계된 주문 상태별 건 수입니다.</span>
+              </div>
+              <a class="home-more-btn">더보기</a>
+            </div>
+            <div class="home-todo-grid">
+              <div class="home-todo-card"><p class="htc-label">미입금확인</p><p class="htc-val">9</p></div>
+              <div class="home-todo-card"><p class="htc-label">신규주문</p><p class="htc-val">6</p></div>
+              <div class="home-todo-card"><p class="htc-label">배송준비</p><p class="htc-val">2</p></div>
+              <div class="home-todo-card"><p class="htc-label">배송중</p><p class="htc-val">0</p></div>
+              <div class="home-todo-card"><p class="htc-label">배송완료</p><p class="htc-val">6</p></div>
+              <div class="home-todo-card"><p class="htc-label">취소요청</p><p class="htc-val home-red">0</p></div>
+              <div class="home-todo-card"><p class="htc-label">반품요청</p><p class="htc-val home-red">0</p></div>
+              <div class="home-todo-card"><p class="htc-label">교환요청</p><p class="htc-val home-red">0</p></div>
+              <div class="home-todo-card"><p class="htc-label">미날변 상품문의</p><p class="htc-val">1</p></div>
+            </div>
+          </section>
+
+          <!-- CRM 현황 + 어제의 CRM 지표 -->
+          <div class="home-crm-row">
+            <!-- 좌: CRM 현황 -->
+            <div class="home-crm-status">
+              <h3 class="home-sec-title">CRM 현황</h3>
+              <div class="home-crm-status-inner">
+                <div class="home-crm-campaign">
+                  <p class="home-crm-sub-label">캠페인 진행 현황</p>
+                  <div class="home-crm-badge-row">
+                    <div class="home-crm-badge-item">
+                      <span class="home-badge home-badge-green">진행중</span>
+                      <span class="home-crm-badge-num">0</span>
+                    </div>
+                    <div class="home-crm-badge-item">
+                      <span class="home-badge home-badge-gray">종료</span>
+                      <span class="home-crm-badge-num">15</span>
+                    </div>
+                    <div class="home-crm-badge-item">
+                      <span class="home-badge home-badge-red">중지</span>
+                      <span class="home-crm-badge-num">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="home-crm-cash">
+                  <div class="home-crm-cash-hd">
+                    <p class="home-crm-sub-label">캐시 현황</p>
+                    <button class="home-crm-charge-btn">충전하기</button>
+                  </div>
+                  <div class="home-crm-cash-main">
+                    <span class="home-crm-cash-icon"></span>
+                    <span class="home-crm-cash-name">전머캐시</span>
+                    <span class="home-crm-cash-val-main">99,299c</span>
+                  </div>
+                  <div class="home-crm-cash-row">
+                    <span class="home-crm-cash-label">이번 달 충전</span>
+                    <span class="home-crm-cash-val">0c</span>
+                  </div>
+                  <div class="home-crm-cash-row">
+                    <span class="home-crm-cash-label">이번 달 지출</span>
+                    <span class="home-crm-cash-val">0c</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 우: 어제의 CRM 지표 -->
+            <div class="home-crm-metrics">
+              <h3 class="home-sec-title">어제의 CRM 지표</h3>
+              <table class="home-crm-tbl">
+                <thead>
+                  <tr>
+                    <th>구매 목적 캠페인</th>
+                    <th>회원가입 목적 캠페인</th>
+                    <th>APP설치 목적 캠페인</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="home-crm-metric"><span>ROAS</span><span>0%</span></div>
+                      <div class="home-crm-metric"><span>구매 금액</span><span>0원</span></div>
+                      <div class="home-crm-metric"><span>지출 캐시</span><span>0원</span></div>
+                    </td>
+                    <td>
+                      <div class="home-crm-metric"><span>회원가입 전환율</span><span>0%</span></div>
+                      <div class="home-crm-metric"><span>회원가입 전환 수</span><span>0건</span></div>
+                      <div class="home-crm-metric"><span>회원가입 당 비용</span><span>0원</span></div>
+                      <div class="home-crm-metric"><span>노출 수</span><span>0건</span></div>
+                    </td>
+                    <td>
+                      <div class="home-crm-metric"><span>APP설치 전환율</span><span>0%</span></div>
+                      <div class="home-crm-metric"><span>APP설치 수</span><span>0건</span></div>
+                      <div class="home-crm-metric"><span>지출 캐시</span><span>0원</span></div>
+                      <div class="home-crm-metric"><span>CPI</span><span>0원</span></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 쇼핑몰 현황 -->
+          <section class="home-section home-shop-section">
+            <h2 class="home-sec-title" style="margin-bottom:12px;">쇼핑몰 현황</h2>
+            <div class="home-shop-inner">
+              <!-- 좌: 통계 영역 -->
+              <div class="home-shop-main">
+                <!-- 상단 5셀 -->
+                <div class="home-shop-top-grid">
+                  <div class="home-shop-top-cell">
+                    <p class="home-shop-top-label">DAU <span class="home-info-icon">①</span></p>
+                    <p class="home-shop-top-val">47</p>
+                  </div>
+                  <div class="home-shop-top-cell">
+                    <p class="home-shop-top-label">방문수 (UV) <span class="home-info-icon">①</span></p>
+                    <p class="home-shop-top-sub">① 최근 30분 기준 by DatAI</p>
+                    <p class="home-shop-top-val">5</p>
+                  </div>
+                  <div class="home-shop-top-cell">
+                    <p class="home-shop-top-label">페이지뷰 (PV) <span class="home-info-icon">①</span></p>
+                    <p class="home-shop-top-sub">① 최근 30분 기준 by DatAI</p>
+                    <p class="home-shop-top-val">9</p>
+                  </div>
+                  <div class="home-shop-top-cell">
+                    <p class="home-shop-top-label">실시간 유입기기 <span class="home-info-icon">①</span></p>
+                    <p class="home-shop-top-sub">① 최근 30분 기준 by DatAI</p>
+                    <div class="home-shop-device">
+                      <div class="home-shop-device-row"><span>Mobile Web</span><span>40%</span></div>
+                      <div class="home-shop-device-row"><span>Mobile App</span><span>40%</span></div>
+                      <div class="home-shop-device-row"><span>Desktop</span><span>20%</span></div>
+                    </div>
+                  </div>
+                  <div class="home-shop-top-cell home-shop-top-cell-last">
+                    <p class="home-shop-top-label">실시간 인기 페이지 <span class="home-info-icon">①</span></p>
+                    <p class="home-shop-top-sub">① 최근 30분 기준 by DatAI</p>
+                    <div class="home-shop-pages">
+                      <p>1. 강아지 용품도 플렉스지 릿명 <span class="home-shop-page-num">6</span></p>
+                      <p>2. 첫컷이 <span class="home-shop-page-num">3</span></p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 타임스탬프 -->
+                <p class="home-shop-timestamp">마지막 업데이트 <span class="home-timestamp-date">2026-05-18 18:42</span></p>
+                <!-- 주석 -->
+                <div class="home-shop-notes">
+                  <p>· 총 회원 수는 탈퇴한 회원을 제외한 현재 회원 수 입니다.</p>
+                  <p>· APP 설치 디바이스 수는 재설치 수를 제외한 디바이스의 수이며 삭제된 경우는 확인 할 수 없습니다.</p>
+                </div>
+                <!-- 통계 테이블 1 -->
+                <table class="home-shop-tbl">
+                  <thead>
+                    <tr>
+                      <th>신규가입</th>
+                      <th>회원탈퇴</th>
+                      <th>총 회원 수</th>
+                      <th>APP 설치 디바이스 수</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="home-period">어제</span> 0</td>
+                      <td><span class="home-period">어제</span> 0</td>
+                      <td rowspan="3" class="home-tbl-big">1,000,111</td>
+                      <td>iOS <span>63</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="home-period">지난주</span> 7</td>
+                      <td><span class="home-period">지난주</span> <span class="home-red">0</span></td>
+                      <td>AOS <span>52</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="home-period">이번달</span> 7</td>
+                      <td><span class="home-period">이번달</span> <span class="home-red">0</span></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- 통계 테이블 2 -->
+                <table class="home-shop-tbl">
+                  <thead>
+                    <tr>
+                      <th>리워드 지급 건</th>
+                      <th>리워드 지급 포인트</th>
+                      <th>결제 금액</th>
+                      <th>취소/반품 금액</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="home-period">어제</span> 0</td>
+                      <td><span class="home-period">어제</span> 0</td>
+                      <td><span class="home-period">어제</span> 0</td>
+                      <td><span class="home-period">어제</span> 0</td>
+                    </tr>
+                    <tr>
+                      <td><span class="home-period">지난주</span> 0</td>
+                      <td><span class="home-period">지난주</span> 0</td>
+                      <td><span class="home-period">지난주</span> 62,210</td>
+                      <td><span class="home-period">지난주</span> <span class="home-red">2,100</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="home-period">이번달</span> 0</td>
+                      <td><span class="home-period">이번달</span> 0</td>
+                      <td><span class="home-period">이번달</span> 68,210</td>
+                      <td><span class="home-period">이번달</span> <span class="home-red">2,100</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- 우: 매출 패널 -->
+              <div class="home-shop-right">
+                <!-- 오늘의 매출 현황 -->
+                <div class="home-sales-panel">
+                  <div class="home-sales-panel-hd">
+                    <span class="home-sales-panel-title">오늘의 매출 현황</span>
+                    <span class="home-info-icon">①</span>
+                  </div>
+                  <a class="home-sales-update">마지막 업데이트</a>
+                  <div class="home-sales-row"><span>현재 00:00 매출</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row home-sales-indent"><span>마진</span><span class="home-sales-val">0.0% 0원</span></div>
+                  <div class="home-sales-row"><span>어제 00:00 매출</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row home-sales-indent"><span>마진</span><span class="home-sales-val">0.0% 0원</span></div>
+                  <p class="home-sales-divider">지난 1개월의 매주 월요일 평균 <span class="home-info-icon">①</span></p>
+                  <div class="home-sales-row"><span>· 매출 (현재)</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row"><span>· 마진 (현재)</span><span class="home-sales-val">0.00% 0원</span></div>
+                  <div class="home-sales-row"><span>· 매출 (일)</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row"><span>· 마진 (일)</span><span class="home-sales-val">0.00% 0원</span></div>
+                  <p class="home-sales-divider">오늘의 예상 매출 <span class="home-info-icon">①</span> <span class="home-sales-div-sub">일 평균 매출 대비</span></p>
+                  <div class="home-sales-row"><span>예상 매출</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row"><span>예상 마진</span><span class="home-sales-val">0.00% 0원</span></div>
+                </div>
+                <!-- 어제의 매출 현황 -->
+                <div class="home-sales-panel">
+                  <div class="home-sales-panel-hd">
+                    <span class="home-sales-panel-title">어제의 매출 현황</span>
+                    <span class="home-info-icon">①</span>
+                  </div>
+                  <p class="home-sales-sub-note">① 이번 달 누적 매출 0원</p>
+                  <div class="home-sales-row"><span>어제 매출</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row home-sales-indent"><span>어제 마진</span><span class="home-sales-val">0.00% 0원</span></div>
+                  <div class="home-sales-row"><span>총 구매 건 수</span><span class="home-sales-val">0건</span></div>
+                  <div class="home-sales-row"><span>구매 전환율</span><span class="home-sales-val">0.000%</span></div>
+                  <div class="home-sales-row"><span>평균 구매 상품 수</span><span class="home-sales-val">0.00개</span></div>
+                  <div class="home-sales-row"><span>객단가</span><span class="home-sales-val">0원</span></div>
+                  <p class="home-sales-divider">이번달 예상 매출액 <span class="home-info-icon">①</span></p>
+                  <p class="home-sales-sub-note">① 일 평균 매출 0원 유지시</p>
+                  <div class="home-sales-row"><span>0.00%</span><span class="home-sales-val">0원</span></div>
+                  <p class="home-sales-divider">지난 달 매출</p>
+                  <div class="home-sales-row"><span>지난 달 매출</span><span class="home-sales-val">0원</span></div>
+                  <div class="home-sales-row"><span>마진</span><span class="home-sales-val">0.00% 0원</span></div>
+                  <p class="home-sales-footer">쇼핑몰 매출 현황을 한 눈에 확인해 보세요! <a class="home-detail-link">자세히 보기</a></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+        <!-- HELP 버튼 -->
+        <button class="home-help-btn">HELP</button>
+      </div>
+      <!-- /screen-home -->
+
     </main>
 
     <!-- ── 우측: 화면설명 ── -->
@@ -967,6 +1236,13 @@
           <div class="desc-block">
             <p class="desc-label">설정 항목</p>
             <p class="desc-text">사용 여부 · 쿠폰명 · 해택 종류 · 유효기간 · 주문 금액 제한 · 발급 수량 · 발급 방식 · 사용 회원등급 · 사용 가능 환경 · 상품 적용 범위</p>
+          </div>
+        </div>
+
+        <div class="desc-section" id="desc-home">
+          <div class="desc-block">
+            <p class="desc-label">화면명</p>
+            <p class="desc-text">홈</p>
           </div>
         </div>
 
