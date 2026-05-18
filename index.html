@@ -497,19 +497,28 @@
               <tr>
                 <th class="form-th"><span class="req">✓</span> 캠페인 기간</th>
                 <td class="form-td">
-                  <input type="text" class="form-input period-input" id="campaignPeriod" placeholder="기간 설정" readonly onclick="openPeriodPicker()">
+                  <input type="text" class="form-input period-input" id="campaignPeriod" placeholder="기간 설정" readonly onclick="openCampaignPicker()">
                   <button type="button" class="btn-dark" onclick="resetPeriod()">기간 초기화</button>
-                  <div class="date-picker-wrap" id="datePicker" style="display:none;">
-                    <div class="date-picker-inner">
-                      <div class="date-field-row">
-                        <label>시작일</label>
-                        <input type="date" id="startDate" onchange="updatePeriod()">
+                  <div class="campaign-picker" id="campaignPicker" style="display:none;">
+                    <div class="cp-inner">
+                      <div class="cp-calendar">
+                        <div class="cp-nav">
+                          <button type="button" class="cp-nav-btn" onclick="cpPrevMonth()">&#9664;</button>
+                          <div class="cp-nav-center">
+                            <select class="cp-sel" id="cpMonthSel" onchange="cpGoToSelected()"></select>
+                            <select class="cp-sel" id="cpYearSel" onchange="cpGoToSelected()"></select>
+                          </div>
+                          <button type="button" class="cp-nav-btn" onclick="cpNextMonth()">&#9654;</button>
+                        </div>
+                        <div class="cp-weekdays">
+                          <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+                        </div>
+                        <div class="cp-days" id="cpDays"></div>
                       </div>
-                      <div class="date-field-row">
-                        <label>종료일</label>
-                        <input type="date" id="endDate" onchange="updatePeriod()">
-                      </div>
-                      <button type="button" class="btn-dark btn-sm" onclick="closePeriodPicker()">확인</button>
+                      <div class="cp-times" id="cpTimes"></div>
+                    </div>
+                    <div class="cp-footer">
+                      <button type="button" class="cp-confirm-btn" onclick="closeCampaignPicker()">확인</button>
                     </div>
                   </div>
                 </td>

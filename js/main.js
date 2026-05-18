@@ -206,33 +206,171 @@ function onBadgeChange(checkbox, badgeId) {
 }
 
 /* ===========================
-   캠페인 기간
+   캠페인 기간 (커스텀 피커)
 =========================== */
-function openPeriodPicker() {
-  var picker = document.getElementById('datePicker');
-  picker.style.display = picker.style.display === 'none' ? 'block' : 'none';
-}
+var _cp = {
+  year: 0, month: 0,
+  selYear: 0, selMonth: 0, selDay: 0,
+  selHour: 9, selMin: 0
+};
 
-function closePeriodPicker() {
-  var picker = document.getElementById('datePicker');
-  if (picker) picker.style.display = 'none';
-}
-
-function updatePeriod() {
-  var start = document.getElementById('startDate').value;
-  var end = document.getElementById('endDate').value;
-  if (start && end) {
-    document.getElementById('campaignPeriod').value = start + ' ~ ' + end;
-  } else if (start) {
-    document.getElementById('campaignPeriod').value = start + ' ~';
+function openCampaignPicker() {
+  var picker = document.getElementById('campaignPicker');
+  if (picker.style.display !== 'none') { closeCampaignPicker(); return; }
+  var now = new Date();
+  _cp.year = now.getFullYear();
+  _cp.month = now.getMonth();
+  if (!_cp.selDay) {
+    _cp.selYear = _cp.year;
+    _cp.selMonth = _cp.month;
+    _cp.selDay = now.getDate();
+    _cp.selHour = 9;
+    _cp.selMin = 0;
   }
+  cpInitSelects();
+  cpRenderCalendar();
+  cpRenderTimes();
+  picker.style.display = 'block';
+  setTimeout(function() {
+    document.addEventListener('click', cpOutsideClick);
+  }, 0);
+}
+
+function closeCampaignPicker() {
+  var picker = document.getElementById('campaignPicker');
+  if (picker) picker.style.display = 'none';
+  document.removeEventListener('click', cpOutsideClick);
+  cpUpdateInput();
+}
+
+function cpOutsideClick(e) {
+  var picker = document.getElementById('campaignPicker');
+  var input = document.getElementById('campaignPeriod');
+  if (picker && !picker.contains(e.target) && e.target !== input) {
+    closeCampaignPicker();
+  }
+}
+
+function cpInitSelects() {
+  var mSel = document.getElementById('cpMonthSel');
+  var ySel = document.getElementById('cpYearSel');
+  var months = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  mSel.innerHTML = '';
+  months.forEach(function(m, i) {
+    var o = document.createElement('option');
+    o.value = i; o.textContent = m;
+    if (i === _cp.month) o.selected = true;
+    mSel.appendChild(o);
+  });
+  ySel.innerHTML = '';
+  var curY = new Date().getFullYear();
+  for (var y = curY - 2; y <= curY + 3; y++) {
+    var o = document.createElement('option');
+    o.value = y; o.textContent = y + '년';
+    if (y === _cp.year) o.selected = true;
+    ySel.appendChild(o);
+  }
+}
+
+function cpGoToSelected() {
+  _cp.month = parseInt(document.getElementById('cpMonthSel').value);
+  _cp.year = parseInt(document.getElementById('cpYearSel').value);
+  cpRenderCalendar();
+}
+
+function cpRenderCalendar() {
+  var container = document.getElementById('cpDays');
+  container.innerHTML = '';
+  var today = new Date();
+  var firstDay = new Date(_cp.year, _cp.month, 1).getDay();
+  var daysInMonth = new Date(_cp.year, _cp.month + 1, 0).getDate();
+  for (var i = 0; i < firstDay; i++) {
+    var blank = document.createElement('div');
+    blank.className = 'cp-day cp-empty';
+    container.appendChild(blank);
+  }
+  for (var d = 1; d <= daysInMonth; d++) {
+    var el = document.createElement('div');
+    el.className = 'cp-day';
+    el.textContent = d;
+    var isToday = (d === today.getDate() && _cp.month === today.getMonth() && _cp.year === today.getFullYear());
+    var isSel = (d === _cp.selDay && _cp.month === _cp.selMonth && _cp.year === _cp.selYear);
+    if (isSel) el.classList.add('cp-selected');
+    else if (isToday) el.classList.add('cp-today');
+    (function(day) {
+      el.addEventListener('click', function(e) { e.stopPropagation(); cpSelectDay(day); });
+    })(d);
+    container.appendChild(el);
+  }
+  document.getElementById('cpMonthSel').value = _cp.month;
+  document.getElementById('cpYearSel').value = _cp.year;
+}
+
+function cpRenderTimes() {
+  var container = document.getElementById('cpTimes');
+  container.innerHTML = '';
+  for (var h = 0; h < 24; h++) {
+    [0, 30].forEach(function(m) {
+      var el = document.createElement('div');
+      el.className = 'cp-time';
+      var hStr = (h < 10 ? '0' : '') + h;
+      var mStr = m === 0 ? '00' : '30';
+      el.textContent = hStr + ':' + mStr;
+      if (h === _cp.selHour && m === _cp.selMin) el.classList.add('cp-time-selected');
+      (function(hour, min) {
+        el.addEventListener('click', function(e) { e.stopPropagation(); cpSelectTime(hour, min); });
+      })(h, m);
+      container.appendChild(el);
+    });
+  }
+  var selIdx = _cp.selHour * 2 + (_cp.selMin === 30 ? 1 : 0);
+  var items = container.querySelectorAll('.cp-time');
+  if (items[selIdx]) items[selIdx].scrollIntoView({ block: 'center' });
+}
+
+function cpSelectDay(day) {
+  _cp.selYear = _cp.year;
+  _cp.selMonth = _cp.month;
+  _cp.selDay = day;
+  cpRenderCalendar();
+}
+
+function cpSelectTime(hour, min) {
+  _cp.selHour = hour;
+  _cp.selMin = min;
+  cpRenderTimes();
+}
+
+function cpUpdateInput() {
+  if (!_cp.selDay) return;
+  var y = _cp.selYear;
+  var mo = (_cp.selMonth + 1 < 10 ? '0' : '') + (_cp.selMonth + 1);
+  var d = (_cp.selDay < 10 ? '0' : '') + _cp.selDay;
+  var h = (_cp.selHour < 10 ? '0' : '') + _cp.selHour;
+  var m = _cp.selMin === 0 ? '00' : '30';
+  document.getElementById('campaignPeriod').value = y + '-' + mo + '-' + d + ' ' + h + ':' + m;
+}
+
+function cpPrevMonth() {
+  _cp.month--;
+  if (_cp.month < 0) { _cp.month = 11; _cp.year--; }
+  cpInitSelects();
+  cpRenderCalendar();
+}
+
+function cpNextMonth() {
+  _cp.month++;
+  if (_cp.month > 11) { _cp.month = 0; _cp.year++; }
+  cpInitSelects();
+  cpRenderCalendar();
 }
 
 function resetPeriod() {
   document.getElementById('campaignPeriod').value = '';
-  document.getElementById('startDate').value = '';
-  document.getElementById('endDate').value = '';
-  closePeriodPicker();
+  _cp.selDay = 0;
+  var picker = document.getElementById('campaignPicker');
+  if (picker) picker.style.display = 'none';
+  document.removeEventListener('click', cpOutsideClick);
 }
 
 /* ===========================
