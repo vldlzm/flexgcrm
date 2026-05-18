@@ -337,7 +337,7 @@
               <span class="cd-list-count">전체 16건 (페이지 1/2)</span>
             </div>
             <div class="cd-list-actions">
-              <button class="btn-dark btn-dropdown">캠페인 생성 ▾</button>
+              <button class="btn-dark btn-dropdown" onclick="selectScreen(document.querySelector('[data-screen=campaign-create]'))">캠페인 생성 ▾</button>
               <select class="cd-page-select">
                 <option>10개씩 보기</option>
                 <option>20개씩 보기</option>
@@ -367,9 +367,9 @@
                   <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20260511_1</a></td>
                   <td class="cd-td">시작 : 2026-05-11 23:00</td>
                   <td class="cd-td">2026-05-11 22:01:12</td>
-                  <td class="cd-td"></td>
-                  <td class="cd-td"></td>
-                  <td class="cd-td"></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
                   <td class="cd-td cd-extract">대상자 추출 중</td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
@@ -378,9 +378,9 @@
                   <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20260310_1</a></td>
                   <td class="cd-td">시작 : 2026-03-10 16:00</td>
                   <td class="cd-td">2026-03-10 14:50:32</td>
-                  <td class="cd-td"></td>
-                  <td class="cd-td"></td>
-                  <td class="cd-td"></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
