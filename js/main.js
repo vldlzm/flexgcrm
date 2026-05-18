@@ -103,7 +103,7 @@ function setCampaignNameDefault() {
   var d = String(today.getDate()).padStart(2, '0');
   var el = document.getElementById('campaignName');
   if (el && !el.value) {
-    el.value = '맞춤 시나리오로 보내기_' + y + m + d + '_1';
+    el.value = '오늘 소멸되는 쿠폰 알림 보내기_' + y + m + d + '_1';
   }
 }
 
