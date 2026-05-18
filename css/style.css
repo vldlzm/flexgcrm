@@ -2922,3 +2922,87 @@ body {
 .sa-row-highlight .sa-label {
   background: #fff0f0;
 }
+
+/* ===========================
+   CRM 지표 브리핑 메시지 샘플 레이어
+=========================== */
+.crm-sample-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 4500;
+}
+.crm-sample-backdrop.active { display: block; }
+
+.crm-sample-layer {
+  position: fixed;
+  z-index: 4600;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  width: 240px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.crm-sample-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+  font-size: 13px;
+  color: #222;
+}
+
+.crm-sample-notice {
+  font-size: 11px;
+  color: #888;
+  font-weight: 400;
+  flex: 1;
+}
+
+.crm-sample-close {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+}
+.crm-sample-close:hover { color: #333; }
+
+.crm-sample-body {
+  padding: 12px 14px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.crm-s-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #111;
+  margin-bottom: 2px;
+}
+
+.crm-s-date {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.crm-s-section {
+  font-weight: 600;
+  font-size: 13px;
+  color: #222;
+  margin: 10px 0 4px;
+}
+
+.crm-s-item {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.7;
+}

@@ -56,6 +56,31 @@ function closeStatsPopup() {
   document.getElementById('statsBackdrop').classList.remove('open');
 }
 
+/* ===========================
+   CRM 지표 브리핑 메시지 샘플 레이어
+=========================== */
+function openCrmSample(btn) {
+  var layer = document.getElementById('crmSampleLayer');
+  var backdrop = document.getElementById('crmSampleBackdrop');
+  if (layer.style.display !== 'none') { closeCrmSample(); return; }
+  var rect = btn.getBoundingClientRect();
+  layer.style.display = 'block';
+  var lw = layer.offsetWidth;
+  var lh = layer.offsetHeight;
+  var left = rect.right + 8;
+  var top = rect.top;
+  if (left + lw > window.innerWidth - 8) left = rect.left - lw - 8;
+  if (top + lh > window.innerHeight - 8) top = window.innerHeight - lh - 8;
+  layer.style.left = left + 'px';
+  layer.style.top = Math.max(8, top) + 'px';
+  backdrop.classList.add('active');
+}
+
+function closeCrmSample() {
+  document.getElementById('crmSampleLayer').style.display = 'none';
+  document.getElementById('crmSampleBackdrop').classList.remove('active');
+}
+
 function switchStatsTab(btn) {
   document.querySelectorAll('.stats-tab').forEach(function(t) { t.classList.remove('active'); });
   btn.classList.add('active');

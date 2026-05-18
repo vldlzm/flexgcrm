@@ -848,7 +848,7 @@
             <div class="sa-row sa-row-highlight">
               <div class="sa-label">
                 <div>어제의 CRM 지표 브리핑</div>
-                <button class="sa-btn-sample">메시지 샘플 ›</button>
+                <button class="sa-btn-sample" onclick="openCrmSample(this)">메시지 샘플 ›</button>
               </div>
               <div class="sa-content">
                 <label class="sa-toggle-wrap">
@@ -989,6 +989,48 @@
 
   </div>
   <!-- /layout -->
+
+  <!-- =====================
+       CRM 지표 브리핑 메시지 샘플 레이어
+  ===================== -->
+  <div class="crm-sample-backdrop" id="crmSampleBackdrop" onclick="closeCrmSample()"></div>
+  <div class="crm-sample-layer" id="crmSampleLayer" style="display:none;">
+    <div class="crm-sample-header">
+      <span>어제의 CRM 지표 브리핑</span>
+      <span class="crm-sample-notice">ⓘ 예시 내용입니다.</span>
+      <button class="crm-sample-close" onclick="closeCrmSample()">✕</button>
+    </div>
+    <div class="crm-sample-body">
+      <p class="crm-s-title">어제의 CRM 지표</p>
+      <p class="crm-s-date">2025-08-17 (일요일)</p>
+
+      <p class="crm-s-section">구매 목적</p>
+      <p class="crm-s-item">· ROAS : 500%</p>
+      <p class="crm-s-item">· 구매 금액 : 1,000,000원</p>
+      <p class="crm-s-item">· 지출 캐시 : 200,000c</p>
+
+      <p class="crm-s-section">회원가입 목적</p>
+      <p class="crm-s-item">· 회원가입 전환율 : 3%</p>
+      <p class="crm-s-item">· 회원가입 전환 수 : 500건</p>
+      <p class="crm-s-item">· 노출 수 : 30,000건</p>
+
+      <p class="crm-s-section">APP설치 목적</p>
+      <p class="crm-s-item">· APP설치 전환율 : 12%</p>
+      <p class="crm-s-item">· APP설치 수 : 300건</p>
+      <p class="crm-s-item">· 지출 캐시 : 300,000c</p>
+      <p class="crm-s-item">· CPI : 1,000원</p>
+
+      <p class="crm-s-section">주요 캠페인</p>
+      <p class="crm-s-item">· 목적 : 구매</p>
+      <p class="crm-s-item">· 캠페인명 : 겨울방학 이벤트</p>
+      <p class="crm-s-item">· ROAS : 500%</p>
+      <p class="crm-s-item">· 구매 금액 : 1,000,000원</p>
+      <p class="crm-s-item">· 지출 캐시 : 200,000c</p>
+      <p class="crm-s-item">· 노출 수 | 발송 수 : 15,000건 | 30,000건</p>
+      <p class="crm-s-item">· 클릭 수 : 13,500건</p>
+      <p class="crm-s-item">· 클릭률 : 30%</p>
+    </div>
+  </div>
 
   <!-- =====================
        통계 팝업
