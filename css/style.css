@@ -880,6 +880,23 @@ body {
   letter-spacing: 0.05em;
 }
 
+.at-img-coupon {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 1px solid #f59e0b;
+  flex-direction: column;
+  gap: 4px;
+  height: 60px;
+  color: #92400e;
+}
+
+.at-img-icon { font-size: 18px; }
+
+.at-img-text {
+  font-size: 10px;
+  font-weight: 700;
+  color: #92400e;
+}
+
 .at-text {
   font-size: 9px;
   color: #4a5568;
