@@ -577,6 +577,22 @@ body {
   padding: 22px 24px;
 }
 
+.ex-card-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ex-card-row .ex-left {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.at-preview-right {
+  flex: 0 0 220px;
+}
+
 /* 좌측 정보 */
 .ex-left {
   margin-bottom: 16px;
