@@ -323,9 +323,24 @@ function cpRenderTimes() {
       container.appendChild(el);
     });
   }
+  cpScrollToSelected();
+}
+
+function cpScrollToSelected() {
+  var container = document.getElementById('cpTimes');
   var selIdx = _cp.selHour * 2 + (_cp.selMin === 30 ? 1 : 0);
   var items = container.querySelectorAll('.cp-time');
-  if (items[selIdx]) items[selIdx].scrollIntoView({ block: 'center' });
+  if (items[selIdx]) {
+    var itemH = items[selIdx].offsetHeight || 35;
+    container.scrollTop = selIdx * itemH - itemH;
+  }
+}
+
+function cpScrollTime(dir) {
+  var container = document.getElementById('cpTimes');
+  var items = container.querySelectorAll('.cp-time');
+  var itemH = items.length > 0 ? (items[0].offsetHeight || 35) : 35;
+  container.scrollTop += dir * itemH * 3;
 }
 
 function cpSelectDay(day) {

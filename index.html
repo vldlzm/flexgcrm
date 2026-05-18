@@ -515,7 +515,11 @@
                         </div>
                         <div class="cp-days" id="cpDays"></div>
                       </div>
-                      <div class="cp-times" id="cpTimes"></div>
+                      <div class="cp-time-panel">
+                        <button type="button" class="cp-time-arrow" onclick="cpScrollTime(-1)">▲</button>
+                        <div class="cp-times" id="cpTimes"></div>
+                        <button type="button" class="cp-time-arrow" onclick="cpScrollTime(1)">▼</button>
+                      </div>
                     </div>
                     <div class="cp-footer">
                       <button type="button" class="cp-confirm-btn" onclick="closeCampaignPicker()">확인</button>

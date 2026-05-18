@@ -400,6 +400,7 @@ body {
 .cp-inner {
   display: flex;
   gap: 0;
+  align-items: stretch;
 }
 
 /* 달력 */
@@ -482,20 +483,44 @@ body {
 .cp-day.cp-selected:hover { background: #3a5ce5; }
 
 /* 시간 목록 */
-.cp-times {
-  width: 120px;
+.cp-time-panel {
+  display: flex;
+  flex-direction: column;
   border-left: 1px solid #e2e8f0;
-  overflow-y: auto;
-  max-height: 240px;
-  padding: 8px 0;
+  width: 100px;
 }
 
+.cp-time-arrow {
+  flex-shrink: 0;
+  background: #f7f8fa;
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 6px 0;
+  font-size: 11px;
+  color: #666;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+}
+.cp-time-arrow:last-child { border-bottom: none; border-top: 1px solid #e2e8f0; }
+.cp-time-arrow:hover { background: #eef0f5; }
+
+.cp-times {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  max-height: 200px;
+}
+.cp-times::-webkit-scrollbar { width: 4px; }
+.cp-times::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+
 .cp-time {
-  padding: 8px 16px;
+  padding: 9px 14px;
   font-size: 13px;
   color: #444;
   cursor: pointer;
   white-space: nowrap;
+  text-align: center;
 }
 .cp-time:hover { background: #f0f4ff; }
 .cp-time.cp-time-selected { background: #4a6cf7; color: #fff; }
