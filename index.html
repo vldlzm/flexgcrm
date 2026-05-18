@@ -34,6 +34,8 @@
         <li class="screen-category">쿠폰 관리</li>
         <li class="screen-item" data-screen="coupon-list" onclick="selectScreen(this)">쿠폰 목록</li>
         <li class="screen-item" data-screen="coupon-create" onclick="selectScreen(this)">쿠폰 생성</li>
+        <li class="screen-category">설정</li>
+        <li class="screen-item" data-screen="service-alarm" onclick="selectScreen(this)">서비스 알림</li>
       </ul>
     </nav>
 
@@ -707,6 +709,201 @@
       </div>
       <!-- /screen-coupon-create -->
 
+      <!-- [화면] 서비스 알림 -->
+      <div class="screen-view" id="screen-service-alarm">
+        <div class="sa-wrap">
+          <h2 class="sa-title">메시지 설정</h2>
+          <div class="sa-table">
+
+            <!-- 서비스 알림 여부 -->
+            <div class="sa-row">
+              <div class="sa-label">서비스 알림 여부</div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle sa-toggle-on"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 쇼핑몰 주요 공지 -->
+            <div class="sa-row">
+              <div class="sa-label">쇼핑몰 주요 공지</div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>솔테스트</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                  <span class="sa-tag">솔테스트<span class="sa-tag-del">[삭제]</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 오늘 매출 브리핑 -->
+            <div class="sa-row">
+              <div class="sa-label">
+                <div>오늘 매출 브리핑</div>
+                <button class="sa-btn-sample">메시지 샘플 ›</button>
+              </div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">메시지 발송</span>
+                  <span class="sa-text">매일</span>
+                  <select class="sa-select sa-select-sm"><option>00시</option></select>
+                  <select class="sa-select sa-select-sm"><option>00분</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>솔테스트</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                  <span class="sa-tag">솔테스트<span class="sa-tag-del">[삭제]</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 어제 매출 브리핑 -->
+            <div class="sa-row">
+              <div class="sa-label">
+                <div>어제 매출 브리핑</div>
+                <button class="sa-btn-sample">메시지 샘플 ›</button>
+              </div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">메시지 발송</span>
+                  <span class="sa-text">매일</span>
+                  <select class="sa-select sa-select-sm"><option>00시</option></select>
+                  <select class="sa-select sa-select-sm"><option>00분</option></select>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>댕댕이모임</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                  <span class="sa-tag">솔테스트<span class="sa-tag-del">[삭제]</span></span>
+                  <span class="sa-tag">솔2<span class="sa-tag-del">[삭제]</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 지난주 매출 및 전환율 낮은 상품 -->
+            <div class="sa-row">
+              <div class="sa-label">
+                <div>지난주 매출 및 전환율 낮은 상품</div>
+                <button class="sa-btn-sample">메시지 샘플 ›</button>
+              </div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">메시지 발송</span>
+                  <span class="sa-text">매주 월요일</span>
+                  <select class="sa-select sa-select-sm"><option>00시</option></select>
+                  <select class="sa-select sa-select-sm"><option>00분</option></select>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>솔테스트</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                  <span class="sa-tag">솔2<span class="sa-tag-del">[삭제]</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 어제의 CRM 지표 브리핑 -->
+            <div class="sa-row">
+              <div class="sa-label">
+                <div>어제의 CRM 지표 브리핑</div>
+                <button class="sa-btn-sample">메시지 샘플 ›</button>
+              </div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle sa-toggle-on"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">메시지 발송</span>
+                  <span class="sa-text">매일</span>
+                  <select class="sa-select sa-select-sm"><option>16시</option></select>
+                  <select class="sa-select sa-select-sm"><option>10분</option></select>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>담당자 그룹 선택</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                  <span class="sa-tag">임재림<span class="sa-tag-del">[삭제]</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CRM 알림 -->
+            <div class="sa-row">
+              <div class="sa-label">CRM 알림</div>
+              <div class="sa-content">
+                <label class="sa-toggle-wrap">
+                  <span class="sa-off">OFF</span>
+                  <span class="sa-toggle"></span>
+                  <span class="sa-on">ON</span>
+                </label>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신 그룹</span>
+                  <select class="sa-select"><option>담당자 그룹 선택</option></select>
+                  <button class="sa-btn-add">추가 +</button>
+                </div>
+                <div class="sa-field-row">
+                  <span class="sa-field-label">알림 수신인</span>
+                  <button class="sa-btn-person">담당자 선택 ›</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="sa-footer">
+            <button class="sa-btn-apply">변경 사항 적용</button>
+          </div>
+        </div>
+      </div>
+      <!-- /screen-service-alarm -->
+
     </main>
 
     <!-- ── 우측: 화면설명 ── -->
@@ -770,6 +967,13 @@
           <div class="desc-block">
             <p class="desc-label">설정 항목</p>
             <p class="desc-text">사용 여부 · 쿠폰명 · 해택 종류 · 유효기간 · 주문 금액 제한 · 발급 수량 · 발급 방식 · 사용 회원등급 · 사용 가능 환경 · 상품 적용 범위</p>
+          </div>
+        </div>
+
+        <div class="desc-section" id="desc-service-alarm">
+          <div class="desc-block">
+            <p class="desc-label">화면명</p>
+            <p class="desc-text">서비스 알림</p>
           </div>
         </div>
 

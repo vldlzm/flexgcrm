@@ -2725,3 +2725,191 @@ body {
   justify-content: center;
   background: #f5f6f8;
 }
+
+/* ===========================
+   서비스 알림
+=========================== */
+.sa-wrap {
+  padding: 32px 36px;
+  max-width: 900px;
+}
+
+.sa-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 24px;
+}
+
+.sa-table {
+  border-top: 2px solid #888;
+}
+
+.sa-row {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.sa-label {
+  width: 200px;
+  min-width: 200px;
+  padding: 20px 16px;
+  background: #f5f6f8;
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  border-right: 1px solid #ddd;
+}
+
+.sa-content {
+  flex: 1;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sa-toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sa-off, .sa-on {
+  font-size: 12px;
+  color: #888;
+}
+
+.sa-toggle {
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+  background: #ccc;
+  border-radius: 9px;
+  position: relative;
+  transition: background 0.2s;
+}
+.sa-toggle::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.2s;
+}
+.sa-toggle.sa-toggle-on {
+  background: #4caf50;
+}
+.sa-toggle.sa-toggle-on::after {
+  left: 20px;
+}
+
+.sa-field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sa-field-label {
+  font-size: 12px;
+  color: #555;
+  min-width: 80px;
+}
+
+.sa-text {
+  font-size: 13px;
+  color: #333;
+}
+
+.sa-select {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #333;
+  background: #fff;
+  min-width: 130px;
+}
+
+.sa-select.sa-select-sm {
+  min-width: 70px;
+}
+
+.sa-btn-add {
+  background: #666;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.sa-btn-add:hover { background: #444; }
+
+.sa-btn-person {
+  background: #555;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+.sa-btn-person:hover { background: #333; }
+
+.sa-tag {
+  font-size: 13px;
+  color: #333;
+}
+
+.sa-tag-del {
+  color: #888;
+  font-size: 12px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.sa-btn-sample {
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+  font-family: inherit;
+  align-self: flex-start;
+}
+.sa-btn-sample:hover { background: #f0f0f0; }
+
+.sa-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0 0;
+}
+
+.sa-btn-apply {
+  background: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+}
+.sa-btn-apply:hover { background: #333; }
