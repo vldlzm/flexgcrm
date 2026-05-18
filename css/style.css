@@ -3006,3 +3006,17 @@ body {
   color: #444;
   line-height: 1.7;
 }
+
+.crm-s-highlight {
+  border: 2px solid #e53e3e;
+  border-radius: 4px;
+  background: #fff5f5;
+  padding: 8px 10px;
+  margin: 8px 0;
+}
+.crm-s-highlight .crm-s-section {
+  color: #c53030;
+}
+.crm-s-highlight .crm-s-item {
+  color: #c53030;
+}
