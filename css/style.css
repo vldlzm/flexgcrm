@@ -1855,19 +1855,19 @@ body {
 /* 카드 그리드 */
 .cml-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 /* 카드 */
 .cml-card {
   background: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #e2e8f0;
-  padding: 18px 18px 16px;
+  padding: 24px 20px 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
@@ -1931,7 +1931,7 @@ body {
 .cml-stats {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cml-stat {
