@@ -2913,3 +2913,12 @@ body {
   font-weight: 500;
 }
 .sa-btn-apply:hover { background: #333; }
+
+.sa-row-highlight {
+  outline: 2px solid #e53e3e;
+  outline-offset: -2px;
+  background: #fff8f8;
+}
+.sa-row-highlight .sa-label {
+  background: #fff0f0;
+}
