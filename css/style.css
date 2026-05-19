@@ -3738,3 +3738,140 @@ body {
   padding: 32px !important;
   font-size: 13px;
 }
+
+/* ===========================
+   테스트 생성 팝업
+=========================== */
+.tp-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 3500;
+  align-items: center;
+  justify-content: center;
+}
+.tp-backdrop.open { display: flex; }
+
+.tp-modal {
+  background: #fff;
+  width: 420px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.tp-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #2d2d2d;
+  padding: 13px 18px;
+  color: #fff;
+}
+
+.tp-header-icon { display: flex; align-items: center; color: #fff; }
+.tp-header-title { font-size: 15px; font-weight: 700; flex: 1; }
+
+.tp-close {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+.tp-close:hover { color: #fff; }
+
+.tp-body { padding: 20px 20px 8px; }
+
+.tp-notice {
+  font-size: 12px;
+  color: #e07b39;
+  margin-bottom: 16px;
+}
+
+.tp-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e2e8f0;
+}
+
+.tp-th {
+  background: #f5f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  width: 110px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tp-td {
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #333;
+  display: table-cell;
+}
+
+.tp-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 14px;
+  font-size: 13px;
+  color: #333;
+  cursor: default;
+}
+.tp-check input[type="checkbox"] {
+  accent-color: #38a169;
+  width: 14px;
+  height: 14px;
+}
+
+.tp-input {
+  width: 200px;
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #333;
+  outline: none;
+}
+.tp-input:focus { border-color: #667eea; }
+
+.tp-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: #f5f6f8;
+  border-top: 1px solid #e2e8f0;
+}
+
+.tp-btn {
+  padding: 9px 32px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.tp-btn-cancel {
+  background: #888;
+  color: #fff;
+}
+.tp-btn-cancel:hover { background: #666; }
+
+.tp-btn-publish {
+  background: #2d2d2d;
+  color: #fff;
+}
+.tp-btn-publish:hover { background: #111; }

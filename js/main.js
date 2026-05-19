@@ -53,6 +53,17 @@ function openStatsPopup() {
 }
 
 /* ===========================
+   테스트 생성 팝업
+=========================== */
+function openTestPublishPopup() {
+  document.getElementById('testPublishBackdrop').classList.add('open');
+}
+
+function closeTestPublishPopup() {
+  document.getElementById('testPublishBackdrop').classList.remove('open');
+}
+
+/* ===========================
    발송 내역 팝업
 =========================== */
 function openSendHistPopup() {

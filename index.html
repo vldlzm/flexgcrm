@@ -371,7 +371,7 @@
                   <td class="cd-td">시작 : 2026-05-11 23:00</td>
                   <td class="cd-td">2026-05-11 22:01:12</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openTestPublishPopup()">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td cd-extract">대상자 추출 중</td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
@@ -382,7 +382,7 @@
                   <td class="cd-td">시작 : 2026-03-10 16:00</td>
                   <td class="cd-td">2026-03-10 14:50:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openTestPublishPopup()">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
@@ -393,7 +393,7 @@
                   <td class="cd-td">시작 : 2025-12-20 00:00</td>
                   <td class="cd-td">2025-12-11 10:28:39</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openTestPublishPopup()">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
@@ -404,7 +404,7 @@
                   <td class="cd-td">시작 : 2025-12-08 19:30</td>
                   <td class="cd-td">2025-12-08 18:24:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openTestPublishPopup()">테스트 발행 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
@@ -1280,6 +1280,53 @@
       <p class="crm-s-item">· 노출 수 | 발송 수 : 15,000건 | 30,000건</p>
       <p class="crm-s-item">· 클릭 수 : 13,500건</p>
       <p class="crm-s-item">· 클릭률 : 30%</p>
+    </div>
+  </div>
+
+  <!-- =====================
+       테스트 생성 팝업
+  ===================== -->
+  <div class="tp-backdrop" id="testPublishBackdrop">
+    <div class="tp-modal">
+      <!-- 헤더 -->
+      <div class="tp-header">
+        <span class="tp-header-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+        </span>
+        <span class="tp-header-title">테스트 생성</span>
+        <button class="tp-close" onclick="closeTestPublishPopup()">✕</button>
+      </div>
+      <!-- 본문 -->
+      <div class="tp-body">
+        <p class="tp-notice">· 테스트 발행은 통계에 포함되지 않습니다.</p>
+        <table class="tp-table">
+          <tbody>
+            <tr>
+              <th class="tp-th">캠페인 유형</th>
+              <td class="tp-td">
+                <label class="tp-check"><input type="checkbox" checked disabled> APP푸시</label>
+                <label class="tp-check"><input type="checkbox" checked disabled> 알림톡</label>
+                <label class="tp-check"><input type="checkbox" checked disabled> LMS</label>
+              </td>
+            </tr>
+            <tr>
+              <th class="tp-th">휴대폰번호</th>
+              <td class="tp-td">
+                <input type="text" class="tp-input" placeholder="휴대폰번호 입력">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 푸터 -->
+      <div class="tp-footer">
+        <button class="tp-btn tp-btn-cancel" onclick="closeTestPublishPopup()">취소</button>
+        <button class="tp-btn tp-btn-publish">발행</button>
+      </div>
     </div>
   </div>
 
