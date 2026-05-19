@@ -3952,3 +3952,56 @@ body {
   line-height: 1.8;
   white-space: pre-line;
 }
+
+/* ===========================
+   쿠폰 삭제 불가 알럿
+=========================== */
+.cda-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 6000;
+  align-items: center;
+  justify-content: center;
+}
+.cda-backdrop.open { display: flex; }
+
+.cda-modal {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+  width: 340px;
+  overflow: hidden;
+}
+
+.cda-body {
+  padding: 28px 24px 20px;
+  text-align: center;
+}
+
+.cda-msg {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.cda-footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.cda-btn {
+  background: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 32px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 600;
+}
+.cda-btn:hover { background: #2d3748; }

@@ -553,7 +553,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + c.orderLimit + '</td>' +
       '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
       '<td class="cl-td"><div class="cl-mgmt-btns">' +
-        '<button class="btn-del" onclick="deleteCouponRow(this)">삭제</button>' +
+        '<button class="btn-del" onclick="' + (c.no === 2 && currentGuBun === 'crm' ? 'openCouponDeleteAlert()' : 'deleteCouponRow(this)') + '">삭제</button>' +
       '</div></td>' +
       '</tr>';
   }).join('');
@@ -674,3 +674,10 @@ function toggleAllCheck(master) {
 function copyCouponRow(btn) { console.log('[쿠폰 복사]'); }
 function editCouponRow(btn) { console.log('[쿠폰 수정]'); }
 function deleteCouponRow(btn) { btn.closest('tr').remove(); }
+
+function openCouponDeleteAlert() {
+  document.getElementById('couponDeleteAlertBackdrop').classList.add('open');
+}
+function closeCouponDeleteAlert() {
+  document.getElementById('couponDeleteAlertBackdrop').classList.remove('open');
+}
