@@ -553,7 +553,11 @@ function renderCouponListTable(data) {
       '<td class="cl-td">' + c.orderLimit + '</td>' +
       '<td class="cl-td" style="font-size:11px;color:#718096;">' + c.regDate + '</td>' +
       '<td class="cl-td"><div class="cl-mgmt-btns">' +
-        '<button class="btn-del" onclick="' + (c.no === 2 && currentGuBun === 'crm' ? 'openCouponDeleteAlert()' : 'deleteCouponRow(this)') + '">삭제</button>' +
+        (currentGuBun === 'crm' && c.no === 1
+          ? '<button class="btn-del" onclick="openCoupon1DeleteConfirm(this)">삭제 <span class="del-label-badge">1</span></button>'
+          : currentGuBun === 'crm' && c.no === 2
+          ? '<button class="btn-del" onclick="openCouponDeleteAlert()">삭제 <span class="del-label-badge">2</span></button>'
+          : '<button class="btn-del" onclick="deleteCouponRow(this)">삭제</button>') +
       '</div></td>' +
       '</tr>';
   }).join('');
@@ -680,4 +684,18 @@ function openCouponDeleteAlert() {
 }
 function closeCouponDeleteAlert() {
   document.getElementById('couponDeleteAlertBackdrop').classList.remove('open');
+}
+
+var _coupon1DeleteBtn = null;
+function openCoupon1DeleteConfirm(btn) {
+  _coupon1DeleteBtn = btn;
+  document.getElementById('coupon1DeleteConfirmBackdrop').classList.add('open');
+}
+function closeCoupon1DeleteConfirm() {
+  document.getElementById('coupon1DeleteConfirmBackdrop').classList.remove('open');
+  _coupon1DeleteBtn = null;
+}
+function confirmCoupon1Delete() {
+  if (_coupon1DeleteBtn) _coupon1DeleteBtn.closest('tr').remove();
+  closeCoupon1DeleteConfirm();
 }

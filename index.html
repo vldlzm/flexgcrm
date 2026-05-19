@@ -1299,6 +1299,26 @@
   </div>
 
   <!-- =====================
+       쿠폰 No.1 삭제 컨펌
+  ===================== -->
+  <div class="cda-backdrop" id="coupon1DeleteConfirmBackdrop">
+    <div class="cda-modal">
+      <div class="cda-body">
+        <p class="cda-msg">
+          해당 쿠폰과 연관된 캠페인이 있습니다.<br>
+          <span class="cda-campaign-name">캠페인명 A</span><br><br>
+          쿠폰을 삭제하면 캠페인이 OFF 처리됩니다.<br>
+          정말 삭제하시겠습니까?
+        </p>
+      </div>
+      <div class="cda-footer cda-footer-confirm">
+        <button class="cda-btn cda-btn-cancel" onclick="closeCoupon1DeleteConfirm()">취소</button>
+        <button class="cda-btn cda-btn-delete" onclick="confirmCoupon1Delete()">삭제</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================
        쿠폰 삭제 불가 알럿
   ===================== -->
   <div class="cda-backdrop" id="couponDeleteAlertBackdrop">
