@@ -4042,3 +4042,6 @@ body {
   font-weight: 600;
   color: #4a5568;
 }
+
+/* 쿠폰 생성 팝업 view-only 시 저장 버튼 숨김 */
+.cc-popup-backdrop.cc-view-only .cc-save-btn { display: none; }
