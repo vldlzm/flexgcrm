@@ -2208,12 +2208,14 @@ body {
 .cd-info-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 16px;
   margin-bottom: 24px;
-  padding: 14px 16px;
+  padding: 14px 20px;
   background: #f8f9fb;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .cd-info-chip {
