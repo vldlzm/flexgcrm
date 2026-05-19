@@ -547,6 +547,7 @@ function renderCouponListTable(data) {
       '<td class="cl-td"><span class="cl-gubun-badge">CRM</span></td>' +
       '<td class="cl-td cl-td-name"><a class="cl-coupon-link" onclick=\'openCouponViewPopup(' + JSON.stringify(c) + ')\'>' + c.name + '</a></td>' +
       '<td class="cl-td">캠페인명</td>' +
+      '<td class="cl-td" style="font-size:12px;color:#555;">시작 : 2026-05-11 23:00</td>' +
       '<td class="cl-td">' + c.benefit + '<br><span class="cl-rate">' + c.rate + '</span></td>' +
       '<td class="cl-td">' + c.period + '</td>' +
       '<td class="cl-td">' + c.orderLimit + '</td>' +
