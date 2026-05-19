@@ -53,6 +53,19 @@ function openStatsPopup() {
 }
 
 /* ===========================
+   캠페인 조회 팝업 (수정 불가)
+=========================== */
+function openCampaignViewPopup(name, period) {
+  document.getElementById('cvCampaignName').value = name || '';
+  document.getElementById('cvCampaignPeriod').value = period || '';
+  document.getElementById('campaignViewBackdrop').classList.add('open');
+}
+
+function closeCampaignViewPopup() {
+  document.getElementById('campaignViewBackdrop').classList.remove('open');
+}
+
+/* ===========================
    테스트 생성 팝업
 =========================== */
 function openTestPublishPopup() {

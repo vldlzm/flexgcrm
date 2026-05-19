@@ -366,7 +366,7 @@
               <tbody>
                 <tr>
                   <td class="cd-td">16</td>
-                  <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20260511_1</a></td>
+                  <td class="cd-td"><a class="cd-campaign-link" onclick="openCampaignViewPopup('오늘 소멸되는 쿠폰 알림 보내기_20260511_1','2026-05-11 23:00')">오늘 소멸되는 쿠폰 알림 보내기_20260511_1</a></td>
                   <td class="cd-td">시작 : 2026-05-11 23:00</td>
                   <td class="cd-td">2026-05-11 22:01:12</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
@@ -377,7 +377,7 @@
                 </tr>
                 <tr>
                   <td class="cd-td">15</td>
-                  <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20260310_1</a></td>
+                  <td class="cd-td"><a class="cd-campaign-link" onclick="openCampaignViewPopup('오늘 소멸되는 쿠폰 알림 보내기_20260310_1','2026-03-10 16:00')">오늘 소멸되는 쿠폰 알림 보내기_20260310_1</a></td>
                   <td class="cd-td">시작 : 2026-03-10 16:00</td>
                   <td class="cd-td">2026-03-10 14:50:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
@@ -388,7 +388,7 @@
                 </tr>
                 <tr>
                   <td class="cd-td">14</td>
-                  <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20251221_1</a></td>
+                  <td class="cd-td"><a class="cd-campaign-link" onclick="openCampaignViewPopup('오늘 소멸되는 쿠폰 알림 보내기_20251221_1','2025-12-20 00:00')">오늘 소멸되는 쿠폰 알림 보내기_20251221_1</a></td>
                   <td class="cd-td">시작 : 2025-12-20 00:00</td>
                   <td class="cd-td">2025-12-11 10:28:39</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
@@ -399,7 +399,7 @@
                 </tr>
                 <tr>
                   <td class="cd-td">13</td>
-                  <td class="cd-td"><a class="cd-campaign-link">오늘 소멸되는 쿠폰 알림 보내기_20251208_1</a></td>
+                  <td class="cd-td"><a class="cd-campaign-link" onclick="openCampaignViewPopup('오늘 소멸되는 쿠폰 알림 보내기_20251208_1','2025-12-08 19:30')">오늘 소멸되는 쿠폰 알림 보내기_20251208_1</a></td>
                   <td class="cd-td">시작 : 2025-12-08 19:30</td>
                   <td class="cd-td">2025-12-08 18:24:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
@@ -1279,6 +1279,148 @@
       <p class="crm-s-item">· 노출 수 | 발송 수 : 15,000건 | 30,000건</p>
       <p class="crm-s-item">· 클릭 수 : 13,500건</p>
       <p class="crm-s-item">· 클릭률 : 30%</p>
+    </div>
+  </div>
+
+  <!-- =====================
+       캠페인 조회 팝업 (수정 불가)
+  ===================== -->
+  <div class="cv-backdrop" id="campaignViewBackdrop">
+    <div class="cv-modal">
+      <!-- 헤더 -->
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="13" rx="2"/>
+            <polyline points="8 21 12 17 16 21"/>
+            <line x1="12" y1="17" x2="12" y2="16"/>
+          </svg>
+          <span class="popup-title">캠페인 상세</span>
+        </div>
+        <button class="cv-close-btn" onclick="closeCampaignViewPopup()">✕</button>
+      </div>
+      <!-- 안내 -->
+      <div class="cv-readonly-notice">ⓘ 조회만 가능하며 수정할 수 없습니다.</div>
+      <!-- 본문 -->
+      <div class="popup-body cv-body">
+        <h3 class="section-title">캠페인 설정</h3>
+        <div class="notice-wrap">
+          <p class="notice-blue">· 콘텐츠 팝업은 반복 노출을 줄이기 위해, 동일한 계정에는 캠페인별로 하루 한 번만 노출됩니다.</p>
+          <p class="notice-blue">· 자동 &gt; 오프사이트 캠페인은 고객의 피로도를 줄이기 위하여 동일한 계정에 대해 2일에 한 번만 발송됩니다.</p>
+          <p class="notice-blue">· 상품명, 상품 이미지, 부연 설명을 변경하는 경우 다음 날 CRM 시스템에 반영됩니다.</p>
+          <p class="notice-red">· 고객별 메시지 수 제한 및 발송 정책에 따라 실제 수신되는 메시지 수는 차이가 있을 수 있습니다.</p>
+        </div>
+        <table class="form-table">
+          <tbody>
+            <!-- 캠페인명 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인명</th>
+              <td class="form-td">
+                <input type="text" class="form-input wide-input" id="cvCampaignName" disabled>
+              </td>
+            </tr>
+            <!-- 캠페인 내용 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 내용</th>
+              <td class="form-td">
+                <button type="button" class="btn-dark" onclick="openCouponViewPopup(null)">쿠폰 생성</button>
+                <div class="sub-notes">
+                  <p class="sub-note">① 설정된 쿠폰을 사용하지 않는 계정만 캠페인이 노출되거나 발송됩니다.</p>
+                </div>
+              </td>
+            </tr>
+            <!-- 대상자 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 대상자</th>
+              <td class="form-td">
+                <label class="radio-item"><input type="radio" name="cvTarget" value="all" checked disabled> 전체</label>
+                <label class="radio-item"><input type="radio" name="cvTarget" value="specific" disabled> 특정 고객</label>
+                <button type="button" class="btn-dark" disabled>전체 회원 조회 ›</button>
+                <span class="member-count">0명</span>
+              </td>
+            </tr>
+            <!-- 캠페인 유형 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 유형</th>
+              <td class="form-td">
+                <p class="type-label">오프사이트 캠페인</p>
+                <div class="type-badge-list">
+                  <label class="type-badge active">
+                    <input type="checkbox" checked disabled>
+                    <span class="badge-check-icon">✓</span>
+                    <span>알림톡</span>
+                    <span class="badge-cnt">0명</span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <!-- 캠페인 기간 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 캠페인 기간</th>
+              <td class="form-td">
+                <input type="text" class="form-input period-input" id="cvCampaignPeriod" readonly disabled style="background:#f5f6f8;cursor:default;">
+                <button type="button" class="btn-dark" disabled>기간 초기화</button>
+              </td>
+            </tr>
+            <!-- 클릭 액션 -->
+            <tr>
+              <th class="form-th"><span class="req">✓</span> 클릭 액션</th>
+              <td class="form-td">
+                <input type="text" class="form-input action-input" value="/Home/Index" disabled>
+                <button type="button" class="btn-dark" disabled>불러오기</button>
+                <button type="button" class="btn-dark" disabled>초기화</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 알림톡 예시 -->
+        <div class="example-sections">
+          <div class="ex-card ex-card-row">
+            <div class="ex-left">
+              <h4 class="ex-title">알림톡 예시</h4>
+              <p class="ex-desc">알림톡을 통하여 할인코드를 전달하고 상품 구매를 유도합니다.</p>
+              <div class="ex-meta">
+                <span class="tag-pill tag-black">비용</span>
+                <span class="meta-cost">건당 비용 12c / 현재 보유 캐시 <span class="cost-num">1,018,129,150c</span></span>
+              </div>
+            </div>
+            <div class="at-preview-right">
+              <div class="at-card">
+                <div class="at-header">
+                  <div class="at-talk-icon">TALK</div>
+                  <span class="at-label">알림톡 도착</span>
+                </div>
+                <div class="at-body">
+                  <p class="at-title">#{채널명} 쿠폰 만료 안내</p>
+                  <div class="at-img-placeholder at-img-coupon">
+                    <span class="at-img-icon">🎟️</span>
+                    <span class="at-img-text">할인쿠폰 만료</span>
+                  </div>
+                  <div class="at-text">
+                    <p>#{회원명}님, 보유하신 쿠폰이 <strong>오늘 곧 만료</strong>됩니다.</p>
+                    <p>#{상점명}에서 이용 가능합니다.</p>
+                    <br>
+                    <p>▷ 쿠폰명: #{쿠폰명}</p>
+                    <p>▷ 만료일: #{만료일}</p>
+                  </div>
+                  <div class="at-notes">
+                    <p>* 만료일이 지나면 자동 소멸되어 사용이 불가능합니다.</p>
+                    <p>※ 본 메시지는 고객과의 거래계약관계에 따라 지급된 쿠폰에 대한 안내입니다.</p>
+                  </div>
+                  <div class="at-golink-btn">바로가기</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 푸터 -->
+      <div class="popup-footer">
+        <div class="footer-btns">
+          <button type="button" class="btn-footer btn-footer-cancel" onclick="closeCampaignViewPopup()">닫기</button>
+        </div>
+      </div>
     </div>
   </div>
 
