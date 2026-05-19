@@ -147,11 +147,33 @@ function searchStats() {
 }
 
 function openCcPopup() {
-  document.getElementById('ccPopupBackdrop').classList.add('open');
+  var popup = document.getElementById('ccPopupBackdrop');
+  popup.classList.remove('cc-view-only');
+  popup.querySelectorAll('input, select, textarea, button:not(.cc-close-btn):not(.popup-close)').forEach(function(el) {
+    el.disabled = false;
+  });
+  popup.classList.add('open');
+}
+
+function openCcPopupViewOnly() {
+  var popup = document.getElementById('ccPopupBackdrop');
+  popup.classList.add('open', 'cc-view-only');
+  popup.querySelectorAll('input, select, textarea').forEach(function(el) {
+    el.disabled = true;
+  });
+  popup.querySelectorAll('button').forEach(function(el) {
+    if (!el.classList.contains('cc-close-btn') && !el.closest('.popup-header')) {
+      el.disabled = true;
+    }
+  });
 }
 
 function closeCcPopup() {
-  document.getElementById('ccPopupBackdrop').classList.remove('open');
+  var popup = document.getElementById('ccPopupBackdrop');
+  popup.classList.remove('open', 'cc-view-only');
+  popup.querySelectorAll('input, select, textarea, button').forEach(function(el) {
+    el.disabled = false;
+  });
 }
 
 function saveCcPopup() {
