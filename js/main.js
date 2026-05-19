@@ -52,6 +52,23 @@ function openStatsPopup() {
   document.getElementById('statsBackdrop').classList.add('open');
 }
 
+/* ===========================
+   발송 내역 팝업
+=========================== */
+function openSendHistPopup() {
+  document.getElementById('sendHistBackdrop').classList.add('open');
+}
+
+function closeSendHistPopup() {
+  document.getElementById('sendHistBackdrop').classList.remove('open');
+}
+
+function switchShTab(btn) {
+  var tabs = btn.closest('.sh-tabs').querySelectorAll('.sh-tab');
+  tabs.forEach(function(t) { t.classList.remove('sh-tab-active'); });
+  btn.classList.add('sh-tab-active');
+}
+
 function closeStatsPopup() {
   document.getElementById('statsBackdrop').classList.remove('open');
 }

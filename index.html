@@ -372,7 +372,7 @@
                   <td class="cd-td">2026-05-11 22:01:12</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td cd-extract">대상자 추출 중</td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
@@ -383,7 +383,7 @@
                   <td class="cd-td">2026-03-10 14:50:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
@@ -394,7 +394,7 @@
                   <td class="cd-td">2025-12-11 10:28:39</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
@@ -405,7 +405,7 @@
                   <td class="cd-td">2025-12-08 18:24:32</td>
                   <td class="cd-td"><button class="cd-action-btn" onclick="openStatsPopup()">통계 ›</button></td>
                   <td class="cd-td"><button class="cd-action-btn">테스트 발행 ›</button></td>
-                  <td class="cd-td"><button class="cd-action-btn">발송 내역 ›</button></td>
+                  <td class="cd-td"><button class="cd-action-btn" onclick="openSendHistPopup()">발송 내역 ›</button></td>
                   <td class="cd-td"></td>
                   <td class="cd-td"><span class="cd-status-pill"><span class="cd-status-l">진행</span><span class="cd-status-r">종료</span></span></td>
                 </tr>
@@ -1280,6 +1280,80 @@
       <p class="crm-s-item">· 노출 수 | 발송 수 : 15,000건 | 30,000건</p>
       <p class="crm-s-item">· 클릭 수 : 13,500건</p>
       <p class="crm-s-item">· 클릭률 : 30%</p>
+    </div>
+  </div>
+
+  <!-- =====================
+       발송 내역 팝업
+  ===================== -->
+  <div class="sh-backdrop" id="sendHistBackdrop">
+    <div class="sh-modal">
+      <!-- 헤더 -->
+      <div class="sh-header">
+        <span class="sh-header-title">발송 내역</span>
+        <button class="sh-close" onclick="closeSendHistPopup()">✕</button>
+      </div>
+      <!-- 본문 -->
+      <div class="sh-body">
+        <!-- 캠페인명 + 대상자 -->
+        <div class="sh-campaign-info">
+          <span class="sh-campaign-name">오늘 소멸되는 쿠폰 알림 보내기_20251020_1</span>
+          <span class="sh-total">총 대상자 0명</span>
+        </div>
+        <!-- 채널별 성공/실패 -->
+        <div class="sh-channel-row">
+          <div class="sh-channel-item">
+            <span class="sh-channel-badge">APP푸시</span>
+            <span class="sh-channel-stat">성공 <span class="sh-success">0건</span> / 실패 <span class="sh-fail">0건</span></span>
+          </div>
+          <div class="sh-channel-item">
+            <span class="sh-channel-badge">알림톡</span>
+            <span class="sh-channel-stat">성공 <span class="sh-success">0건</span> / 실패 <span class="sh-fail">0건</span></span>
+          </div>
+          <div class="sh-channel-item">
+            <span class="sh-channel-badge">브랜드메시지(친구톡)</span>
+            <span class="sh-channel-stat">성공 <span class="sh-success">0건</span> / 실패 <span class="sh-fail">0건</span></span>
+          </div>
+          <div class="sh-channel-item">
+            <span class="sh-channel-badge">LMS</span>
+            <span class="sh-channel-stat">성공 <span class="sh-success">0건</span> / 실패 <span class="sh-fail">0건</span></span>
+          </div>
+        </div>
+        <!-- 탭 -->
+        <div class="sh-tabs">
+          <button class="sh-tab" onclick="switchShTab(this)">APP푸시</button>
+          <button class="sh-tab sh-tab-active" onclick="switchShTab(this)">알림톡</button>
+          <button class="sh-tab" onclick="switchShTab(this)">브랜드메시지(친구톡)</button>
+          <button class="sh-tab" onclick="switchShTab(this)">LMS</button>
+        </div>
+        <!-- 발송 내역 목록 헤더 -->
+        <div class="sh-list-hd">
+          <span class="sh-list-title">발송 내역 <span class="sh-list-count">전체 0개 (페이지 1/0)</span></span>
+          <button class="sh-download-btn">고객정보 ↓</button>
+        </div>
+        <!-- 테이블 -->
+        <div class="sh-table-wrap">
+          <table class="sh-table">
+            <thead>
+              <tr>
+                <th>이름<br>휴대폰번호</th>
+                <th>아이디<br>이메일</th>
+                <th>가입일</th>
+                <th>최종 로그인 일자<br>최근 구매일</th>
+                <th>로그인 횟수</th>
+                <th>마케팅 수신 동의</th>
+                <th>처리 내역</th>
+                <th>발송일</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8" class="sh-empty">발송 내역이 없습니다.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
