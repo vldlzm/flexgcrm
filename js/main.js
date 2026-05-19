@@ -157,6 +157,8 @@ function openCcPopup() {
 
 function openCcPopupViewOnly() {
   var popup = document.getElementById('ccPopupBackdrop');
+  var nameInput = document.getElementById('ccCouponName');
+  if (nameInput) nameInput.value = '이미 등록된 쿠폰';
   popup.classList.add('open', 'cc-view-only');
   popup.querySelectorAll('input, select, textarea').forEach(function(el) {
     el.disabled = true;
