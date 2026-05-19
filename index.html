@@ -909,28 +909,6 @@
       <div class="screen-view" id="screen-home">
         <div class="home-wrap">
 
-          <!-- 오늘의 할 일 -->
-          <section class="home-section">
-            <div class="home-sec-hd">
-              <div class="home-sec-hd-left">
-                <h2 class="home-sec-title">오늘의 할 일</h2>
-                <span class="home-sec-note">① 최근 30일 기준으로 집계된 주문 상태별 건 수입니다.</span>
-              </div>
-              <a class="home-more-btn">더보기</a>
-            </div>
-            <div class="home-todo-grid">
-              <div class="home-todo-card"><p class="htc-label">미입금확인</p><p class="htc-val">9</p></div>
-              <div class="home-todo-card"><p class="htc-label">신규주문</p><p class="htc-val">6</p></div>
-              <div class="home-todo-card"><p class="htc-label">배송준비</p><p class="htc-val">2</p></div>
-              <div class="home-todo-card"><p class="htc-label">배송중</p><p class="htc-val">0</p></div>
-              <div class="home-todo-card"><p class="htc-label">배송완료</p><p class="htc-val">6</p></div>
-              <div class="home-todo-card"><p class="htc-label">취소요청</p><p class="htc-val home-red">0</p></div>
-              <div class="home-todo-card"><p class="htc-label">반품요청</p><p class="htc-val home-red">0</p></div>
-              <div class="home-todo-card"><p class="htc-label">교환요청</p><p class="htc-val home-red">0</p></div>
-              <div class="home-todo-card"><p class="htc-label">미날변 상품문의</p><p class="htc-val">1</p></div>
-            </div>
-          </section>
-
           <!-- CRM 현황 + 어제의 CRM 지표 -->
           <div class="home-crm-row">
             <!-- 좌: CRM 현황 -->
@@ -938,7 +916,7 @@
               <h3 class="home-sec-title">CRM 현황</h3>
               <div class="home-crm-status-inner">
                 <!-- 캠페인 진행 현황 박스 -->
-                <div class="home-crm-campaign home-crm-box">
+                <div class="home-crm-campaign home-crm-box home-crm-box-red">
                   <p class="home-crm-sub-label">캠페인 진행 현황</p>
                   <div class="home-crm-badge-row">
                     <div class="home-crm-badge-item">
@@ -983,14 +961,14 @@
               <table class="home-crm-tbl">
                 <thead>
                   <tr>
-                    <th>구매 목적 캠페인</th>
+                    <th class="home-crm-th-red">구매 목적 캠페인</th>
                     <th>회원가입 목적 캠페인</th>
                     <th>APP설치 목적 캠페인</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
+                    <td class="home-crm-td-red">
                       <div class="home-crm-metric"><span>ROAS</span><span>0%</span></div>
                       <div class="home-crm-metric"><span>구매 금액</span><span>0원</span></div>
                       <div class="home-crm-metric"><span>지출 캐시</span><span>0원</span></div>
@@ -1013,8 +991,8 @@
             </div>
           </div>
 
-          <!-- 쇼핑몰 현황 -->
-          <section class="home-section home-shop-section">
+          <!-- 쇼핑몰 현황 (삭제) -->
+          <section class="home-section home-shop-section" style="display:none;">
             <h2 class="home-sec-title" style="margin-bottom:12px;">쇼핑몰 현황</h2>
             <div class="home-shop-inner">
               <!-- 좌: 통계 영역 -->
