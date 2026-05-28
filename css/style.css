@@ -4254,7 +4254,7 @@ body {
 
 .bt-cat {
   background: #f4f6f9;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 12px;
   color: #2d3748;
   width: 96px;
@@ -4273,7 +4273,7 @@ body {
 .bt-cat-label {
   display: block;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   color: #2d3748;
 }
 .bt-sub {
@@ -4306,6 +4306,6 @@ body {
 }
 .bt-opt-special {
   color: #2d3748;
-  font-weight: 600;
+  font-weight: 400;
 }
 
