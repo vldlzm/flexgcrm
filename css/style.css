@@ -4051,32 +4051,20 @@ body {
 ===================== */
 .bu-wrap {
   padding: 32px 36px;
-  max-width: 780px;
+  max-width: 624px;
 }
-.bu-page-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1a202c;
-  margin: 0 0 6px;
-}
-.bu-page-desc {
-  font-size: 13px;
-  color: #718096;
-  margin: 0 0 24px;
-}
-.bu-preview-label {
+.bu-section-label {
   font-size: 12px;
   font-weight: 600;
-  color: #4a5568;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
+  color: #718096;
+  margin: 0 0 10px;
+  letter-spacing: 0.03em;
 }
 .bu-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #7b1e1e;
+  background: #1e1e1e;
   border-radius: 10px;
   padding: 14px 20px;
   gap: 12px;
@@ -4089,7 +4077,7 @@ body {
 .bu-icon-wrap {
   width: 46px;
   height: 46px;
-  background: #c0392b;
+  background: #e53e3e;
   border-radius: 50%;
   display: flex;
   align-items: center;
