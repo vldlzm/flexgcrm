@@ -4211,15 +4211,18 @@ body {
 .bt-intro-icon { width: 28px; height: 28px; }
 .bt-intro-text { flex: 1; }
 .bt-intro-main {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: #fff;
-  margin: 0 0 4px;
-  line-height: 1.45;
+  margin: 0 0 6px;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 .bt-intro-sub {
-  font-size: 12px;
-  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
   margin: 0;
   line-height: 1.5;
 }
