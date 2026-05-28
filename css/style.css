@@ -4045,3 +4045,99 @@ body {
 
 /* 쿠폰 생성 팝업 view-only 시 저장 버튼 숨김 */
 .cc-popup-backdrop.cc-view-only .cc-save-btn { display: none; }
+
+/* =====================
+   배너 업데이트 화면
+===================== */
+.bu-wrap {
+  padding: 32px 36px;
+  max-width: 780px;
+}
+.bu-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 6px;
+}
+.bu-page-desc {
+  font-size: 13px;
+  color: #718096;
+  margin: 0 0 24px;
+}
+.bu-preview-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.bu-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #7b1e1e;
+  border-radius: 10px;
+  padding: 14px 20px;
+  gap: 12px;
+}
+.bu-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.bu-icon-wrap {
+  width: 46px;
+  height: 46px;
+  background: #c0392b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bu-icon {
+  width: 28px;
+  height: 28px;
+}
+.bu-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.bu-banner-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+.bu-banner-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.82);
+  margin: 0;
+}
+.bu-banner-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.bu-banner-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.bu-banner-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
