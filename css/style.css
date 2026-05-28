@@ -4187,6 +4187,11 @@ body {
   margin: 0;
   line-height: 1.6;
 }
+.bt-intro-em {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a202c;
+}
 
 .bt-body {
   overflow-y: auto;
