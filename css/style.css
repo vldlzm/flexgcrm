@@ -4179,145 +4179,79 @@ body {
 }
 .bt-close:hover { color: #333; }
 
-.bt-body {
-  overflow-y: auto;
-  padding: 20px 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* 소개 */
+/* 안내 한 줄 */
 .bt-intro {
-  font-size: 13px;
-  color: #4a5568;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* STEP */
-.bt-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.bt-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 16px;
-  border-bottom: 1px solid #e2e8f0;
-}
-.bt-step:last-child { border-bottom: none; }
-.bt-step-num {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  background: #e53e3e;
-  color: #fff;
-  border-radius: 50%;
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1px;
-}
-.bt-step-content { flex: 1; }
-.bt-step-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1a202c;
-  margin: 0 0 4px;
-}
-.bt-step-desc {
   font-size: 12px;
-  color: #4a5568;
-  line-height: 1.65;
-  margin: 0;
-}
-
-/* 기준 카드 */
-.bt-criteria-title {
-  font-size: 12px;
-  font-weight: 700;
   color: #718096;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0;
-}
-.bt-criteria-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-}
-.bt-criteria-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 4px;
-  background: #f7fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 12px 8px;
-}
-.bt-criteria-icon { font-size: 22px; }
-.bt-criteria-name {
-  font-size: 12px;
-  font-weight: 700;
-  color: #2d3748;
-}
-.bt-criteria-desc {
-  font-size: 11px;
-  color: #718096;
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
-/* 주의사항 */
-.bt-notice {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
-  border-radius: 6px;
-  padding: 10px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.bt-notice p {
-  font-size: 12px;
-  color: #7c5800;
+  padding: 10px 20px 0;
   margin: 0;
   line-height: 1.6;
 }
 
-.bt-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 12px 20px;
-  border-top: 1px solid #e2e8f0;
+.bt-body {
+  overflow-y: auto;
+  padding: 10px 20px 16px;
+  flex: 1;
 }
-.bt-btn {
-  padding: 8px 20px;
-  border-radius: 4px;
-  border: none;
+
+/* 표 */
+.bt-table {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 13px;
+}
+.bt-table td {
+  padding: 8px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+}
+.bt-cat {
+  background: #f7f7f7;
   font-weight: 600;
+  font-size: 13px;
+  color: #4a5568;
+  width: 80px;
+  border-right: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+.bt-sub {
+  color: #4a5568;
+  width: 150px;
+  white-space: nowrap;
+}
+.bt-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+}
+.bt-radio {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #2d3748;
+  white-space: nowrap;
+  font-size: 13px;
+}
+.bt-radio input[type="radio"] {
+  accent-color: #3182ce;
   cursor: pointer;
 }
-.bt-btn-cancel {
-  background: #e2e8f0;
+.bt-opt-special { color: #2b6cb0; }
+.bt-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  background: #cbd5e0;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
   color: #4a5568;
+  vertical-align: middle;
+  margin-left: 2px;
 }
-.bt-btn-cancel:hover { background: #cbd5e0; }
-.bt-btn-confirm {
-  background: #e53e3e;
-  color: #fff;
-}
-.bt-btn-confirm:hover { background: #c53030; }
+
