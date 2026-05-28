@@ -723,3 +723,14 @@ function confirmCoupon1Delete() {
   if (_coupon1DeleteBtn) _coupon1DeleteBtn.closest('tr').remove();
   closeCoupon1DeleteConfirm();
 }
+
+/* ===========================
+   대상자 추출 설정 레이어
+=========================== */
+function openBannerTargetLayer() {
+  document.getElementById('bannerTargetBackdrop').classList.add('open');
+}
+function closeBannerTargetLayer(e) {
+  if (e && e.target !== document.getElementById('bannerTargetBackdrop')) return;
+  document.getElementById('bannerTargetBackdrop').classList.remove('open');
+}

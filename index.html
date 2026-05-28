@@ -905,7 +905,7 @@
       <div class="screen-view" id="screen-banner-update">
         <div class="bu-wrap">
           <p class="bu-section-label">캠페인 화면 상단 노출 배너</p>
-          <div class="bu-banner">
+          <div class="bu-banner" onclick="openBannerTargetLayer()" style="cursor:pointer;">
             <div class="bu-banner-left">
               <div class="bu-icon-wrap">
                 <svg class="bu-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1295,14 +1295,9 @@
             <p class="desc-text">배너 업데이트</p>
           </div>
           <div class="desc-block">
-            <p class="desc-label">배너 구성</p>
-            <p class="desc-text">· 아이콘(대상자 타겟) + 제목 + 설명 + 우측 액션 링크</p>
-          </div>
-          <div class="desc-block">
-            <p class="desc-label">배너 문구</p>
-            <p class="desc-text"><strong>제목:</strong> 대상자 추출 설정!</p>
-            <p class="desc-text"><strong>설명:</strong> 원하는 고객군을 설정해 보세요.</p>
-            <p class="desc-text"><strong>링크:</strong> 대상자 추출 ?</p>
+            <p class="desc-label">배너 클릭 동작</p>
+            <p class="desc-text">배너 클릭 시 <strong>대상자 추출 설정</strong> 레이어가 열립니다.</p>
+            <p class="desc-text">· 구매 · 회원가입 · APP설치 · 방문 · 관심상품 조건을 라디오 버튼으로 설정합니다.</p>
           </div>
         </div>
 
@@ -2088,6 +2083,125 @@
         <button type="button" class="btn-footer btn-footer-cancel" onclick="closeCouponPopup()">취소</button>
       </div>
 
+    </div>
+  </div>
+
+  <!-- =====================
+       대상자 추출 설정 레이어 (배너 클릭)
+  ===================== -->
+  <div class="bt-backdrop" id="bannerTargetBackdrop" onclick="closeBannerTargetLayer(event)">
+    <div class="bt-modal">
+      <!-- 헤더 -->
+      <div class="bt-header">
+        <span class="bt-title">대상자 추출 설정</span>
+        <button class="bt-close" onclick="closeBannerTargetLayer()">✕</button>
+      </div>
+      <!-- 설명 -->
+      <p class="bt-desc">원하는 조건을 선택하면 해당 조건에 맞는 고객군이 대상자로 추출됩니다.</p>
+      <!-- 테이블 -->
+      <div class="bt-body">
+        <table class="bt-table">
+          <tbody>
+            <!-- 구매 -->
+            <tr>
+              <td class="bt-cat" rowspan="4">구매</td>
+              <td class="bt-sub">· 구매기간</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-period" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-period"> 최근</label>
+                <label class="bt-radio"><input type="radio" name="bt-period"> <span class="bt-opt-special">특정 기간(최대 1년)</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 구매금액</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-amount" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-amount"> <span class="bt-opt-special">특정 금액</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 구매건수</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-count" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-count"> <span class="bt-opt-special">특정 건수</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 구매상품</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-product" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-product"> <span class="bt-opt-special">특정 상품</span></label>
+              </td>
+            </tr>
+            <!-- 회원가입 -->
+            <tr>
+              <td class="bt-cat">회원가입</td>
+              <td class="bt-sub">· 가입기간</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-join" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-join"> 최근</label>
+                <label class="bt-radio"><input type="radio" name="bt-join"> <span class="bt-opt-special">특정 기간(최대 1년)</span></label>
+              </td>
+            </tr>
+            <!-- APP설치 -->
+            <tr>
+              <td class="bt-cat" rowspan="2">APP설치</td>
+              <td class="bt-sub">· 설치여부</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-install" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-install"> 설치</label>
+                <label class="bt-radio"><input type="radio" name="bt-install"> 미설치</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 설치시기</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-install-time" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-install-time"> 최근</label>
+                <label class="bt-radio"><input type="radio" name="bt-install-time"> <span class="bt-opt-special">특정 기간(최대 1년)</span></label>
+              </td>
+            </tr>
+            <!-- 방문 -->
+            <tr>
+              <td class="bt-cat" rowspan="2">방문</td>
+              <td class="bt-sub">· 방문여부</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-visit" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-visit"> <span class="bt-opt-special">방문(최대 1년)</span></label>
+                <label class="bt-radio"><input type="radio" name="bt-visit"> <span class="bt-opt-special">미방문(최대 1년)</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 방문횟수</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-visit-cnt" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-visit-cnt"> <span class="bt-opt-special">특정 횟수</span></label>
+              </td>
+            </tr>
+            <!-- 관심상품 -->
+            <tr>
+              <td class="bt-cat" rowspan="2">관심상품 <span class="bt-help">?</span></td>
+              <td class="bt-sub">· 관심상품</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-wish" checked> 전체</label>
+                <label class="bt-radio"><input type="radio" name="bt-wish"> <span class="bt-opt-special">특정 상품</span></label>
+              </td>
+            </tr>
+            <tr>
+              <td class="bt-sub">· 관심상품으로 등록한 시기</td>
+              <td class="bt-opts">
+                <label class="bt-radio"><input type="radio" name="bt-wish-time" checked> 최근 3개월</label>
+                <label class="bt-radio"><input type="radio" name="bt-wish-time"> 최근 1개월</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 푸터 -->
+      <div class="bt-footer">
+        <button class="bt-btn bt-btn-cancel" onclick="closeBannerTargetLayer()">취소</button>
+        <button class="bt-btn bt-btn-confirm">대상자 추출</button>
+      </div>
     </div>
   </div>
 
