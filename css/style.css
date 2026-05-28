@@ -4183,26 +4183,44 @@ body {
 .bt-intro-box {
   margin: 16px 20px 0;
   padding: 18px 20px;
-  background: #1a56db;
-  border-radius: 8px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+.bt-intro-icon-wrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bt-intro-icon {
+  width: 28px;
+  height: 28px;
+}
+.bt-intro-text { flex: 1; }
 .bt-intro-main {
   font-size: 14px;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 6px;
-  line-height: 1.5;
+  margin: 0 0 5px;
+  line-height: 1.4;
 }
 .bt-intro-sub {
   font-size: 12px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.7);
   margin: 0;
   line-height: 1.5;
 }
 
 .bt-body {
   overflow-y: auto;
-  padding: 20px 20px 20px;
+  padding: 20px;
   flex: 1;
 }
 
@@ -4211,31 +4229,37 @@ body {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 .bt-table td {
-  padding: 8px 10px;
+  padding: 9px 12px;
   vertical-align: middle;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #edf2f7;
 }
+.bt-table tr:last-child td { border-bottom: none; }
 .bt-cat {
-  background: #f7f7f7;
-  font-weight: 600;
+  background: #f8f9fa;
+  font-weight: 700;
   font-size: 13px;
-  color: #4a5568;
-  width: 80px;
-  border-right: 1px solid #e2e8f0;
+  color: #1a202c;
+  width: 78px;
+  border-right: 2px solid #1e1e1e;
   text-align: left;
   vertical-align: middle;
+  padding-left: 14px !important;
 }
 .bt-sub {
   color: #4a5568;
   width: 150px;
   white-space: nowrap;
+  font-size: 12px;
 }
 .bt-opts {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
+  gap: 4px 14px;
   align-items: center;
 }
 .bt-radio {
@@ -4248,10 +4272,13 @@ body {
   font-size: 13px;
 }
 .bt-radio input[type="radio"] {
-  accent-color: #3182ce;
+  accent-color: #1e1e1e;
   cursor: pointer;
 }
-.bt-opt-special { color: #2b6cb0; }
+.bt-opt-special {
+  color: #1a202c;
+  font-weight: 600;
+}
 .bt-help {
   display: inline-flex;
   align-items: center;
