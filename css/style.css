@@ -4273,6 +4273,10 @@ body {
   margin: 0 0 10px;
 }
 .db-chart-title-red { color: #c53030; }
+.db-chart-box-red {
+  border-color: #fc8181;
+  background: #fff5f5;
+}
 .db-chart-period { font-size: 11px; font-weight: 400; color: #a0aec0; margin-left: 4px; }
 .db-chart-area { position: relative; }
 .db-svg-chart { width: 100%; height: auto; display: block; }
