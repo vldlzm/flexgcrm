@@ -4047,6 +4047,294 @@ body {
 .cc-popup-backdrop.cc-view-only .cc-save-btn { display: none; }
 
 /* =====================
+   대시보드 화면
+===================== */
+.db-wrap { padding: 24px 28px; min-width: 0; }
+.db-page-title { font-size: 16px; font-weight: 700; color: #1a202c; margin: 0 0 12px; }
+.db-section-title { font-size: 14px; font-weight: 700; color: #1a202c; margin: 20px 0 10px; }
+
+/* 검색 박스 */
+.db-search-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px 16px;
+  background: #fff;
+}
+.db-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.db-search-label { font-size: 13px; color: #4a5568; font-weight: 600; margin-right: 4px; }
+.db-date-input {
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #2d3748;
+}
+.db-date-sep { font-size: 13px; color: #718096; }
+.db-quick-btn {
+  border: 1px solid #cbd5e0;
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #4a5568;
+  cursor: pointer;
+}
+.db-quick-btn:hover { background: #f7fafc; }
+.db-search-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.db-btn-reset {
+  padding: 6px 20px;
+  border: 1px solid #cbd5e0;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #4a5568;
+  cursor: pointer;
+}
+.db-btn-search {
+  padding: 6px 20px;
+  border: none;
+  background: #2d3748;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* KPI 카드 행 */
+.db-kpi-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* 캐시 카드 */
+.db-cash-card {
+  background: #276749;
+  border-radius: 8px;
+  padding: 14px 16px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+}
+.db-cash-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.db-cash-icon {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  color: #276749;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.db-cash-label { font-size: 11px; color: rgba(255,255,255,0.85); }
+.db-cash-val { font-size: 13px; font-weight: 700; color: #fff; margin-left: auto; }
+.db-cash-notice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+.db-cash-notice-txt { font-size: 10px; color: rgba(255,255,255,0.85); flex: 1; }
+.db-cash-charge-btn {
+  background: #fff;
+  color: #276749;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* KPI 카드 */
+.db-kpi-card {
+  flex: 1;
+  border: 1.5px solid #68d391;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.db-kpi-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  width: fit-content;
+}
+.db-badge-buy  { background: #c6f6d5; color: #276749; }
+.db-badge-join { background: #bee3f8; color: #2b6cb0; }
+.db-kpi-name { font-size: 12px; color: #718096; margin: 0; }
+.db-kpi-val  { font-size: 22px; font-weight: 700; color: #1a202c; margin: 2px 0 4px; }
+.db-kpi-divider { border: none; border-top: 1px solid #edf2f7; margin: 4px 0; }
+.db-kpi-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #4a5568;
+}
+.db-kpi-sub-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #718096;
+}
+.db-kpi-sub-icon svg { width: 14px; height: 14px; }
+.db-icon-c {
+  background: #e2e8f0;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #4a5568;
+  width: 16px;
+  height: 16px;
+}
+.db-kpi-sub-label { flex: 1; }
+.db-kpi-sub-val { font-weight: 600; color: #2d3748; }
+
+/* 탭 */
+.db-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e2e8f0;
+  margin-top: 20px;
+}
+.db-tab {
+  padding: 8px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 13px;
+  color: #718096;
+  cursor: pointer;
+  font-weight: 500;
+}
+.db-tab.active { color: #1a202c; font-weight: 700; border-bottom-color: #1a202c; }
+.db-tab:hover:not(.active) { color: #2d3748; background: #f7fafc; }
+
+/* 차트 영역 */
+.db-chart-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+.db-chart-box {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px 16px;
+  background: #fff;
+}
+.db-chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 10px;
+}
+.db-chart-period { font-size: 11px; font-weight: 400; color: #a0aec0; margin-left: 4px; }
+.db-chart-area { position: relative; }
+.db-svg-chart { width: 100%; height: auto; display: block; }
+.db-chart-legend {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 6px;
+}
+.db-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #4a5568;
+}
+.db-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* 테이블 섹션 */
+.db-table-section { margin-top: 20px; }
+.db-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.db-table-title { font-size: 14px; font-weight: 700; color: #1a202c; margin: 0; }
+.db-table-filter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.db-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #4a5568;
+  cursor: pointer;
+}
+.db-radio-label input { accent-color: #2d3748; }
+.db-table-wrap { overflow-x: auto; }
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.db-table th {
+  background: #f7fafc;
+  color: #4a5568;
+  font-weight: 600;
+  padding: 9px 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+.db-table td {
+  padding: 9px 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  color: #4a5568;
+}
+.db-table-empty { color: #a0aec0; font-size: 13px; padding: 24px !important; }
+
+/* =====================
    배너 업데이트 화면
 ===================== */
 .bu-wrap {

@@ -727,6 +727,14 @@ function confirmCoupon1Delete() {
 /* ===========================
    대상자 추출 설정 레이어
 =========================== */
+/* ===========================
+   대시보드 탭
+=========================== */
+function dbSelectTab(el, type) {
+  document.querySelectorAll('.db-tab').forEach(function(t) { t.classList.remove('active'); });
+  el.classList.add('active');
+}
+
 function openBannerTargetLayer() {
   document.getElementById('bannerTargetBackdrop').classList.add('open');
 }
