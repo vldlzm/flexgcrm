@@ -947,7 +947,7 @@
             </div>
 
             <!-- KPI 카드 1: ROAS -->
-            <div class="db-kpi-card">
+            <div class="db-kpi-card db-kpi-card-red">
               <span class="db-kpi-badge db-badge-buy">구매</span>
               <p class="db-kpi-name">ROAS</p>
               <p class="db-kpi-val">0%</p>
@@ -1046,7 +1046,7 @@
 
           <!-- 탭 -->
           <div class="db-tabs">
-            <button class="db-tab active" onclick="dbSelectTab(this,'buy')">구매</button>
+            <button class="db-tab db-tab-red active" onclick="dbSelectTab(this,'buy')">구매</button>
             <button class="db-tab" onclick="dbSelectTab(this,'join')">회원가입</button>
             <button class="db-tab" onclick="dbSelectTab(this,'app')">APP설치</button>
             <button class="db-tab" onclick="dbSelectTab(this,'revisit')">재방문자</button>
@@ -1564,11 +1564,8 @@
             <p class="desc-text">대시보드</p>
           </div>
           <div class="desc-block">
-            <p class="desc-label">구성</p>
-            <p class="desc-text">· 핵심지표 검색 (기간 필터)</p>
-            <p class="desc-text">· CRM 캠페인 지표 카드 (캐시·ROAS·회원가입·APP설치·재방문)</p>
-            <p class="desc-text">· 목적별 탭 + 일별/월별 차트</p>
-            <p class="desc-text">· 온사이트·오프사이트 합계 데이터 테이블</p>
+            <p class="desc-label">요구사항</p>
+            <p class="desc-text">· 신규 추가된 시나리오(<em>오늘 소멸되는 쿠폰 알림 보내기</em>)는 구매 전환 유도를 목적으로 하므로, <strong>[구매]</strong> 지표에 포함되어 집계되어야 합니다.</p>
           </div>
         </div>
 

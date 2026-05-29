@@ -4225,6 +4225,12 @@ body {
 .db-kpi-sub-label { flex: 1; }
 .db-kpi-sub-val { font-weight: 600; color: #2d3748; }
 
+.db-kpi-card-red {
+  border-color: #fc8181;
+  background: #fff5f5;
+}
+.db-kpi-card-red .db-kpi-val { color: #c53030; }
+
 /* 탭 */
 .db-tabs {
   display: flex;
@@ -4244,6 +4250,7 @@ body {
   font-weight: 500;
 }
 .db-tab.active { color: #1a202c; font-weight: 700; border-bottom-color: #1a202c; }
+.db-tab.db-tab-red.active { color: #c53030; border-bottom-color: #c53030; }
 .db-tab:hover:not(.active) { color: #2d3748; background: #f7fafc; }
 
 /* 차트 영역 */
